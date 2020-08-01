@@ -50,3 +50,6 @@ func on_player_dash_init():
 
 func on_player_dash_start():
 	EMITTER.emit("player_dash_start")
+
+func on_player_dash_short_circuit():
+	EMITTER.emit("player_dash_short_circuit")

@@ -29,18 +29,12 @@ func get_velocity(move_collection):
 		move_collection.on_player_dash_init()
 	
 	var force_dash = move_collection.is_charging_dash and charge_time > charge_duration
-		
-	if has_dash and (force_dash or move_collection.dash_just_released):
-		var dash_direction = get_direction(move_collection)
-		charge_time = INF
-		move_collection.is_charging_dash = false
-		move_collection.on_player_dash_start()
-		if !move_collection.is_on_floor or dash_direction.y <= 0:
-			move_collection.is_dashing = true
-			has_dash = false
-			direction = dash_direction
-			current_fade_away_strength = fade_away_strength
-			dash_time = 0
+	
+	if has_dash:
+		if move_collection.dash_just_released:
+			short_circuit_dash(move_collection)
+		elif force_dash:
+			trigger_dash(move_collection)
 	
 	if move_collection.is_charging_dash:
 		charge_time += 1
@@ -54,6 +48,23 @@ func get_velocity(move_collection):
 	current_fade_away_strength = max(current_fade_away_strength - fade_away_strength_decay, 0)
 	
 	return direction * current_fade_away_strength
+
+func trigger_dash(move_collection):
+	charge_time = INF
+	move_collection.is_charging_dash = false
+	var dash_direction = get_direction(move_collection)
+	move_collection.on_player_dash_start()
+	if !move_collection.is_on_floor or dash_direction.y <= 0:
+		move_collection.is_dashing = true
+		has_dash = false
+		direction = dash_direction
+		current_fade_away_strength = fade_away_strength
+		dash_time = 0
+
+func short_circuit_dash(move_collection):
+	charge_time = INF
+	move_collection.is_charging_dash = false
+	move_collection.on_player_dash_short_circuit()
 
 func get_direction(move_collection):
 	var horizontal = 0
