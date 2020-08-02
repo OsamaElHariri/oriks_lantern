@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=12 format=2]
 
 [ext_resource path="res://gameplay/actor/player/lantern_player/actor_placeholder.png" type="Texture" id=1]
 [ext_resource path="res://gameplay/actor/movement/horizontal_movement/HorizontalMovement.tscn" type="PackedScene" id=2]
@@ -7,6 +7,8 @@
 [ext_resource path="res://gameplay/actor/movement/jump_movement/JumpMovement.tscn" type="PackedScene" id=5]
 [ext_resource path="res://gameplay/actor/movement/dash_movement/DashMovement.tscn" type="PackedScene" id=6]
 [ext_resource path="res://gameplay/actor/player/lantern_player/LanternPlayer.gd" type="Script" id=7]
+[ext_resource path="res://gameplay/actor/player/lantern_player/lantern_dash_wind_up.png" type="Texture" id=8]
+[ext_resource path="res://gameplay/actor/player/lantern_player/DashWindUp.tres" type="Animation" id=9]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 32, 32 )
@@ -19,6 +21,10 @@ script = ExtResource( 7 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource( 1 )
+
+[node name="dash_wind_up" type="Sprite" parent="."]
+modulate = Color( 1, 1, 1, 0 )
+texture = ExtResource( 8 )
 
 [node name="actor_placeholder" type="Sprite" parent="."]
 texture = ExtResource( 1 )
@@ -39,3 +45,6 @@ collision_mask = 4
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
 shape = SubResource( 2 )
+
+[node name="DashWindUpAnimationPlayer" type="AnimationPlayer" parent="."]
+anims/DashWindUp = ExtResource( 9 )

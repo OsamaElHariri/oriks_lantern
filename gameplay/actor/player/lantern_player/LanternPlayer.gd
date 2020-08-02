@@ -12,6 +12,7 @@ func _ready():
 
 func on_player_dash_init():
 	EMITTER.emit("player_dash_init")
+	$DashWindUpAnimationPlayer.play("DashWindUp")
 
 func on_player_dash_start():
 	EMITTER.emit("player_dash_start")
