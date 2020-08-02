@@ -28,7 +28,7 @@ texture = ExtResource( 1 )
 [node name="GravityMovement" parent="MoveCollection" instance=ExtResource( 5 )]
 
 [node name="DashMovement" parent="MoveCollection" instance=ExtResource( 3 )]
-charge_duration = -1
+can_short_circuit = false
 
 [node name="HorizontalMovement" parent="MoveCollection" instance=ExtResource( 6 )]
 

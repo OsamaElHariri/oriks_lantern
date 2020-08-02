@@ -51,11 +51,6 @@ func update():
 	dash_just_pressed = !lock_controls and Input.is_action_just_pressed("dash")
 	dash_just_released = !lock_controls and Input.is_action_just_released("dash")
 
-func trigger_dash():
-	for child in get_children():
-		if child.has_method("trigger_dash"):
-			child.trigger_dash(self)
-
 func on_player_dash_init():
 	emit_signal("player_dash_init")
 

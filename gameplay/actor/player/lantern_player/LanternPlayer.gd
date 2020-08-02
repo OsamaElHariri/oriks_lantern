@@ -29,10 +29,9 @@ func on_body_entered(body):
 		ignore_area_enter = null
 		return
 	
-	var trigger_dash_direction = position - body.position
-	
 	body.queue_free()
 	$MoveCollection.time_multiplier = 1
 	$MoveCollection.lock_controls = false
 	$MoveCollection.update()
-	$MoveCollection.trigger_dash()
+	$MoveCollection/DashMovement.should_short_circuit = false
+	$MoveCollection/DashMovement.init_dash($MoveCollection)

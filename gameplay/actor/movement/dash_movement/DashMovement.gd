@@ -6,6 +6,7 @@ signal player_dash_start
 export var strength = 3000
 export var duration = 6
 export var charge_duration = 10
+export var can_short_circuit = true
 
 export var fade_away_strength = 500
 export var fade_away_strength_decay = 100
@@ -15,6 +16,8 @@ var direction = Vector2(1, -1)
 var dash_time = INF
 var charge_time = INF
 
+var should_short_circuit = true
+
 var current_fade_away_strength = 0
 
 func get_velocity(move_collection):
@@ -22,18 +25,25 @@ func get_velocity(move_collection):
 		has_dash = true
 		dash_time = INF
 		current_fade_away_strength = 0
+		should_short_circuit = true
 	
 	if has_dash and move_collection.dash_just_pressed:
-		move_collection.is_charging_dash = true
-		charge_time = 0
-		move_collection.on_player_dash_init()
+		init_dash(move_collection)
 	
 	var force_dash = move_collection.is_charging_dash and charge_time > charge_duration
 	
+	var short_circuit = false
+	var dash = force_dash
+	
+	if can_short_circuit and should_short_circuit:
+		short_circuit = move_collection.dash_just_released
+	else:
+		dash = dash or move_collection.dash_just_released
+	
 	if has_dash:
-		if move_collection.dash_just_released:
+		if short_circuit:
 			short_circuit_dash(move_collection)
-		elif force_dash:
+		elif dash:
 			trigger_dash(move_collection)
 	
 	if move_collection.is_charging_dash:
@@ -48,6 +58,11 @@ func get_velocity(move_collection):
 	current_fade_away_strength = max(current_fade_away_strength - fade_away_strength_decay, 0)
 	
 	return direction * current_fade_away_strength
+
+func init_dash(move_collection):
+	move_collection.is_charging_dash = true
+	charge_time = 0
+	move_collection.on_player_dash_init()
 
 func trigger_dash(move_collection):
 	charge_time = INF
