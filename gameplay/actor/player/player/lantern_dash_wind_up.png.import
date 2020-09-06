@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/lantern_dash_wind_up.png-99296841de91db48d8e2ae76d500d167.stex"
+path="res://.import/lantern_dash_wind_up.png-4fdcef38d5ef7b0cbe2ccaadd4059a4a.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://gameplay/actor/player/lantern_player/lantern_dash_wind_up.png"
-dest_files=[ "res://.import/lantern_dash_wind_up.png-99296841de91db48d8e2ae76d500d167.stex" ]
+source_file="res://gameplay/actor/player/player/lantern_dash_wind_up.png"
+dest_files=[ "res://.import/lantern_dash_wind_up.png-4fdcef38d5ef7b0cbe2ccaadd4059a4a.stex" ]
 
 [params]
 

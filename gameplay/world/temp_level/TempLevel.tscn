@@ -1,17 +1,94 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=7 format=2]
 
-[ext_resource path="res://gameplay/actor/player/lantern_player/LanternPlayer.tscn" type="PackedScene" id=1]
+[ext_resource path="res://gameplay/actor/player/player/Player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://gameplay/platform/solid_platform/SolidPlatform.tscn" type="PackedScene" id=2]
 [ext_resource path="res://gameplay/world/camera/WorldCamera.tscn" type="PackedScene" id=3]
+[ext_resource path="res://gameplay/platform/spikes/Spikes.tscn" type="PackedScene" id=4]
+[ext_resource path="res://gameplay/platform/moving_platform/MovingPlatform.tscn" type="PackedScene" id=5]
+[ext_resource path="res://gameplay/platform/moving_platform/MoveOnTriggerPlatform.tscn" type="PackedScene" id=6]
 
 [node name="TempLevel" type="Node2D"]
 
-[node name="Node2D" parent="." instance=ExtResource( 2 )]
-position = Vector2( 460.839, 503.047 )
+[node name="SolidPlatform5" parent="." instance=ExtResource( 2 )]
+position = Vector2( 58.7754, 814.968 )
 
-[node name="Node2D2" parent="." instance=ExtResource( 1 )]
-position = Vector2( 392.086, 380.273 )
+[node name="SolidPlatform6" parent="." instance=ExtResource( 2 )]
+position = Vector2( -172.552, 703.931 )
+rotation = 1.57079
+
+[node name="SolidPlatform12" parent="." instance=ExtResource( 2 )]
+position = Vector2( -172.552, 21.0982 )
+rotation = 1.57079
+
+[node name="SolidPlatform13" parent="." instance=ExtResource( 2 )]
+position = Vector2( 284.255, 21.0982 )
+rotation = 1.57079
+
+[node name="SolidPlatform14" parent="." instance=ExtResource( 2 )]
+position = Vector2( 285.74, 368.362 )
+rotation = 1.57079
+
+[node name="SolidPlatform8" parent="." instance=ExtResource( 2 )]
+position = Vector2( -249.507, 384.903 )
+rotation = 3.14159
+
+[node name="SolidPlatform9" parent="." instance=ExtResource( 2 )]
+position = Vector2( -249.507, 325.069 )
+rotation = 3.14159
+
+[node name="SolidPlatform7" parent="." instance=ExtResource( 2 )]
+position = Vector2( 285.74, 703.399 )
+rotation = 1.57079
+
+[node name="SolidPlatform3" parent="." instance=ExtResource( 2 )]
+position = Vector2( -811.658, 485.721 )
+rotation = 6.28318
+
+[node name="Spikes" parent="SolidPlatform3" instance=ExtResource( 4 )]
+position = Vector2( 0.430943, -34.4904 )
+
+[node name="SolidPlatform4" parent="." instance=ExtResource( 2 )]
+position = Vector2( -814.092, 597.591 )
+rotation = 3.14159
+
+[node name="Spikes" parent="SolidPlatform4" instance=ExtResource( 4 )]
+position = Vector2( 0.259735, -46.266 )
+
+[node name="SolidPlatform10" parent="." instance=ExtResource( 2 )]
+position = Vector2( -808.792, 944.746 )
+rotation = 3.14159
+
+[node name="Spikes" parent="SolidPlatform10" instance=ExtResource( 4 )]
+position = Vector2( 0.259735, -46.266 )
+
+[node name="Player" parent="." instance=ExtResource( 1 )]
+position = Vector2( -53.2088, 636.118 )
 
 [node name="WorldCamera" parent="." instance=ExtResource( 3 )]
 position = Vector2( 512, 300 )
 current = true
+
+[node name="MovingPlatforms" type="Node2D" parent="."]
+
+[node name="MovingPlatform3" parent="MovingPlatforms" instance=ExtResource( 5 )]
+position = Vector2( 921.388, 638.978 )
+
+[node name="MovingPlatform4" parent="MovingPlatforms" instance=ExtResource( 5 )]
+position = Vector2( 921.388, 88.8238 )
+
+[node name="MovingPlatform8" parent="MovingPlatforms" instance=ExtResource( 5 )]
+position = Vector2( 921.388, -1057.42 )
+
+[node name="MovingPlatform7" parent="MovingPlatforms" instance=ExtResource( 5 )]
+position = Vector2( 921.388, -448.284 )
+
+[node name="MovingPlatform6" parent="MovingPlatforms" instance=ExtResource( 5 )]
+position = Vector2( 921.388, -1669.66 )
+
+[node name="MovingPlatform5" parent="MovingPlatforms" instance=ExtResource( 5 )]
+position = Vector2( 921.388, -2243.05 )
+
+[node name="MoveOnTriggerPlatform" parent="." instance=ExtResource( 6 )]
+position = Vector2( 57.2377, -330.336 )
+speed = 1000
+ramp_up_speed = 200

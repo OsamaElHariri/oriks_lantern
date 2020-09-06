@@ -3,15 +3,15 @@ extends Node2D
 signal player_dash_init
 signal player_dash_start
 
+export var dash_count = 1
 export var strength = 3000
 export var duration = 6
 export var charge_duration = 10
 export var can_short_circuit = true
 
-export var fade_away_strength = 500
+export var fade_away_strength = 1000
 export var fade_away_strength_decay = 100
 
-var has_dash = true
 var direction = Vector2(1, -1)
 var dash_time = INF
 var charge_time = INF
@@ -19,31 +19,29 @@ var charge_time = INF
 var should_short_circuit = true
 
 var current_fade_away_strength = 0
+var dashes_used = 0
 
 func get_velocity(move_collection):
 	if move_collection.is_on_floor and !move_collection.is_dashing:
-		has_dash = true
+		dashes_used = 0
 		dash_time = INF
 		current_fade_away_strength = 0
 		should_short_circuit = true
 	
-	if has_dash and move_collection.dash_just_pressed:
+	if dashes_used < dash_count and move_collection.dash_just_pressed:
 		init_dash(move_collection)
 	
 	var force_dash = move_collection.is_charging_dash and charge_time > charge_duration
 	
 	var short_circuit = false
-	var dash = force_dash
 	
 	if can_short_circuit and should_short_circuit:
 		short_circuit = move_collection.dash_just_released
-	else:
-		dash = dash or move_collection.dash_just_released
 	
-	if has_dash:
+	if dashes_used < dash_count:
 		if short_circuit:
 			short_circuit_dash(move_collection)
-		elif dash:
+		elif force_dash:
 			trigger_dash(move_collection)
 	
 	if move_collection.is_charging_dash:
@@ -71,7 +69,7 @@ func trigger_dash(move_collection):
 	move_collection.on_player_dash_start()
 	if !move_collection.is_on_floor or dash_direction.y <= 0:
 		move_collection.is_dashing = true
-		has_dash = false
+		dashes_used += 1
 		direction = dash_direction
 		current_fade_away_strength = fade_away_strength
 		dash_time = 0

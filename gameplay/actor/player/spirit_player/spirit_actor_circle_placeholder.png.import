@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/actor_placeholder.png-4f1fe1ba7886bc1d8e10d4ecf559d4ea.stex"
+path="res://.import/spirit_actor_circle_placeholder.png-bfc6f9a0cd75d64fd90597eb4440397b.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://gameplay/actor/player/lantern_player/actor_placeholder.png"
-dest_files=[ "res://.import/actor_placeholder.png-4f1fe1ba7886bc1d8e10d4ecf559d4ea.stex" ]
+source_file="res://gameplay/actor/player/spirit_player/spirit_actor_circle_placeholder.png"
+dest_files=[ "res://.import/spirit_actor_circle_placeholder.png-bfc6f9a0cd75d64fd90597eb4440397b.stex" ]
 
 [params]
 

@@ -9,7 +9,7 @@ func get_velocity(move_collection):
 	var decay = strength_decay if move_collection.jump_pressed else strength_decay * 4
 	current_strength = max(current_strength - decay * move_collection.time_multiplier, 0)
 	
-	if move_collection.is_on_floor:
+	if move_collection.is_on_floor or move_collection.is_on_wall:
 		current_strength = 0
 	
 	if move_collection.is_on_floor && move_collection.jump_just_pressed:

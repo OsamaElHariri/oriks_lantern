@@ -4,9 +4,14 @@ signal player_dash_init
 signal player_dash_start
 signal player_dash_short_circuit
 
+const FOLLOW_THROUGH_MOVEMENT = preload("res://gameplay/actor/movement/follow_through_movement/FollowThroughMovement.tscn")
+
+export var should_snap = true
+
 var velocity = Vector2(0, 0)
 var target
 var is_on_floor = true
+var is_on_wall = false
 var is_dashing = false
 var is_charging_dash = false
 var time_multiplier = 1
@@ -25,6 +30,11 @@ var dash_just_released = false
 func _ready():
 	target = get_parent()
 
+func add_follow_through_movement():
+	var movement = FOLLOW_THROUGH_MOVEMENT.instance()
+	add_child(movement)
+	return movement
+
 func _physics_process(_delta):
 	update()
 	
@@ -34,16 +44,24 @@ func _physics_process(_delta):
 			updated_velocity += child.get_velocity(self)
 	
 	velocity = updated_velocity
-	target.move_and_slide(velocity, Vector2(0, -1))
+	
+	var snap = Vector2.DOWN * 32 if !jump_just_pressed and should_snap else Vector2.ZERO
+	target.move_and_slide_with_snap(velocity, snap, Vector2(0, -1))
 
 func update():
 	is_on_floor = target.is_on_floor()
+	is_on_wall = target.is_on_wall()
 	
 	if !lock_controls:
 		right_pressed = Input.is_action_pressed("ui_right")
 		left_pressed = Input.is_action_pressed("ui_left")
 		up_pressed = Input.is_action_pressed("ui_up")
 		down_pressed = Input.is_action_pressed("ui_down")
+	else:
+		right_pressed = false
+		left_pressed = false
+		up_pressed = false
+		down_pressed = false
 	
 	jump_pressed = !lock_controls and Input.is_action_pressed("jump")
 	jump_just_pressed = !lock_controls and Input.is_action_just_pressed("jump")
@@ -59,3 +77,8 @@ func on_player_dash_start():
 
 func on_player_dash_short_circuit():
 	emit_signal("player_dash_short_circuit")
+
+func reset_gravity():
+	var gravity_node = get_node("GravityMovement")
+	if gravity_node != null and gravity_node.has_method("reset_gravity"):
+		gravity_node.reset_gravity()

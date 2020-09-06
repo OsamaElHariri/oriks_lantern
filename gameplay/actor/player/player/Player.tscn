@@ -1,0 +1,53 @@
+[gd_scene load_steps=12 format=2]
+
+[ext_resource path="res://gameplay/actor/player/player/DashWindUp.tres" type="Animation" id=1]
+[ext_resource path="res://gameplay/actor/movement/jump_movement/JumpMovement.tscn" type="PackedScene" id=2]
+[ext_resource path="res://gameplay/actor/player/player/lantern_dash_wind_up.png" type="Texture" id=3]
+[ext_resource path="res://gameplay/actor/player/player/actor_placeholder.png" type="Texture" id=4]
+[ext_resource path="res://gameplay/actor/movement/gravity_movement/GravityMovement.tscn" type="PackedScene" id=5]
+[ext_resource path="res://gameplay/actor/movement/move_collection/MoveCollection.tscn" type="PackedScene" id=6]
+[ext_resource path="res://gameplay/actor/movement/horizontal_movement/HorizontalMovement.tscn" type="PackedScene" id=7]
+[ext_resource path="res://gameplay/actor/player/player/Player.gd" type="Script" id=8]
+[ext_resource path="res://gameplay/actor/movement/wall_jump_movement/WallJumpMovement.tscn" type="PackedScene" id=9]
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 32, 32 )
+
+[sub_resource type="RectangleShape2D" id=3]
+extents = Vector2( 52, 28 )
+
+[node name="Player" type="KinematicBody2D" groups=[
+"player",
+]]
+script = ExtResource( 8 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource( 1 )
+
+[node name="dash_wind_up" type="Sprite" parent="."]
+modulate = Color( 1, 1, 1, 0 )
+scale = Vector2( 0.2, 0.2 )
+texture = ExtResource( 3 )
+
+[node name="actor_placeholder" type="Sprite" parent="."]
+texture = ExtResource( 4 )
+
+[node name="MoveCollection" parent="." instance=ExtResource( 6 )]
+
+[node name="HorizontalMovement" parent="MoveCollection" instance=ExtResource( 7 )]
+
+[node name="GravityMovement" parent="MoveCollection" instance=ExtResource( 5 )]
+
+[node name="JumpMovement" parent="MoveCollection" instance=ExtResource( 2 )]
+
+[node name="WallJumpMovement" parent="MoveCollection" instance=ExtResource( 9 )]
+
+[node name="DashWindUpAnimationPlayer" type="AnimationPlayer" parent="."]
+anims/DashWindUp = ExtResource( 1 )
+
+[node name="WallCheckArea" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 3
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="WallCheckArea"]
+shape = SubResource( 3 )
