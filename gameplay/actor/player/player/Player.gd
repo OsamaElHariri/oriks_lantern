@@ -39,7 +39,6 @@ func summon_spirit_player():
 	ignore_area_enter = spirit_player
 	get_parent().add_child(spirit_player)
 	spirit_player.position = position
-	spirit_player.original_node = self
 	can_summon_spirit = false
 
 func on_spirit_journey_end(spirit_player):
@@ -48,8 +47,8 @@ func on_spirit_journey_end(spirit_player):
 	modulate = Color(1, 1, 1, 1)
 	$CollisionShape2D.disabled = false
 	$MoveCollection.lock_controls = false
-	$MoveCollection/JumpMovement.current_strength = 0
-	$MoveCollection/WallJumpMovement.current_strength = 0
+	$MoveCollection/JumpMovement.stop()
+	$MoveCollection/WallJumpMovement.stop()
 	$MoveCollection/GravityMovement.reset_gravity()
 	var movement = $MoveCollection.add_follow_through_movement()
 	movement.strength = 550
@@ -63,13 +62,14 @@ func _physics_process(delta):
 	if is_charging_spirit == 5:
 		summon_spirit_player()
 	
-	if is_on_floor():
+	near_wall = null
+	for body in $WallCheckArea.get_overlapping_bodies():
+		if body.is_in_group("wall_jump_platform"):
+			near_wall = body
+	
+	if is_on_floor() or near_wall != null:
 		can_summon_spirit = true
 	
 	if can_summon_spirit and Input.is_action_just_pressed("dash"):
 		on_player_dash_short_circuit()
 	
-	near_wall = null
-	for body in $WallCheckArea.get_overlapping_bodies():
-		if body.is_in_group("wall_jump_platform"):
-			near_wall = body

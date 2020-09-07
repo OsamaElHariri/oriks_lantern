@@ -1,6 +1,6 @@
 extends Node2D
 
-export var speed = 600
+export var speed = 800
 export var ramp_up_speed = 200
 export var ramp_down_speed = 120
 

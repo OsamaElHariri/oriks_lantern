@@ -10,30 +10,57 @@
 [node name="TempLevel" type="Node2D"]
 
 [node name="SolidPlatform5" parent="." instance=ExtResource( 2 )]
-position = Vector2( 58.7754, 814.968 )
+position = Vector2( -19.331, 959.598 )
 
 [node name="SolidPlatform6" parent="." instance=ExtResource( 2 )]
-position = Vector2( -172.552, 703.931 )
+position = Vector2( -303.659, 703.931 )
 rotation = 1.57079
 
 [node name="SolidPlatform12" parent="." instance=ExtResource( 2 )]
-position = Vector2( -172.552, 21.0982 )
+position = Vector2( -303.659, 21.0982 )
 rotation = 1.57079
+
+[node name="SolidPlatform15" parent="." instance=ExtResource( 2 )]
+position = Vector2( 1080.68, 21.0982 )
+rotation = 1.57079
+
+[node name="Spikes" parent="SolidPlatform15" instance=ExtResource( 4 )]
+position = Vector2( -297.339, -0.883667 )
+rotation = 1.57079
+scale = Vector2( 0.0799731, 1 )
 
 [node name="SolidPlatform13" parent="." instance=ExtResource( 2 )]
 position = Vector2( 284.255, 21.0982 )
 rotation = 1.57079
+
+[node name="SolidPlatform17" parent="." instance=ExtResource( 2 )]
+position = Vector2( 2247.86, 44.4745 )
+rotation = 1.57079
+
+[node name="SolidPlatform18" parent="." instance=ExtResource( 2 )]
+position = Vector2( 2497.21, -271.105 )
+
+[node name="SolidPlatform19" parent="." instance=ExtResource( 2 )]
+position = Vector2( 755.676, 159.408 )
+
+[node name="SolidPlatform16" parent="." instance=ExtResource( 2 )]
+position = Vector2( 1657.05, 71.4305 )
+rotation = 3.14159
+scale = Vector2( 1.92, 1 )
+
+[node name="Spikes" parent="SolidPlatform16" instance=ExtResource( 4 )]
+position = Vector2( -1.42834, 43.3217 )
 
 [node name="SolidPlatform14" parent="." instance=ExtResource( 2 )]
 position = Vector2( 285.74, 368.362 )
 rotation = 1.57079
 
 [node name="SolidPlatform8" parent="." instance=ExtResource( 2 )]
-position = Vector2( -249.507, 384.903 )
+position = Vector2( -380.614, 384.903 )
 rotation = 3.14159
 
 [node name="SolidPlatform9" parent="." instance=ExtResource( 2 )]
-position = Vector2( -249.507, 325.069 )
+position = Vector2( -380.614, 325.069 )
 rotation = 3.14159
 
 [node name="SolidPlatform7" parent="." instance=ExtResource( 2 )]
@@ -69,6 +96,7 @@ position = Vector2( 512, 300 )
 current = true
 
 [node name="MovingPlatforms" type="Node2D" parent="."]
+position = Vector2( -2110.18, 83.0708 )
 
 [node name="MovingPlatform3" parent="MovingPlatforms" instance=ExtResource( 5 )]
 position = Vector2( 921.388, 638.978 )
@@ -89,6 +117,6 @@ position = Vector2( 921.388, -1669.66 )
 position = Vector2( 921.388, -2243.05 )
 
 [node name="MoveOnTriggerPlatform" parent="." instance=ExtResource( 6 )]
-position = Vector2( 57.2377, -330.336 )
+position = Vector2( -9.71066, -330.336 )
 speed = 1000
 ramp_up_speed = 200
