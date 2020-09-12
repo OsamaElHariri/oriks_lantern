@@ -31,7 +31,8 @@ shape = SubResource( 1 )
 
 [node name="dash_wind_up" type="Sprite" parent="."]
 modulate = Color( 1, 1, 1, 0 )
-scale = Vector2( 0.2, 0.2 )
+position = Vector2( 0, -27.9619 )
+scale = Vector2( 0.5, 0.5 )
 texture = ExtResource( 3 )
 
 [node name="MoveCollection" parent="." instance=ExtResource( 6 )]
@@ -63,24 +64,15 @@ z_index = 5
 scale = Vector2( 0.5, 0.5 )
 
 [node name="torso" type="Sprite" parent="Visuals/Sprites"]
-position = Vector2( 0, -77.1144 )
+position = Vector2( 0, -75.1705 )
 texture = ExtResource( 10 )
 
 [node name="hat" type="Sprite" parent="Visuals/Sprites/torso"]
-position = Vector2( -0.142975, -28.6777 )
+position = Vector2( -4.78227, -28.4457 )
 texture = ExtResource( 4 )
 
-[node name="hand" type="Sprite" parent="Visuals/Sprites/torso"]
-position = Vector2( 26.7404, 29.6894 )
-texture = ExtResource( 12 )
-
-[node name="lantern" type="Sprite" parent="Visuals/Sprites/torso/hand"]
-position = Vector2( 14.0921, 15.9884 )
-z_index = -1
-texture = ExtResource( 13 )
-
 [node name="Legs" type="Node2D" parent="Visuals/Sprites/torso"]
-position = Vector2( 0.157776, 37.6188 )
+position = Vector2( 0.157776, 35.1119 )
 
 [node name="frontleg" type="Sprite" parent="Visuals/Sprites/torso/Legs"]
 position = Vector2( 8.16074, -0.61869 )
@@ -103,3 +95,12 @@ offset = Vector2( 0, 9.62455 )
 position = Vector2( 0, 18.353 )
 texture = ExtResource( 11 )
 offset = Vector2( 0, 9.62455 )
+
+[node name="hand" type="Sprite" parent="Visuals/Sprites/torso"]
+position = Vector2( 28.1326, 21.1375 )
+texture = ExtResource( 12 )
+
+[node name="lantern" type="Sprite" parent="Visuals/Sprites/torso/hand"]
+position = Vector2( 15.1747, 19.2849 )
+z_index = -1
+texture = ExtResource( 13 )
