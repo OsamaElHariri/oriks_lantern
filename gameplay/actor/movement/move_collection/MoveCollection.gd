@@ -24,10 +24,15 @@ var right_pressed = false
 var left_pressed = false
 var up_pressed = false
 var down_pressed = false
+var right_just_pressed = false
+var left_just_pressed = false
 var jump_just_pressed = false
 var jump_pressed = false
 var dash_just_pressed = false
 var dash_just_released = false
+
+var left_just_pressed_time = 0
+var right_just_pressed_time = 0
 
 var jump_just_pressed_counter = INF
 var on_floor_counter = INF
@@ -72,6 +77,12 @@ func state_update(delta):
 	jump_just_pressed_counter += delta
 	on_floor_counter += delta
 	
+	if left_just_pressed:
+		left_just_pressed_time = OS.get_system_time_msecs()
+	
+	if right_just_pressed:
+		right_just_pressed_time = OS.get_system_time_msecs()
+	
 	if jump_just_pressed:
 		jump_just_pressed_counter = 0
 	
@@ -92,6 +103,9 @@ func input_update():
 		left_pressed = false
 		up_pressed = false
 		down_pressed = false
+	
+	right_just_pressed = Input.is_action_just_pressed("ui_right")
+	left_just_pressed = Input.is_action_just_pressed("ui_left")
 	
 	jump_pressed = !lock_controls and Input.is_action_pressed("jump")
 	jump_just_pressed = !lock_controls and Input.is_action_just_pressed("jump")
