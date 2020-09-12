@@ -29,6 +29,9 @@ var jump_pressed = false
 var dash_just_pressed = false
 var dash_just_released = false
 
+var jump_just_pressed_counter = INF
+var on_floor_counter = INF
+
 func _ready():
 	target = get_parent()
 	for child in get_children():
@@ -51,8 +54,8 @@ func add_follow_through_movement():
 	add_child(movement)
 	return movement
 
-func _physics_process(_delta):
-	update()
+func _physics_process(delta):
+	state_update(delta)
 	
 	var updated_velocity = Vector2(0, 0)
 	for child in get_children():
@@ -64,7 +67,18 @@ func _physics_process(_delta):
 	var snap = Vector2.DOWN * 32 if !jump_just_pressed and should_snap else Vector2.ZERO
 	target.move_and_slide_with_snap(velocity, snap, Vector2(0, -1))
 
-func update():
+func state_update(delta):
+	input_update()
+	jump_just_pressed_counter += delta
+	on_floor_counter += delta
+	
+	if jump_just_pressed:
+		jump_just_pressed_counter = 0
+	
+	if is_on_floor:
+		on_floor_counter = 0
+
+func input_update():
 	is_on_floor = target.is_on_floor()
 	is_on_wall = target.is_on_wall()
 	
@@ -84,6 +98,7 @@ func update():
 	
 	dash_just_pressed = !lock_controls and Input.is_action_just_pressed("dash")
 	dash_just_released = !lock_controls and Input.is_action_just_released("dash")
+	
 
 func on_player_dash_init():
 	emit_signal("player_dash_init")

@@ -18,7 +18,10 @@ func get_velocity(move_collection):
 	if move_collection.is_on_floor:
 		stop()
 	
-	if move_collection.is_on_floor && move_collection.jump_just_pressed:
+	if can_jump(move_collection):
+		move_collection.jump_just_pressed_counter = INF
+		move_collection.on_floor_counter = INF
+		move_collection.stop_movement("GravityMovement")
 		current_strength = strength
 		near_wall = move_collection.target.near_wall
 	
@@ -26,6 +29,19 @@ func get_velocity(move_collection):
 		stop()
 	
 	return Vector2(0, -current_strength * move_collection.time_multiplier)
+
+func can_jump(move_collection):
+	if move_collection.is_on_floor \
+	and move_collection.jump_just_pressed_counter < 0.1:
+		return true
+	
+#	cayote jump
+	if move_collection.target.near_wall == null \
+	and move_collection.jump_just_pressed \
+	and move_collection.on_floor_counter < 0.15:
+		return true
+	
+	return false
 
 func stop():
 	current_strength = 0

@@ -7,7 +7,7 @@ var duration = 0.5
 var current_duration = 0
 
 func _ready():
-	$MoveCollection.update()
+	$MoveCollection.input_update()
 	$MoveCollection.connect("player_dash_init", self, "on_player_dash_init")
 	
 

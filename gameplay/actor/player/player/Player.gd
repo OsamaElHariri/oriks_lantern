@@ -54,6 +54,7 @@ func on_spirit_journey_end(spirit_player):
 	var movement = move_collection.add_follow_through_movement()
 	movement.strength = 550
 	movement.strength_decay = 100
+	can_summon_spirit = false
 	
 	movement.direction = spirit_player.get_node('MoveCollection').velocity
 
