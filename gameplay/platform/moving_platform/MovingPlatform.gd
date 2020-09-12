@@ -8,5 +8,5 @@ func _ready():
 
 func _physics_process(delta):
 	position += Vector2.DOWN * 100 * delta
-	if abs(position.y - initial_position.y) > 2900:
+	if abs(position.y - initial_position.y) > 1500:
 		position = initial_position

@@ -8,7 +8,7 @@
 [ext_resource path="res://gameplay/actor/player/player/lantern_dash_wind_up.png" type="Texture" id=9]
 
 [sub_resource type="CircleShape2D" id=1]
-radius = 26.2816
+radius = 16.0
 
 [node name="SpiritPlayer" type="KinematicBody2D"]
 collision_layer = 6
@@ -19,6 +19,7 @@ script = ExtResource( 7 )
 shape = SubResource( 1 )
 
 [node name="spirit_actor_placeholder" type="Sprite" parent="."]
+scale = Vector2( 0.483528, 0.483528 )
 texture = ExtResource( 1 )
 
 [node name="MoveCollection" parent="." instance=ExtResource( 2 )]

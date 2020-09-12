@@ -14,6 +14,6 @@ func on_player_dash_start():
 
 func _physics_process(delta):
 	if is_narrowing:
-		zoom = zoom - (zoom - Vector2(1.95, 1.95)) * 0.2
+		zoom = zoom - (zoom - Vector2(0.95, 0.95)) * 0.2
 	else:
-		zoom = zoom - (zoom - Vector2(2, 2)) * 0.6
+		zoom = zoom - (zoom - Vector2(1, 1)) * 0.6

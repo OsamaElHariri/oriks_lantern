@@ -4,7 +4,7 @@
 [ext_resource path="res://gameplay/platform/spikes/Spikes.gd" type="Script" id=2]
 
 [sub_resource type="RectangleShape2D" id=1]
-extents = Vector2( 284.277, 10 )
+extents = Vector2( 140, 5 )
 
 [node name="Spikes" type="Node2D"]
 script = ExtResource( 2 )
@@ -17,5 +17,5 @@ shape = SubResource( 1 )
 [node name="solid_platform" type="Sprite" parent="."]
 modulate = Color( 1, 0, 0, 1 )
 position = Vector2( 0.127291, 0.0290241 )
-scale = Vector2( 8.86421, 0.303643 )
+scale = Vector2( 4.35108, 0.144726 )
 texture = ExtResource( 1 )

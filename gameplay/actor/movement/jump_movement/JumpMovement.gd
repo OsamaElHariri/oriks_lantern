@@ -1,6 +1,6 @@
 extends Node2D
 
-export var strength = 2100
+export var strength = 1600
 export var strength_decay = 50
 
 var current_strength = 0

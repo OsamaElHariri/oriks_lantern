@@ -1,8 +1,8 @@
 extends Node2D
 
 export var gravity = 120
-export var max_gravity = 1800
-export var max_wall_gravity = 200
+export var max_gravity = 900
+export var max_wall_gravity = 100
 
 var current_gravity = 1
 

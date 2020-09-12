@@ -1,6 +1,6 @@
 extends Node2D
 
-export var speed = 1300
+export var speed = 800
 
 var is_initialized = false
 var direction = Vector2(0, -1)

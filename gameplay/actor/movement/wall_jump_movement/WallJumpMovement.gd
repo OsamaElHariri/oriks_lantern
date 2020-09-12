@@ -1,9 +1,9 @@
 extends Node2D
 
-export var x_strength = 1600
-export var y_strength = 2100
-export var x_strength_decay = 180
-export var y_strength_decay = 50
+export var x_strength = 1050
+export var y_strength = 1600
+export var x_strength_decay = 250
+export var y_strength_decay = 55
 
 var current_strength = Vector2.ZERO
 
@@ -33,7 +33,7 @@ func get_velocity(move_collection):
 		stop()
 	
 	var augmented_current_strength = current_strength
-	if horizontal_movment != null and resisting_push and current_strength.x > 1400:
+	if horizontal_movment != null and resisting_push and current_strength.x > current_strength.x * 0.95:
 		augmented_current_strength = Vector2(current_strength.x - horizontal_movment.current_speed * x_direction, current_strength.y)
 	
 	return Vector2(x_direction, -1) * augmented_current_strength * move_collection.time_multiplier

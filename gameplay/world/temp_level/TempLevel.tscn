@@ -65,117 +65,117 @@ __meta__ = {
 }
 
 [node name="SolidPlatform5" parent="." instance=ExtResource( 2 )]
-position = Vector2( -19.331, 1355.71 )
-
-[node name="SolidPlatform6" parent="." instance=ExtResource( 2 )]
-position = Vector2( -303.659, 1083.31 )
-rotation = 1.57079
-
-[node name="SolidPlatform11" parent="." instance=ExtResource( 2 )]
-position = Vector2( -303.659, 539.35 )
-rotation = 1.57079
-
-[node name="SolidPlatform12" parent="." instance=ExtResource( 2 )]
-position = Vector2( -303.659, 21.0982 )
-rotation = 1.57079
+position = Vector2( 228.652, 751.508 )
 
 [node name="SolidPlatform15" parent="." instance=ExtResource( 2 )]
-position = Vector2( 1080.68, 21.0982 )
+position = Vector2( 733.642, 123.668 )
 rotation = 1.57079
 
 [node name="Spikes" parent="SolidPlatform15" instance=ExtResource( 4 )]
-position = Vector2( -297.339, -0.883667 )
+position = Vector2( -144.728, -0.832115 )
 rotation = 1.57079
 scale = Vector2( 0.0799731, 1 )
 
 [node name="SolidPlatform17" parent="." instance=ExtResource( 2 )]
-position = Vector2( 2247.86, 44.4745 )
+position = Vector2( 1297.73, 148.383 )
 rotation = 1.57079
 
 [node name="SolidPlatform18" parent="." instance=ExtResource( 2 )]
-position = Vector2( 2497.21, -271.105 )
+position = Vector2( 1421.74, -1.09579 )
 
 [node name="SolidPlatform19" parent="." instance=ExtResource( 2 )]
-position = Vector2( 755.676, 159.408 )
+position = Vector2( 583.078, 202.928 )
 
 [node name="SolidPlatform16" parent="." instance=ExtResource( 2 )]
-position = Vector2( 1657.05, 71.4305 )
+position = Vector2( 1013.46, 189.99 )
 rotation = 3.14159
 scale = Vector2( 1.92, 1 )
 
 [node name="Spikes" parent="SolidPlatform16" instance=ExtResource( 4 )]
-position = Vector2( -1.42834, 43.3217 )
+position = Vector2( -1.42834, 22.269 )
 
 [node name="SolidPlatform8" parent="." instance=ExtResource( 2 )]
-position = Vector2( -380.614, 384.903 )
+position = Vector2( 29.6645, 257.527 )
 rotation = 3.14159
 
 [node name="SolidPlatform9" parent="." instance=ExtResource( 2 )]
-position = Vector2( -380.614, 325.069 )
+position = Vector2( 29.6645, 283.178 )
 rotation = 3.14159
 
 [node name="SolidPlatform7" parent="." instance=ExtResource( 2 )]
-position = Vector2( 285.74, 1052.09 )
+position = Vector2( 351.591, 596.516 )
 rotation = 1.57079
 
 [node name="SolidPlatform13" parent="." instance=ExtResource( 2 )]
-position = Vector2( 285.74, 508.133 )
+position = Vector2( 351.591, 332.552 )
 rotation = 1.57079
 
 [node name="SolidPlatform14" parent="." instance=ExtResource( 2 )]
-position = Vector2( 285.74, 14.3883 )
+position = Vector2( 351.591, 58.7663 )
+rotation = 1.57079
+
+[node name="SolidPlatform11" parent="." instance=ExtResource( 2 )]
+position = Vector2( 102.734, 596.516 )
+rotation = 1.57079
+
+[node name="SolidPlatform21" parent="." instance=ExtResource( 2 )]
+position = Vector2( 102.734, 332.552 )
+rotation = 1.57079
+
+[node name="SolidPlatform20" parent="." instance=ExtResource( 2 )]
+position = Vector2( 102.734, 58.7663 )
 rotation = 1.57079
 
 [node name="SolidPlatform3" parent="." instance=ExtResource( 2 )]
-position = Vector2( -811.658, 485.721 )
+position = Vector2( -248.001, 325.886 )
 rotation = 6.28318
 
 [node name="Spikes" parent="SolidPlatform3" instance=ExtResource( 4 )]
-position = Vector2( 0.430943, -34.4904 )
+position = Vector2( -2.13595, -22.1701 )
 
 [node name="SolidPlatform4" parent="." instance=ExtResource( 2 )]
-position = Vector2( -814.092, 597.591 )
+position = Vector2( -250.214, 362.782 )
 rotation = 3.14159
 
 [node name="Spikes" parent="SolidPlatform4" instance=ExtResource( 4 )]
-position = Vector2( 0.259735, -46.266 )
+position = Vector2( -1.94565, -21.2729 )
 
 [node name="SolidPlatform10" parent="." instance=ExtResource( 2 )]
-position = Vector2( -808.792, 944.746 )
+position = Vector2( -244.748, 616.017 )
 rotation = 3.14159
 
 [node name="Spikes" parent="SolidPlatform10" instance=ExtResource( 4 )]
-position = Vector2( 0.259735, -46.266 )
+position = Vector2( 0.259674, -23.4598 )
 
 [node name="Player" parent="." instance=ExtResource( 1 )]
-position = Vector2( -53.2088, 636.118 )
+position = Vector2( 241.83, 704.336 )
 
 [node name="WorldCamera" parent="." instance=ExtResource( 3 )]
 position = Vector2( 512, 300 )
 current = true
 
 [node name="MovingPlatforms" type="Node2D" parent="."]
-position = Vector2( -2110.18, 83.0708 )
+position = Vector2( -548.866, 264.837 )
 
 [node name="MovingPlatform3" parent="MovingPlatforms" instance=ExtResource( 5 )]
-position = Vector2( 921.388, 638.978 )
+position = Vector2( 0.632629, 638.978 )
 
 [node name="MovingPlatform4" parent="MovingPlatforms" instance=ExtResource( 5 )]
-position = Vector2( 921.388, 88.8238 )
+position = Vector2( 0.632568, 424.272 )
 
 [node name="MovingPlatform8" parent="MovingPlatforms" instance=ExtResource( 5 )]
-position = Vector2( 921.388, -1057.42 )
+position = Vector2( 0.632568, -23.1224 )
 
 [node name="MovingPlatform7" parent="MovingPlatforms" instance=ExtResource( 5 )]
-position = Vector2( 921.388, -448.284 )
+position = Vector2( 0.632568, 185.34 )
 
 [node name="MovingPlatform6" parent="MovingPlatforms" instance=ExtResource( 5 )]
-position = Vector2( 921.388, -1669.66 )
+position = Vector2( 0.632568, -248.665 )
 
 [node name="MovingPlatform5" parent="MovingPlatforms" instance=ExtResource( 5 )]
-position = Vector2( 921.388, -2243.05 )
+position = Vector2( 0.632568, -509.882 )
 
 [node name="MoveOnTriggerPlatform" parent="." instance=ExtResource( 6 )]
-position = Vector2( -9.71066, -330.336 )
+position = Vector2( 221.089, -55.2206 )
 speed = 1000
 ramp_up_speed = 200
