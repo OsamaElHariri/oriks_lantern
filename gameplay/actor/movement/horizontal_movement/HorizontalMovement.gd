@@ -22,3 +22,6 @@ func get_velocity(move_collection):
 	
 	
 	return Vector2(current_speed  * move_collection.time_multiplier, 0)
+
+func stop():
+	current_speed = 0

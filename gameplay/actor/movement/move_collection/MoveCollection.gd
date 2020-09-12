@@ -8,6 +8,8 @@ const FOLLOW_THROUGH_MOVEMENT = preload("res://gameplay/actor/movement/follow_th
 
 export var should_snap = true
 
+var _movements = {}
+
 var velocity = Vector2(0, 0)
 var target
 var is_on_floor = true
@@ -29,6 +31,20 @@ var dash_just_released = false
 
 func _ready():
 	target = get_parent()
+	for child in get_children():
+		_movements[child.name] = child
+		if child.has_method("init_movement"):
+			child.init_movement(self)
+
+func get_movement(movement_name):
+	if _movements.has(movement_name):
+		return _movements[movement_name]
+	return null
+
+func stop_movement(movement_name):
+	var movement = get_movement(movement_name)
+	if movement and movement.has_method("stop"):
+		movement.stop()
 
 func add_follow_through_movement():
 	var movement = FOLLOW_THROUGH_MOVEMENT.instance()
@@ -77,8 +93,3 @@ func on_player_dash_start():
 
 func on_player_dash_short_circuit():
 	emit_signal("player_dash_short_circuit")
-
-func reset_gravity():
-	var gravity_node = get_node("GravityMovement")
-	if gravity_node != null and gravity_node.has_method("reset_gravity"):
-		gravity_node.reset_gravity()

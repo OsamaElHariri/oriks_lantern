@@ -30,4 +30,3 @@ func get_velocity(move_collection):
 	direction = direction.linear_interpolate(target_direction, lerp_delta)
 	
 	return direction.normalized() * speed * move_collection.time_multiplier
-

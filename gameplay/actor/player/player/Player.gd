@@ -15,15 +15,15 @@ func _ready():
 #	$Area2D.connect("body_entered", self, "on_body_entered")
 
 func on_player_dash_init():
-	EMITTER.emit("player_dash_init")
+	EMITTER.emit("player_dash_init", self)
 	$DashWindUpAnimationPlayer.play("DashWindUp")
 	$CollisionShape2D.disabled = true
 
 func on_player_dash_start():
-	EMITTER.emit("player_dash_start")
+	EMITTER.emit("player_dash_start", self)
 
 func on_player_dash_short_circuit():
-	EMITTER.emit("player_dash_init")
+	EMITTER.emit("player_dash_init", self)
 	$CollisionShape2D.disabled = true
 	$DashWindUpAnimationPlayer.play("DashWindUp")
 	is_charging_spirit = 0
@@ -34,7 +34,7 @@ func summon_spirit_player():
 	$MoveCollection.time_multiplier = 0
 	$CollisionShape2D.disabled = true
 	modulate = Color(1, 1, 1, 0)
-	EMITTER.emit("player_dash_start")
+	EMITTER.emit("player_dash_start", self)
 	var spirit_player = SPIRIT_PLAYER.instance()
 	ignore_area_enter = spirit_player
 	get_parent().add_child(spirit_player)
@@ -46,11 +46,12 @@ func on_spirit_journey_end(spirit_player):
 	$MoveCollection.time_multiplier = 1
 	modulate = Color(1, 1, 1, 1)
 	$CollisionShape2D.disabled = false
-	$MoveCollection.lock_controls = false
-	$MoveCollection/JumpMovement.stop()
-	$MoveCollection/WallJumpMovement.stop()
-	$MoveCollection/GravityMovement.reset_gravity()
-	var movement = $MoveCollection.add_follow_through_movement()
+	var move_collection = $MoveCollection
+	move_collection.lock_controls = false
+	move_collection.stop_movement("GravityMovement")
+	move_collection.stop_movement("JumpMovement")
+	move_collection.stop_movement("WallJumpMovement")
+	var movement = move_collection.add_follow_through_movement()
 	movement.strength = 550
 	movement.strength_decay = 100
 	

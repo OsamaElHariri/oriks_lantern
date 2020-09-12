@@ -2,7 +2,7 @@ extends Node2D
 
 export var x_strength = 1600
 export var y_strength = 2100
-export var x_strength_decay = 200
+export var x_strength_decay = 180
 export var y_strength_decay = 50
 
 var current_strength = Vector2.ZERO
@@ -11,8 +11,8 @@ var x_direction = 0
 
 var horizontal_movment = null
 
-func _ready():
-	horizontal_movment = get_parent().get_node_or_null("HorizontalMovement")
+func init_movement(move_collection):
+	horizontal_movment = move_collection.get_movement("HorizontalMovement")
 
 func get_velocity(move_collection):
 	var resisting_push = resisting_wall_push(move_collection)
@@ -27,7 +27,7 @@ func get_velocity(move_collection):
 		var x_current_strength = x_strength
 		
 		current_strength = Vector2(x_current_strength, y_strength)
-		move_collection.reset_gravity()
+		move_collection.stop_movement("GravityMovement")
 
 	if move_collection.is_dashing or move_collection.is_charging_dash:
 		stop()
