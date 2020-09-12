@@ -1,0 +1,38 @@
+extends TextureRect
+
+
+var radius = 0
+var pulse_thickness = 0
+
+
+var grey_scale = 0
+var grey_direction = -1
+
+func _ready():
+	rect_size = get_viewport_rect().size
+	EMITTER.connect("player_dash_start", self, "on_player_dash_start")
+	EMITTER.connect("spirit_journey_end", self, "on_spirit_journey_end")
+
+func on_player_dash_start(player):
+	radius = 0
+	pulse_thickness = 40
+	grey_direction = 1
+	grey_scale = clamp(grey_scale, 0, 1)
+	var screen_origin = player.get_global_transform_with_canvas().origin
+	var origin = Vector2(screen_origin.x, rect_size.y - screen_origin.y)
+	material.set_shader_param("origin", origin)
+
+func on_spirit_journey_end(player):
+	grey_direction = -1
+	grey_scale = clamp(grey_scale, 0, 1)
+
+func _physics_process(delta):
+	grey_scale += 15 * grey_direction * delta
+	radius += 1000 * delta
+	pulse_thickness -= 90 * delta
+	
+	material.set_shader_param("ring_radius", radius)
+	material.set_shader_param("ring_thickness", max(0, pulse_thickness))
+	material.set_shader_param("grey_scale", clamp(grey_scale, 0, 1))
+		
+
