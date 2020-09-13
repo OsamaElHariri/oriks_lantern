@@ -26,12 +26,8 @@ void fragment() {
 		float diff = dist - ring_radius;
 		float distortion = 1.0 - abs(diff) / ring_thickness;
 		float radius = dist;
-		radius = dist - diff * distortion / 5.0;
+		radius = dist - diff * distortion / 2.0;
 		COLOR.rgb = textureLod(SCREEN_TEXTURE, vec2(radius * SCREEN_UV.x / dist, radius * SCREEN_UV.y / dist), 0.0).rgb;
-//	} else if (dist < ring_radius) {
-////		COLOR.rgb = vec3(dot(textureLod(SCREEN_TEXTURE, SCREEN_UV, 0.0).rgb, vec3(0.299, 0.587, 0.114)));
-//		vec3 grey_color = textureLod(SCREEN_TEXTURE, SCREEN_UV, 0.0).rgb;
-//		COLOR.rgb = vec3(grey_color.r * 0.75, grey_color.g * 0.75, grey_color.b * 0.8)
 	} else {
 		COLOR.rgb = textureLod(SCREEN_TEXTURE, SCREEN_UV, 0.0).rgb;
 	}

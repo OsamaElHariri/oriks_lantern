@@ -62,7 +62,6 @@ func on_spirit_journey_end(spirit_player):
 
 func _physics_process(_delta):
 	is_charging_spirit += 1
-	
 	if is_charging_spirit == 5:
 		summon_spirit_player()
 	

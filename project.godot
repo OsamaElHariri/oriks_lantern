@@ -16,7 +16,7 @@ _global_script_class_icons={
 [application]
 
 config/name="Orik's Lantern"
-run/main_scene="res://gameplay/world/temp_level/TempLevel.tscn"
+run/main_scene="res://gameplay/world/levels/LevelTest0.tscn"
 config/icon="res://icon.png"
 
 [autoload]
@@ -30,6 +30,8 @@ gdscript/warnings/return_value_discarded=false
 
 [display]
 
+window/size/width=1920
+window/size/height=1080
 window/size/fullscreen=true
 
 [input]
