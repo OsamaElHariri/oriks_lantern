@@ -60,7 +60,7 @@ func on_spirit_journey_end(spirit_player):
 	
 	movement.direction = spirit_player.get_node('MoveCollection').velocity
 
-func _physics_process(delta):
+func _physics_process(_delta):
 	is_charging_spirit += 1
 	
 	if is_charging_spirit == 5:
@@ -83,7 +83,7 @@ func handle_visuals():
 	var visual_scale = $Visuals.scale
 	if horizontal_movement.direction != 0:
 		$AnimationPlayer.play("walk")
-		$AnimationPlayer.playback_speed = 0.65
+		$AnimationPlayer.playback_speed = 0.7
 	else:
 		$AnimationPlayer.play("base")
 		$AnimationPlayer.playback_speed = 1

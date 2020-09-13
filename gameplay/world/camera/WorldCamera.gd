@@ -6,13 +6,13 @@ func _ready():
 	EMITTER.connect("player_dash_init", self, "on_player_dash_init")
 	EMITTER.connect("player_dash_start", self, "on_player_dash_start")
 
-func on_player_dash_init(player):
+func on_player_dash_init(_player):
 	is_narrowing = true
 
-func on_player_dash_start(player):
+func on_player_dash_start(_player):
 	is_narrowing = false
 
-func _physics_process(delta):
+func _physics_process(_delta):
 	if is_narrowing:
 		zoom = zoom - (zoom - Vector2(0.97, 0.97)) * 0.2
 	else:

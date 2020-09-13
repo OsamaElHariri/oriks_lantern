@@ -22,7 +22,7 @@ func on_player_dash_start(player):
 	var origin = Vector2(screen_origin.x, rect_size.y - screen_origin.y)
 	material.set_shader_param("origin", origin)
 
-func on_spirit_journey_end(player):
+func on_spirit_journey_end(_player):
 	grey_direction = -1
 	grey_scale = clamp(grey_scale, 0, 1)
 

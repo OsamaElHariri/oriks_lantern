@@ -23,6 +23,11 @@ config/icon="res://icon.png"
 
 EMITTER="*res://util/EMITTER.gd"
 
+[debug]
+
+gdscript/warnings/unused_signal=false
+gdscript/warnings/return_value_discarded=false
+
 [display]
 
 window/size/fullscreen=true
