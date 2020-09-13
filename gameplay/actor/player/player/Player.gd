@@ -7,12 +7,14 @@ var is_charging_spirit = INF
 var ignore_area_enter
 var near_wall = null
 
+var horizontal_movement = null
+
 func _ready():
 	$MoveCollection.connect("player_dash_init", self, "on_player_dash_init")
 	$MoveCollection.connect("player_dash_start", self, "on_player_dash_start")
 	$MoveCollection.connect("player_dash_short_circuit", self, "on_player_dash_short_circuit")
 	EMITTER.connect("spirit_journey_end", self, "on_spirit_journey_end")
-#	$Area2D.connect("body_entered", self, "on_body_entered")
+	horizontal_movement = $MoveCollection.get_movement("HorizontalMovement")
 
 func on_player_dash_init():
 	EMITTER.emit("player_dash_init", self)
@@ -75,3 +77,18 @@ func _physics_process(delta):
 	if can_summon_spirit and Input.is_action_just_pressed("dash"):
 		on_player_dash_short_circuit()
 	
+	handle_visuals()
+
+func handle_visuals():
+	var visual_scale = $Visuals.scale
+	if horizontal_movement.direction != 0:
+		$AnimationPlayer.play("walk")
+		$AnimationPlayer.playback_speed = 0.65
+	else:
+		$AnimationPlayer.play("base")
+		$AnimationPlayer.playback_speed = 1
+	
+	if horizontal_movement.direction < 0:
+		$Visuals.scale = Vector2(-abs(visual_scale.x), visual_scale.y)
+	elif horizontal_movement.direction > 0:
+		$Visuals.scale = Vector2(abs(visual_scale.x), visual_scale.y)

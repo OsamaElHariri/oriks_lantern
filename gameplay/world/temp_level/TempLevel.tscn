@@ -65,7 +65,7 @@ __meta__ = {
 }
 
 [node name="SolidPlatform5" parent="." instance=ExtResource( 2 )]
-position = Vector2( 228.652, 751.508 )
+position = Vector2( 226.799, 751.508 )
 
 [node name="SolidPlatform15" parent="." instance=ExtResource( 2 )]
 position = Vector2( 733.642, 123.668 )
@@ -85,6 +85,18 @@ position = Vector2( 1421.74, -1.09579 )
 
 [node name="SolidPlatform19" parent="." instance=ExtResource( 2 )]
 position = Vector2( 583.078, 202.928 )
+
+[node name="SolidPlatform22" parent="." instance=ExtResource( 2 )]
+position = Vector2( 559.02, 743.309 )
+
+[node name="SolidPlatform23" parent="." instance=ExtResource( 2 )]
+position = Vector2( 829.21, 743.309 )
+
+[node name="SolidPlatform25" parent="." instance=ExtResource( 2 )]
+position = Vector2( 1095.7, 743.309 )
+
+[node name="SolidPlatform24" parent="." instance=ExtResource( 2 )]
+position = Vector2( 1365.89, 743.309 )
 
 [node name="SolidPlatform16" parent="." instance=ExtResource( 2 )]
 position = Vector2( 1013.46, 189.99 )

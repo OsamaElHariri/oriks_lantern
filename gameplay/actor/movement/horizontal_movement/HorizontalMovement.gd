@@ -5,6 +5,7 @@ export var ramp_up_speed = 150
 export var ramp_down_speed = 100
 
 var current_speed = 0
+var direction = 0
 
 func get_velocity(move_collection):
 	if move_collection.is_dashing or move_collection.is_charging_dash:
@@ -21,15 +22,17 @@ func get_velocity(move_collection):
 		move_right(move_collection)
 	else:
 		current_speed = max(current_speed - ramp_down_speed * sign(current_speed) * move_collection.time_multiplier, 0)
-	
+		direction = 0
 	
 	return Vector2(current_speed  * move_collection.time_multiplier, 0)
 
 func move_left(move_collection):
+	direction = -1
 	if current_speed > 0: current_speed = 0
 	current_speed = max(current_speed - ramp_up_speed * move_collection.time_multiplier, -speed)
 
 func move_right(move_collection):
+	direction = 1
 	if current_speed < 0: current_speed = 0
 	current_speed = min(current_speed + ramp_up_speed * move_collection.time_multiplier, speed)
 
