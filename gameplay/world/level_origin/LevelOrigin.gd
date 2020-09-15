@@ -4,10 +4,15 @@ var grass = [
 	preload("res://gameplay/world/level_origin/grass1.png"),
 	preload("res://gameplay/world/level_origin/grass2.png"),
 	preload("res://gameplay/world/level_origin/grass3.png"),
+	preload("res://gameplay/world/level_origin/mushroom1.png"),
+	preload("res://gameplay/world/level_origin/mushroom2.png"),
+	preload("res://gameplay/world/level_origin/plant1.png"),
+	preload("res://gameplay/world/level_origin/plant2.png"),
 ]
 var top_cell_coords = []
 
 func _ready():
+	randomize()
 	var platforms = get_node_or_null("Platforms")
 	if platforms != null:
 		for platform in platforms.get_children():
