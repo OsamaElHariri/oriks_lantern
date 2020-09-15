@@ -7,7 +7,7 @@
 [ext_resource path="res://gameplay/world/level_origin/LevelOrigin.gd" type="Script" id=5]
 [ext_resource path="res://gameplay/world/level_origin/background.png" type="Texture" id=6]
 
-[sub_resource type="Shader" id=1]
+[sub_resource type="Shader" id=4]
 code = "shader_type canvas_item;
 
 uniform vec2 origin = vec2(0.0, 0.0);
@@ -37,7 +37,7 @@ void fragment() {
 "
 
 [sub_resource type="ShaderMaterial" id=2]
-shader = SubResource( 1 )
+shader = SubResource( 4 )
 shader_param/origin = Vector2( 0, 0 )
 shader_param/ring_radius = 0.0
 shader_param/ring_thickness = 0.0
@@ -94,8 +94,10 @@ z_index = -2000
 texture = ExtResource( 6 )
 
 [node name="TileMap" type="TileMap" parent="."]
+light_mask = 2
 tile_set = SubResource( 3 )
 cell_size = Vector2( 16, 16 )
 cell_quadrant_size = 8
 cell_custom_transform = Transform2D( 16, 0, 0, 16, 0, 0 )
+occluder_light_mask = 2
 format = 1
