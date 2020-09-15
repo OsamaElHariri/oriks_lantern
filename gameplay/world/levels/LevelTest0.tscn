@@ -1,9 +1,31 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://gameplay/world/level_origin/LevelOrigin.tscn" type="PackedScene" id=1]
 [ext_resource path="res://gameplay/world/level_origin/wood_mask.png" type="Texture" id=2]
 [ext_resource path="res://gameplay/actor/player/player/Player.tscn" type="PackedScene" id=3]
 [ext_resource path="res://gameplay/platform/basic_platform/BasicPlatform.tscn" type="PackedScene" id=4]
+[ext_resource path="res://gameplay/world/level_origin/sunlight.png" type="Texture" id=5]
+[ext_resource path="res://gameplay/world/level_origin/glow.png" type="Texture" id=6]
+
+[sub_resource type="Gradient" id=1]
+offsets = PoolRealArray( 0, 0.116732, 0.832685, 1 )
+colors = PoolColorArray( 1, 1, 1, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0 )
+
+[sub_resource type="GradientTexture" id=2]
+gradient = SubResource( 1 )
+
+[sub_resource type="ParticlesMaterial" id=3]
+emission_shape = 2
+emission_box_extents = Vector3( 700, 180, 1 )
+flag_disable_z = true
+direction = Vector3( 1, 0.5, 0 )
+gravity = Vector3( 0, 0, 0 )
+initial_velocity = 10.0
+orbit_velocity = 0.0
+orbit_velocity_random = 0.5
+tangential_accel_random = 0.3
+scale = 0.05
+color_ramp = SubResource( 2 )
 
 [node name="LevelTest0" type="Node2D"]
 
@@ -23,7 +45,31 @@ position = Vector2( -824, 72 )
 scale = Vector2( 60, 172 )
 
 [node name="Light2D" type="Light2D" parent="LevelOrigin"]
+visible = false
 light_mask = 2
 texture = ExtResource( 2 )
 range_item_cull_mask = 2
 shadow_item_cull_mask = 2
+
+[node name="Particles2D" type="Particles2D" parent="."]
+position = Vector2( 471.252, -208 )
+rotation = -0.863938
+amount = 200
+lifetime = 6.0
+preprocess = 1.0
+process_material = SubResource( 3 )
+texture = ExtResource( 6 )
+
+[node name="sunlight" type="Sprite" parent="."]
+modulate = Color( 0.960784, 0.964706, 0.658824, 1 )
+position = Vector2( 391.252, -176 )
+rotation = 0.683829
+scale = Vector2( 1, 1.56292 )
+texture = ExtResource( 5 )
+
+[node name="sunlight2" type="Sprite" parent="."]
+modulate = Color( 0.960784, 0.964706, 0.658824, 1 )
+position = Vector2( 647.252, -192 )
+rotation = 0.683829
+scale = Vector2( 0.379406, 1.56292 )
+texture = ExtResource( 5 )
