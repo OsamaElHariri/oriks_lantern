@@ -19,7 +19,12 @@ var mushroom = [
 ]
 var top_cell_coords = []
 
+var player = null
+
 func _ready():
+	player = get_node_or_null("Player")
+	$TargetFollower.target = player
+	set_camera_limits()
 	randomize()
 	var platforms = get_node_or_null("Platforms")
 	if platforms != null:
@@ -102,3 +107,21 @@ func draw_platform_in_tilemap(platform):
 			$TileMap.set_cell(map_pos.x, map_pos.y, 0)
 			current_x += $TileMap.cell_size.x
 		current_y += $TileMap.cell_size.y
+
+func set_camera_limits():
+	var camera_limits = get_node_or_null("CameraLimits")
+	if camera_limits:
+		var initial_limits = camera_limits.get_child(0).global_position
+		
+		$TargetFollower/WorldCamera.limit_left = initial_limits.x
+		$TargetFollower/WorldCamera.limit_top = initial_limits.y
+		$TargetFollower/WorldCamera.limit_right = initial_limits.x
+		$TargetFollower/WorldCamera.limit_bottom = initial_limits.y
+		
+		for child in camera_limits.get_children():
+			var child_pos = child.global_position
+			print(child_pos)
+			$TargetFollower/WorldCamera.limit_left = min($TargetFollower/WorldCamera.limit_left, child_pos.x)
+			$TargetFollower/WorldCamera.limit_top = min($TargetFollower/WorldCamera.limit_top, child_pos.y)
+			$TargetFollower/WorldCamera.limit_right = max($TargetFollower/WorldCamera.limit_right, child_pos.x)
+			$TargetFollower/WorldCamera.limit_bottom = max($TargetFollower/WorldCamera.limit_bottom, child_pos.y)

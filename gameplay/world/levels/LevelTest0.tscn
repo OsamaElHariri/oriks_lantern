@@ -31,6 +31,14 @@ color_ramp = SubResource( 2 )
 
 [node name="LevelOrigin" parent="." instance=ExtResource( 1 )]
 
+[node name="CameraLimits" type="Node2D" parent="LevelOrigin"]
+
+[node name="Node2D" type="Node2D" parent="LevelOrigin/CameraLimits"]
+position = Vector2( -960, -541.5 )
+
+[node name="Node2D2" type="Node2D" parent="LevelOrigin/CameraLimits"]
+position = Vector2( 960, 541.5 )
+
 [node name="Player" parent="LevelOrigin" instance=ExtResource( 3 )]
 position = Vector2( 96, -128 )
 

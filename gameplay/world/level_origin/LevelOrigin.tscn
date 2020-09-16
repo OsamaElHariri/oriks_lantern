@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://gameplay/world/level_origin/PostProcess.gd" type="Script" id=1]
 [ext_resource path="res://gameplay/world/level_origin/blank.png" type="Texture" id=2]
@@ -6,8 +6,9 @@
 [ext_resource path="res://gameplay/world/level_origin/tileset.png" type="Texture" id=4]
 [ext_resource path="res://gameplay/world/level_origin/LevelOrigin.gd" type="Script" id=5]
 [ext_resource path="res://gameplay/world/level_origin/background.png" type="Texture" id=6]
+[ext_resource path="res://gameplay/world/level_origin/TargetFollower.gd" type="Script" id=7]
 
-[sub_resource type="Shader" id=4]
+[sub_resource type="Shader" id=1]
 code = "shader_type canvas_item;
 
 uniform vec2 origin = vec2(0.0, 0.0);
@@ -37,7 +38,7 @@ void fragment() {
 "
 
 [sub_resource type="ShaderMaterial" id=2]
-shader = SubResource( 4 )
+shader = SubResource( 1 )
 shader_param/origin = Vector2( 0, 0 )
 shader_param/ring_radius = 0.0
 shader_param/ring_thickness = 0.0
@@ -85,13 +86,28 @@ __meta__ = {
 "_editor_description_": ""
 }
 
-[node name="WorldCamera" parent="." instance=ExtResource( 3 )]
-current = true
-editor_draw_limits = true
-
-[node name="background" type="Sprite" parent="WorldCamera"]
+[node name="background" type="Sprite" parent="."]
 z_index = -2000
 texture = ExtResource( 6 )
+
+[node name="TargetFollower" type="Node2D" parent="."]
+script = ExtResource( 7 )
+
+[node name="WorldCamera" parent="TargetFollower" instance=ExtResource( 3 )]
+current = true
+limit_left = -100000
+limit_top = -100000
+limit_right = 100000
+limit_bottom = 100000
+drag_margin_h_enabled = true
+drag_margin_v_enabled = true
+smoothing_enabled = true
+drag_margin_left = 0.5
+drag_margin_top = 0.5
+drag_margin_right = 0.5
+drag_margin_bottom = 0.5
+editor_draw_limits = true
+editor_draw_drag_margin = true
 
 [node name="TileMap" type="TileMap" parent="."]
 light_mask = 3
