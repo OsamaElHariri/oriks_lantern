@@ -120,7 +120,6 @@ func set_camera_limits():
 		
 		for child in camera_limits.get_children():
 			var child_pos = child.global_position
-			print(child_pos)
 			$TargetFollower/WorldCamera.limit_left = min($TargetFollower/WorldCamera.limit_left, child_pos.x)
 			$TargetFollower/WorldCamera.limit_top = min($TargetFollower/WorldCamera.limit_top, child_pos.y)
 			$TargetFollower/WorldCamera.limit_right = max($TargetFollower/WorldCamera.limit_right, child_pos.x)

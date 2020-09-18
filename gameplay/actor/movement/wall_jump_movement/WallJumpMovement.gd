@@ -2,7 +2,7 @@ extends Node2D
 
 export var x_strength = 1050
 export var y_strength = 1600
-export var x_strength_decay = 250
+export var x_strength_decay = 180
 export var y_strength_decay = 55
 
 var current_strength = Vector2.ZERO

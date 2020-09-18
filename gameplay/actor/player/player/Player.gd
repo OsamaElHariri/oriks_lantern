@@ -80,11 +80,23 @@ func _physics_process(_delta):
 
 func handle_visuals():
 	var visual_scale = $Visuals.scale
-	if horizontal_movement.direction != 0:
+	var on_floor = is_on_floor()
+	var on_wall = is_on_wall()
+	if !on_wall and !on_floor:
+		if $MoveCollection.velocity.y < 0:
+			$AnimationPlayer.play("ascend")
+			$AnimationPlayer.playback_speed = 1
+		else:
+			$AnimationPlayer.play("fall")
+			$AnimationPlayer.playback_speed = 1.5
+	elif on_wall and !on_floor:
+		$AnimationPlayer.play("wall_hang")
+		$AnimationPlayer.playback_speed = 1
+	elif horizontal_movement.direction != 0:
 		$AnimationPlayer.play("walk")
 		$AnimationPlayer.playback_speed = 0.7
 	else:
-		$AnimationPlayer.play("base")
+		$AnimationPlayer.play("idle")
 		$AnimationPlayer.playback_speed = 1
 	
 	if horizontal_movement.direction < 0:
