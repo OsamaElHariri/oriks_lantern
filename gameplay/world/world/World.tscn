@@ -1,0 +1,78 @@
+[gd_scene load_steps=11 format=2]
+
+[ext_resource path="res://gameplay/world/world/PostProcess.gd" type="Script" id=1]
+[ext_resource path="res://gameplay/world/camera/WorldCamera.tscn" type="PackedScene" id=2]
+[ext_resource path="res://gameplay/world/world/TargetFollower.gd" type="Script" id=3]
+[ext_resource path="res://gameplay/world/world/World.gd" type="Script" id=4]
+[ext_resource path="res://gameplay/world/levels/LevelTest0.tscn" type="PackedScene" id=5]
+[ext_resource path="res://gameplay/actor/player/player/Player.tscn" type="PackedScene" id=6]
+[ext_resource path="res://gameplay/world/level_origin/blank.png" type="Texture" id=7]
+[ext_resource path="res://gameplay/world/levels/LevelTest1.tscn" type="PackedScene" id=8]
+
+[sub_resource type="Shader" id=1]
+code = "shader_type canvas_item;
+
+uniform vec2 origin = vec2(0.0, 0.0);
+
+uniform float ring_radius = 0.0;
+uniform float ring_thickness = 0.0;
+
+uniform float grey_scale = 0.0;
+
+void fragment() {
+	float dist = distance(origin, vec2(FRAGCOORD.x, FRAGCOORD.y));
+	
+	if (dist != 0.0 && dist < ring_radius + ring_thickness && dist > ring_radius) {
+		float diff = dist - ring_radius;
+		float distortion = 1.0 - abs(diff) / ring_thickness;
+		float radius = dist;
+		radius = dist - diff * distortion / 4.0;
+		COLOR.rgb = textureLod(SCREEN_TEXTURE, vec2(radius * SCREEN_UV.x / dist, radius * SCREEN_UV.y / dist), 0.0).rgb;
+	} else {
+		COLOR.rgb = textureLod(SCREEN_TEXTURE, SCREEN_UV, 0.0).rgb;
+	}
+	float rg_multiplier = 1.0 - 0.07 * grey_scale;
+	float b_multiplier = 1.0 - 0.04 * grey_scale;
+	COLOR.rgb = vec3(COLOR.r * rg_multiplier, COLOR.g * rg_multiplier, COLOR.b * b_multiplier);
+}"
+
+[sub_resource type="ShaderMaterial" id=2]
+shader = SubResource( 1 )
+shader_param/origin = Vector2( 0, 0 )
+shader_param/ring_radius = 0.0
+shader_param/ring_thickness = 0.0
+shader_param/grey_scale = 0.0
+
+[node name="World" type="Node2D"]
+script = ExtResource( 4 )
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="PostProcess" type="TextureRect" parent="CanvasLayer"]
+material = SubResource( 2 )
+margin_right = 40.0
+margin_bottom = 40.0
+texture = ExtResource( 7 )
+expand = true
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Player" parent="." instance=ExtResource( 6 )]
+position = Vector2( -184.933, 196.562 )
+
+[node name="TargetFollower" type="Node2D" parent="."]
+script = ExtResource( 3 )
+
+[node name="WorldCamera" parent="TargetFollower" instance=ExtResource( 2 )]
+current = true
+limit_smoothed = true
+smoothing_enabled = true
+
+[node name="Levels" type="Node2D" parent="."]
+
+[node name="LevelTest0" parent="Levels" instance=ExtResource( 5 )]
+
+[node name="LevelTest1" parent="Levels" instance=ExtResource( 8 )]
+position = Vector2( 1920, 288 )

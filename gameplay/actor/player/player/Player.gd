@@ -9,6 +9,8 @@ var near_wall = null
 
 var horizontal_movement = null
 
+var spirit_player = null
+
 func _ready():
 	$MoveCollection.connect("player_dash_init", self, "on_player_dash_init")
 	$MoveCollection.connect("player_dash_start", self, "on_player_dash_start")
@@ -36,15 +38,15 @@ func summon_spirit_player():
 	$MoveCollection.time_multiplier = 0
 	$CollisionShape2D.disabled = true
 	modulate = Color(1, 1, 1, 0)
+	spirit_player = SPIRIT_PLAYER.instance()
 	EMITTER.emit("player_dash_start", self)
-	var spirit_player = SPIRIT_PLAYER.instance()
 	ignore_area_enter = spirit_player
 	get_parent().add_child(spirit_player)
 	spirit_player.position = position
 	can_summon_spirit = false
 
-func on_spirit_journey_end(spirit_player):
-	position = spirit_player.position
+func on_spirit_journey_end(spirit):
+	position = spirit.position
 	$MoveCollection.time_multiplier = 1
 	modulate = Color(1, 1, 1, 1)
 	$CollisionShape2D.disabled = false
@@ -97,7 +99,7 @@ func handle_visuals():
 		$AnimationPlayer.playback_speed = 0.7
 	else:
 		$AnimationPlayer.play("idle")
-		$AnimationPlayer.playback_speed = 1
+		$AnimationPlayer.playback_speed = 0.7
 	
 	if horizontal_movement.direction < 0:
 		$Visuals.scale = Vector2(-abs(visual_scale.x), visual_scale.y)

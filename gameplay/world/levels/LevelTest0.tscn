@@ -1,11 +1,10 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://gameplay/world/level_origin/LevelOrigin.tscn" type="PackedScene" id=1]
-[ext_resource path="res://gameplay/world/level_origin/wood_mask.png" type="Texture" id=2]
-[ext_resource path="res://gameplay/actor/player/player/Player.tscn" type="PackedScene" id=3]
 [ext_resource path="res://gameplay/platform/basic_platform/BasicPlatform.tscn" type="PackedScene" id=4]
 [ext_resource path="res://gameplay/world/level_origin/sunlight.png" type="Texture" id=5]
 [ext_resource path="res://gameplay/world/level_origin/glow.png" type="Texture" id=6]
+[ext_resource path="res://gameplay/world/level_origin/LevelBounds.tscn" type="PackedScene" id=7]
 
 [sub_resource type="Gradient" id=1]
 offsets = PoolRealArray( 0, 0.116732, 0.832685, 1 )
@@ -31,33 +30,19 @@ color_ramp = SubResource( 2 )
 
 [node name="LevelOrigin" parent="." instance=ExtResource( 1 )]
 
-[node name="CameraLimits" type="Node2D" parent="LevelOrigin"]
-
-[node name="Node2D" type="Node2D" parent="LevelOrigin/CameraLimits"]
-position = Vector2( -960, -541.5 )
-
-[node name="Node2D2" type="Node2D" parent="LevelOrigin/CameraLimits"]
-position = Vector2( 960, 541.5 )
-
-[node name="Player" parent="LevelOrigin" instance=ExtResource( 3 )]
-position = Vector2( 96, -128 )
+[node name="LevelBounds" parent="LevelOrigin" instance=ExtResource( 7 )]
+position = Vector2( 8.00005, 2.86102e-05 )
+scale = Vector2( 476, 264 )
 
 [node name="Platforms" type="Node2D" parent="LevelOrigin"]
 
 [node name="BasicPlatform" parent="LevelOrigin/Platforms" instance=ExtResource( 4 )]
-position = Vector2( -3.05176e-05, 472 )
-scale = Vector2( 472, 28 )
+position = Vector2( 7.99998, 472 )
+scale = Vector2( 476, 28 )
 
 [node name="BasicPlatform2" parent="LevelOrigin/Platforms" instance=ExtResource( 4 )]
 position = Vector2( -824, 72 )
 scale = Vector2( 60, 172 )
-
-[node name="Light2D" type="Light2D" parent="LevelOrigin"]
-visible = false
-light_mask = 2
-texture = ExtResource( 2 )
-range_item_cull_mask = 2
-shadow_item_cull_mask = 2
 
 [node name="Particles2D" type="Particles2D" parent="."]
 position = Vector2( 471.252, -208 )

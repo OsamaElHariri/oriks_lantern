@@ -16,7 +16,7 @@ _global_script_class_icons={
 [application]
 
 config/name="Orik's Lantern"
-run/main_scene="res://gameplay/world/levels/LevelTest0.tscn"
+run/main_scene="res://gameplay/world/world/World.tscn"
 config/icon="res://icon.png"
 
 [autoload]
