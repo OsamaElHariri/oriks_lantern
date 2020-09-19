@@ -12,6 +12,7 @@ var _movements = {}
 
 var velocity = Vector2(0, 0)
 var target
+var is_on_ceiling = false
 var is_on_floor = true
 var is_on_wall = false
 var is_dashing = false
@@ -69,7 +70,7 @@ func _physics_process(delta):
 	
 	velocity = updated_velocity
 	
-	var snap = Vector2.DOWN * 32 if !jump_just_pressed and should_snap else Vector2.ZERO
+	var snap = Vector2.DOWN * 8 if !jump_just_pressed and should_snap else Vector2.ZERO
 	target.move_and_slide_with_snap(velocity, snap, Vector2(0, -1))
 
 func state_update(delta):
@@ -92,6 +93,7 @@ func state_update(delta):
 func input_update():
 	is_on_floor = target.is_on_floor()
 	is_on_wall = target.is_on_wall()
+	is_on_ceiling = target.is_on_ceiling()
 	
 	if !lock_controls:
 		right_pressed = Input.is_action_pressed("ui_right")

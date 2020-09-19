@@ -17,6 +17,8 @@ func init_movement(move_collection):
 func get_velocity(move_collection):
 	var resisting_push = resisting_wall_push(move_collection)
 	var decay = Vector2(x_strength_decay, y_strength_decay) * move_collection.time_multiplier
+	if move_collection.is_on_ceiling:
+		decay *= 3
 	current_strength = Vector2(max(current_strength.x - decay.x, 0), max(current_strength.y - decay.y, 0))
 	
 	if move_collection.is_on_floor or move_collection.is_on_wall:
