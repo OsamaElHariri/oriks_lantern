@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=14 format=2]
 
 [ext_resource path="res://gameplay/world/world/PostProcess.gd" type="Script" id=1]
 [ext_resource path="res://gameplay/world/camera/WorldCamera.tscn" type="PackedScene" id=2]
@@ -8,6 +8,9 @@
 [ext_resource path="res://gameplay/actor/player/player/Player.tscn" type="PackedScene" id=6]
 [ext_resource path="res://gameplay/world/level_origin/blank.png" type="Texture" id=7]
 [ext_resource path="res://gameplay/world/levels/LevelTest1.tscn" type="PackedScene" id=8]
+[ext_resource path="res://gameplay/world/level_origin/background.png" type="Texture" id=9]
+[ext_resource path="res://gameplay/world/level_origin/background1.png" type="Texture" id=10]
+[ext_resource path="res://gameplay/world/level_origin/background2.png" type="Texture" id=11]
 
 [sub_resource type="Shader" id=1]
 code = "shader_type canvas_item;
@@ -69,6 +72,37 @@ script = ExtResource( 3 )
 current = true
 limit_smoothed = true
 smoothing_enabled = true
+
+[node name="ParallaxBackground" type="ParallaxBackground" parent="TargetFollower/WorldCamera"]
+offset = Vector2( 960, 540 )
+transform = Transform2D( 1, 0, 0, 1, 960, 540 )
+
+[node name="ParallaxLayer" type="ParallaxLayer" parent="TargetFollower/WorldCamera/ParallaxBackground"]
+motion_scale = Vector2( 0.1, 0.1 )
+motion_mirroring = Vector2( 1920, 1080 )
+
+[node name="background" type="Sprite" parent="TargetFollower/WorldCamera/ParallaxBackground/ParallaxLayer"]
+texture = ExtResource( 9 )
+region_enabled = true
+region_rect = Rect2( 0, 0, 1920, 1080 )
+
+[node name="ParallaxLayer2" type="ParallaxLayer" parent="TargetFollower/WorldCamera/ParallaxBackground"]
+motion_scale = Vector2( 0.5, 0.5 )
+motion_mirroring = Vector2( 1920, 1080 )
+
+[node name="background1" type="Sprite" parent="TargetFollower/WorldCamera/ParallaxBackground/ParallaxLayer2"]
+texture = ExtResource( 10 )
+region_enabled = true
+region_rect = Rect2( 0, 0, 1920, 1080 )
+
+[node name="ParallaxLayer3" type="ParallaxLayer" parent="TargetFollower/WorldCamera/ParallaxBackground"]
+motion_scale = Vector2( 0.75, 0.75 )
+motion_mirroring = Vector2( 1920, 1080 )
+
+[node name="background2" type="Sprite" parent="TargetFollower/WorldCamera/ParallaxBackground/ParallaxLayer3"]
+texture = ExtResource( 11 )
+region_enabled = true
+region_rect = Rect2( 0, 0, 1920, 1080 )
 
 [node name="Levels" type="Node2D" parent="."]
 
