@@ -4,6 +4,7 @@ var active_levels = []
 var player = null
 
 func _ready():
+	$TargetFollower/WorldCamera/ParallaxBackground.offset = OS.window_size / 2
 	player = get_node_or_null("Player")
 	$TargetFollower.target = player
 	EMITTER.connect("player_dash_start", self, "on_player_dash_start")
