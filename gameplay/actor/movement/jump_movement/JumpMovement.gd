@@ -27,9 +27,6 @@ func get_velocity(move_collection):
 		current_strength = strength
 		near_wall = move_collection.target.near_wall
 	
-	if move_collection.is_dashing or move_collection.is_charging_dash:
-		stop()
-	
 	return Vector2(0, -current_strength * move_collection.time_multiplier)
 
 func can_jump(move_collection):

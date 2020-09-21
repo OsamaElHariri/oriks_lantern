@@ -8,7 +8,7 @@ var current_gravity = 1
 
 func get_velocity(move_collection):
 	var current_max_gravity = max_gravity if !move_collection.is_on_wall else max_wall_gravity
-	if move_collection.is_on_floor or move_collection.is_dashing or move_collection.is_charging_dash:
+	if move_collection.is_on_floor:
 		stop()
 	else:
 		var multiplier = 1 if current_gravity < current_max_gravity else -1

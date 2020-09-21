@@ -1,22 +1,31 @@
 extends Node2D
 
+var post_process = null
+
 var active_levels = []
 var player = null
 
+
 func _ready():
 	$TargetFollower/WorldCamera/ParallaxBackground.offset = OS.window_size / 2
-	player = get_node_or_null("Player")
+	player = $Player
+	player.world = self
+	post_process = $CanvasLayer/PostProcess
 	$TargetFollower.target = player
-	EMITTER.connect("player_dash_start", self, "on_player_dash_start")
-	EMITTER.connect("spirit_journey_end", self, "on_spirit_journey_end")
 	EMITTER.connect("player_entered_level", self, "on_player_entered_level")
 	EMITTER.connect("player_exited_level", self, "on_player_exited_level")
 
-func on_player_dash_start(_player):
-	$TargetFollower.target = player.spirit_player
+func spirit_form_wind_up(_current_player):
+	$TargetFollower/WorldCamera.is_narrowing = true
 
-func on_spirit_journey_end(_player):
-	$TargetFollower.target = player
+func spirit_form_start(current_player):
+	$TargetFollower/WorldCamera.is_narrowing = false
+	$TargetFollower.target = current_player.spirit_player
+	post_process.spirit_form_start(current_player)
+
+func spirit_form_end(current_player):
+	$TargetFollower.target = current_player
+	post_process.spirit_form_end(current_player)
 
 func on_player_entered_level(level):
 	active_levels = remove_active_level(level)

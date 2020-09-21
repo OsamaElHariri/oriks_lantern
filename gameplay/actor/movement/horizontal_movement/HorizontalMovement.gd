@@ -8,9 +8,6 @@ var current_speed = 0
 var direction = 0
 
 func get_velocity(move_collection):
-	if move_collection.is_dashing or move_collection.is_charging_dash:
-		return Vector2(0, 0)
-	
 	if move_collection.left_pressed and move_collection.right_pressed:
 		if move_collection.left_just_pressed_time > move_collection.right_just_pressed_time:
 			move_left(move_collection)

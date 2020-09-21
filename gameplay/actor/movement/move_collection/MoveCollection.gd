@@ -1,9 +1,5 @@
 extends Node2D
 
-signal player_dash_init
-signal player_dash_start
-signal player_dash_short_circuit
-
 const FOLLOW_THROUGH_MOVEMENT = preload("res://gameplay/actor/movement/follow_through_movement/FollowThroughMovement.tscn")
 
 export var should_snap = true
@@ -15,8 +11,6 @@ var target
 var is_on_ceiling = false
 var is_on_floor = true
 var is_on_wall = false
-var is_dashing = false
-var is_charging_dash = false
 var time_multiplier = 1
 
 var lock_controls = false
@@ -29,8 +23,6 @@ var right_just_pressed = false
 var left_just_pressed = false
 var jump_just_pressed = false
 var jump_pressed = false
-var dash_just_pressed = false
-var dash_just_released = false
 
 var left_just_pressed_time = 0
 var right_just_pressed_time = 0
@@ -112,15 +104,3 @@ func input_update():
 	jump_pressed = !lock_controls and Input.is_action_pressed("jump")
 	jump_just_pressed = !lock_controls and Input.is_action_just_pressed("jump")
 	
-	dash_just_pressed = !lock_controls and Input.is_action_just_pressed("dash")
-	dash_just_released = !lock_controls and Input.is_action_just_released("dash")
-	
-
-func on_player_dash_init():
-	emit_signal("player_dash_init")
-
-func on_player_dash_start():
-	emit_signal("player_dash_start")
-
-func on_player_dash_short_circuit():
-	emit_signal("player_dash_short_circuit")

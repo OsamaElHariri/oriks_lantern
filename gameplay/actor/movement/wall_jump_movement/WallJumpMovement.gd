@@ -30,9 +30,6 @@ func get_velocity(move_collection):
 		
 		current_strength = Vector2(x_current_strength, y_strength)
 		move_collection.stop_movement("GravityMovement")
-
-	if move_collection.is_dashing or move_collection.is_charging_dash:
-		stop()
 	
 	var augmented_current_strength = current_strength
 	if horizontal_movment != null and resisting_push and current_strength.x > current_strength.x * 0.95:

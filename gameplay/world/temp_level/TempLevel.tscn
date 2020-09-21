@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://gameplay/actor/player/player/Player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://gameplay/platform/solid_platform/SolidPlatform.tscn" type="PackedScene" id=2]
@@ -6,59 +6,8 @@
 [ext_resource path="res://gameplay/platform/spikes/Spikes.tscn" type="PackedScene" id=4]
 [ext_resource path="res://gameplay/platform/moving_platform/MovingPlatform.tscn" type="PackedScene" id=5]
 [ext_resource path="res://gameplay/platform/moving_platform/MoveOnTriggerPlatform.tscn" type="PackedScene" id=6]
-[ext_resource path="res://icon.png" type="Texture" id=7]
-[ext_resource path="res://gameplay/world/temp_level/TextureRect.gd" type="Script" id=8]
-
-[sub_resource type="Shader" id=1]
-code = "shader_type canvas_item;
-
-uniform vec2 origin = vec2(0.0, 0.0);
-
-uniform float ring_radius = 0.0;
-uniform float ring_thickness = 0.0;
-
-uniform float grey_scale = 0.0;
-
-void fragment() {
-	float dist = distance(origin, vec2(FRAGCOORD.x, FRAGCOORD.y));
-	
-	if (dist != 0.0 && dist < ring_radius + ring_thickness && dist > ring_radius) {
-		float diff = dist - ring_radius;
-		float distortion = 1.0 - abs(diff) / ring_thickness;
-		float radius = dist;
-		radius = dist - diff * distortion / 2.0;
-		COLOR.rgb = textureLod(SCREEN_TEXTURE, vec2(radius * SCREEN_UV.x / dist, radius * SCREEN_UV.y / dist), 0.0).rgb;
-	} else {
-		COLOR.rgb = textureLod(SCREEN_TEXTURE, SCREEN_UV, 0.0).rgb;
-	}
-	float rg_multiplier = 1.0 - 0.07 * grey_scale;
-	float b_multiplier = 1.0 - 0.04 * grey_scale;
-	COLOR.rgb = vec3(COLOR.r * rg_multiplier, COLOR.g * rg_multiplier, COLOR.b * b_multiplier);
-}
-
-"
-
-[sub_resource type="ShaderMaterial" id=2]
-shader = SubResource( 1 )
-shader_param/origin = Vector2( 0, 0 )
-shader_param/ring_radius = 0.0
-shader_param/ring_thickness = 0.0
-shader_param/grey_scale = 0.0
 
 [node name="TempLevel" type="Node2D"]
-
-[node name="CanvasLayer" type="CanvasLayer" parent="."]
-
-[node name="TextureRect" type="TextureRect" parent="CanvasLayer"]
-material = SubResource( 2 )
-margin_right = 800.0
-margin_bottom = 600.0
-texture = ExtResource( 7 )
-expand = true
-script = ExtResource( 8 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="SolidPlatform5" parent="." instance=ExtResource( 2 )]
 position = Vector2( 226.799, 751.508 )

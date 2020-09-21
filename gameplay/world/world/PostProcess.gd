@@ -10,10 +10,8 @@ var grey_direction = -1
 
 func _ready():
 	rect_size = get_viewport_rect().size
-	EMITTER.connect("player_dash_start", self, "on_player_dash_start")
-	EMITTER.connect("spirit_journey_end", self, "on_spirit_journey_end")
 
-func on_player_dash_start(player):
+func spirit_form_start(player):
 	radius = 0
 	pulse_thickness = 40
 	grey_direction = 1
@@ -22,7 +20,7 @@ func on_player_dash_start(player):
 	var origin = Vector2(screen_origin.x, rect_size.y - screen_origin.y)
 	material.set_shader_param("origin", origin)
 
-func on_spirit_journey_end(_player):
+func spirit_form_end(_player):
 	grey_direction = -1
 	grey_scale = clamp(grey_scale, 0, 1)
 

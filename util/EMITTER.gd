@@ -10,11 +10,6 @@ extends Node2D
 
 signal player_entered_level
 signal player_exited_level
-signal player_dash_init
-signal player_dash_start
-signal player_dash_short_circuit
-signal player_dash_end
-signal spirit_journey_end
 
 func emit (signal_id, data=null):
 	if data !=null:

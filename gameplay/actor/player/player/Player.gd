@@ -11,41 +11,32 @@ var horizontal_movement = null
 
 var spirit_player = null
 
+var world
+
 func _ready():
-	$MoveCollection.connect("player_dash_init", self, "on_player_dash_init")
-	$MoveCollection.connect("player_dash_start", self, "on_player_dash_start")
-	$MoveCollection.connect("player_dash_short_circuit", self, "on_player_dash_short_circuit")
-	EMITTER.connect("spirit_journey_end", self, "on_spirit_journey_end")
+	$WindUpAnimationTimer.connect("timeout", self, "spirit_form_start")
 	horizontal_movement = $MoveCollection.get_movement("HorizontalMovement")
 
-func on_player_dash_init():
-	EMITTER.emit("player_dash_init", self)
-	$DashWindUpAnimationPlayer.play("DashWindUp")
-	$CollisionShape2D.disabled = true
-
-func on_player_dash_start():
-	EMITTER.emit("player_dash_start", self)
-
-func on_player_dash_short_circuit():
-	EMITTER.emit("player_dash_init", self)
-	$CollisionShape2D.disabled = true
-	$DashWindUpAnimationPlayer.play("DashWindUp")
-	is_charging_spirit = 0
+func spirit_form_wind_up():
+	$WindUpAnimationPlayer.play("wind_up")
+	$WindUpAnimationTimer.start()
 	$MoveCollection.time_multiplier = 0
-	$MoveCollection.lock_controls = true
+	can_summon_spirit = false
+	world.spirit_form_wind_up(self)
 
-func summon_spirit_player():
+func spirit_form_start():
 	$MoveCollection.time_multiplier = 0
 	$CollisionShape2D.disabled = true
 	modulate = Color(1, 1, 1, 0)
 	spirit_player = SPIRIT_PLAYER.instance()
-	EMITTER.emit("player_dash_start", self)
 	ignore_area_enter = spirit_player
 	get_parent().add_child(spirit_player)
 	spirit_player.position = position
+	spirit_player.player = self
 	can_summon_spirit = false
+	world.spirit_form_start(self)
 
-func on_spirit_journey_end(spirit):
+func spirit_form_end(spirit):
 	position = spirit.position
 	$MoveCollection.time_multiplier = 1
 	modulate = Color(1, 1, 1, 1)
@@ -59,26 +50,26 @@ func on_spirit_journey_end(spirit):
 	movement.strength = 550
 	movement.strength_decay = 100
 	can_summon_spirit = false
+	world.spirit_form_end(self)
 	
 	movement.direction = spirit_player.get_node('MoveCollection').velocity
 
 func _physics_process(_delta):
-	is_charging_spirit += 1
-	if is_charging_spirit == 5:
-		summon_spirit_player()
-	
-	near_wall = null
-	for body in $WallCheckArea.get_overlapping_bodies():
-		if body.is_in_group("wall_jump_platform"):
-			near_wall = body
+	check_near_walls()
 	
 	if is_on_floor() or near_wall != null:
 		can_summon_spirit = true
 	
-	if can_summon_spirit and Input.is_action_just_pressed("dash"):
-		on_player_dash_short_circuit()
+	if can_summon_spirit and Input.is_action_just_pressed("signature_action"):
+		spirit_form_wind_up()
 	
 	handle_visuals()
+
+func check_near_walls():
+	near_wall = null
+	for body in $WallCheckArea.get_overlapping_bodies():
+		if body.is_in_group("wall_jump_platform"):
+			near_wall = body
 
 func handle_visuals():
 	var visual_scale = $Visuals.scale
