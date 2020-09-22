@@ -1,0 +1,27 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://gameplay/world/world/fading_rect.png" type="Texture" id=1]
+
+[sub_resource type="Shader" id=3]
+code = "shader_type canvas_item;
+
+uniform float offset_ratio = 1.0;
+
+void fragment() {
+	float alpha_tolerance = abs(0.5 - UV.x) * 2.0;
+	COLOR = texture(TEXTURE, vec2(UV.x, UV.y + sin((TIME + offset_ratio * 1000.0) * (1.0 + 1.5 * offset_ratio) + UV.x * 5.0) / (15.0 + 10.0 * offset_ratio)));
+	COLOR.rgb = vec3(0.2707, 0.941176471, 0.874509804);
+	COLOR.a *= 1.0 - pow(alpha_tolerance, offset_ratio);
+	
+//	COLOR.a *= 1.0 - alpha_tolerance * alpha_tolerance;
+}"
+
+[sub_resource type="ShaderMaterial" id=2]
+shader = SubResource( 3 )
+shader_param/offset_ratio = 1.0
+
+[node name="SpiritWaveEffect" type="Sprite"]
+material = SubResource( 2 )
+position = Vector2( 112, 256 )
+scale = Vector2( 2, 1 )
+texture = ExtResource( 1 )

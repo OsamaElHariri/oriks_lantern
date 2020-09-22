@@ -20,7 +20,6 @@ var mushroom = [
 var top_cell_coords = []
 
 func _ready():
-	randomize()
 	var platforms = get_node_or_null("Platforms")
 	if platforms != null:
 		for platform in platforms.get_children():

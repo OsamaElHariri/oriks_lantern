@@ -7,11 +7,13 @@ var player = null
 
 
 func _ready():
+	randomize()
 	$TargetFollower/WorldCamera/ParallaxBackground.offset = OS.window_size / 2
 	player = $Player
 	player.world = self
 	post_process = $CanvasLayer/PostProcess
 	$TargetFollower.target = player
+	random_seed_spirit_wave_effect()
 	EMITTER.connect("player_entered_level", self, "on_player_entered_level")
 	EMITTER.connect("player_exited_level", self, "on_player_exited_level")
 
@@ -52,3 +54,25 @@ func set_camera_limits(level):
 	$TargetFollower/WorldCamera.limit_top = pos.y - extents.y
 	$TargetFollower/WorldCamera.limit_right = pos.x + extents.x
 	$TargetFollower/WorldCamera.limit_bottom = pos.y + extents.y
+
+func random_seed_spirit_wave_effect():
+	for effect in $CanvasLayer/SpiritWaveEffects.get_children():
+		var unique_material = effect.material.duplicate(true)
+		unique_material.set_shader_param("offset_ratio", randf())
+		effect.material = unique_material
+
+func _physics_process(delta):
+	var current_a = $CanvasLayer/SpiritWaveEffects.modulate.a
+	if player.spirit_player == null:
+		current_a -= 5 * delta
+	else:
+		current_a += 3 * delta
+	
+	if player.can_summon_spirit:
+		$CanvasLayer/PostProcess.grey_direction = -1
+		$CanvasLayer/SpiritWaveEffects.modulate.a = clamp(current_a, 0, 0.3)
+	else:
+		$CanvasLayer/PostProcess.grey_direction = 1
+		$CanvasLayer/SpiritWaveEffects.modulate.a = clamp(current_a, 0.15, 0.3)
+	
+	

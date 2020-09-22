@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=2]
+[gd_scene load_steps=16 format=2]
 
 [ext_resource path="res://gameplay/world/world/PostProcess.gd" type="Script" id=1]
 [ext_resource path="res://gameplay/world/camera/WorldCamera.tscn" type="PackedScene" id=2]
@@ -12,6 +12,7 @@
 [ext_resource path="res://gameplay/world/level_origin/background1.png" type="Texture" id=10]
 [ext_resource path="res://gameplay/world/level_origin/background2.png" type="Texture" id=11]
 [ext_resource path="res://gameplay/world/level_origin/background3.png" type="Texture" id=12]
+[ext_resource path="res://gameplay/world/world/SpiritWaveEffect.tscn" type="PackedScene" id=13]
 
 [sub_resource type="Shader" id=1]
 code = "shader_type canvas_item;
@@ -35,9 +36,13 @@ void fragment() {
 	} else {
 		COLOR.rgb = textureLod(SCREEN_TEXTURE, SCREEN_UV, 0.0).rgb;
 	}
-	float rg_multiplier = 1.0 - 0.07 * grey_scale;
-	float b_multiplier = 1.0 - 0.04 * grey_scale;
-	COLOR.rgb = vec3(COLOR.r * rg_multiplier, COLOR.g * rg_multiplier, COLOR.b * b_multiplier);
+	float center_dist = distance(UV, vec2(0.5, 0.5));
+	float added_color = 0.4 * grey_scale * pow(center_dist, 3);
+	float base_color = 1.0 - added_color;
+	
+	COLOR.r = COLOR.r * base_color + 0.2707 * added_color;
+	COLOR.g = COLOR.g * base_color + 0.941176471 * added_color;
+	COLOR.b = COLOR.b * base_color + 0.874509804 * added_color;
 }"
 
 [sub_resource type="ShaderMaterial" id=2]
@@ -63,6 +68,44 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
+[node name="SpiritWaveEffects" type="Node2D" parent="CanvasLayer"]
+
+[node name="SpiritWave" parent="CanvasLayer/SpiritWaveEffects" instance=ExtResource( 13 )]
+position = Vector2( 257, 92 )
+
+[node name="SpiritWave2" parent="CanvasLayer/SpiritWaveEffects" instance=ExtResource( 13 )]
+position = Vector2( 296.5, 60 )
+scale = Vector2( 2.40351, 1 )
+
+[node name="SpiritWave3" parent="CanvasLayer/SpiritWaveEffects" instance=ExtResource( 13 )]
+position = Vector2( 368, 992 )
+
+[node name="SpiritWave4" parent="CanvasLayer/SpiritWaveEffects" instance=ExtResource( 13 )]
+position = Vector2( 1505, 1036 )
+
+[node name="SpiritWave5" parent="CanvasLayer/SpiritWaveEffects" instance=ExtResource( 13 )]
+position = Vector2( 1457, 1020 )
+
+[node name="SpiritWave6" parent="CanvasLayer/SpiritWaveEffects" instance=ExtResource( 13 )]
+position = Vector2( 1720.25, 64 )
+scale = Vector2( 1.90351, 1 )
+
+[node name="SpiritWave7" parent="CanvasLayer/SpiritWaveEffects" instance=ExtResource( 13 )]
+position = Vector2( -16, 640 )
+scale = Vector2( 1.37329, 1 )
+
+[node name="SpiritWave8" parent="CanvasLayer/SpiritWaveEffects" instance=ExtResource( 13 )]
+position = Vector2( 1936, 512 )
+scale = Vector2( 1.37329, 1 )
+
+[node name="SpiritWave9" parent="CanvasLayer/SpiritWaveEffects" instance=ExtResource( 13 )]
+position = Vector2( -112, 816 )
+scale = Vector2( 1.37329, 1 )
+
+[node name="SpiritWave10" parent="CanvasLayer/SpiritWaveEffects" instance=ExtResource( 13 )]
+position = Vector2( 2080, 800 )
+scale = Vector2( 1.37329, 1 )
+
 [node name="Player" parent="." instance=ExtResource( 6 )]
 position = Vector2( -184.933, 196.562 )
 
@@ -73,6 +116,7 @@ script = ExtResource( 3 )
 current = true
 limit_smoothed = true
 smoothing_enabled = true
+smoothing_speed = 8.0
 
 [node name="ParallaxBackground" type="ParallaxBackground" parent="TargetFollower/WorldCamera"]
 

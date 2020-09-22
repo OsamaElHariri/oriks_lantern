@@ -53,11 +53,12 @@ func spirit_form_end(spirit):
 	world.spirit_form_end(self)
 	
 	movement.direction = spirit_player.get_node('MoveCollection').velocity
+	spirit_player = null
 
 func _physics_process(_delta):
 	check_near_walls()
 	
-	if is_on_floor() or near_wall != null:
+	if spirit_player == null and (is_on_floor() or near_wall != null) and $WindUpAnimationTimer.time_left == 0:
 		can_summon_spirit = true
 	
 	if can_summon_spirit and Input.is_action_just_pressed("signature_action"):

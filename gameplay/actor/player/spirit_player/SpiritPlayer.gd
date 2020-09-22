@@ -16,7 +16,7 @@ func _physics_process(delta):
 	
 	var alpha = 1 - ease(current_duration / duration, 1)
 	
-	$Visual/Sprites.modulate = Color(1, 1, 1, 0.2 + 0.8 * alpha)
+	$Visual/Sprites.modulate = Color(1, 1, 1, 0.5 + 0.5 * alpha)
 	
 	if current_duration > duration:
 		end_journey()
