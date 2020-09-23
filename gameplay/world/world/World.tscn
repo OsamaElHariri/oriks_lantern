@@ -38,6 +38,10 @@ void fragment() {
 	}
 	float center_dist = distance(UV, vec2(0.5, 0.5));
 	float added_color = 0.4 * grey_scale * pow(center_dist, 3);
+	
+	if ((distance(vec3(0.678431373, 0.749019608, 0.643137255), COLOR.rgb)) < 0.1) {
+		added_color = 0.6 * grey_scale;
+	}
 	float base_color = 1.0 - added_color;
 	
 	COLOR.r = COLOR.r * base_color + 0.2707 * added_color;
