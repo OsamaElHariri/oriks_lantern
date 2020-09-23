@@ -1,6 +1,7 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://gameplay/world/level_origin/LevelOrigin.tscn" type="PackedScene" id=1]
+[ext_resource path="res://gameplay/world/level_origin/SpawnLocation.tscn" type="PackedScene" id=2]
 [ext_resource path="res://gameplay/platform/basic_platform/BasicPlatform.tscn" type="PackedScene" id=4]
 [ext_resource path="res://gameplay/world/level_origin/sunlight.png" type="Texture" id=5]
 [ext_resource path="res://gameplay/world/level_origin/glow.png" type="Texture" id=6]
@@ -43,6 +44,11 @@ scale = Vector2( 476, 28 )
 [node name="BasicPlatform2" parent="LevelOrigin/Platforms" instance=ExtResource( 4 )]
 position = Vector2( -824, 72 )
 scale = Vector2( 60, 172 )
+
+[node name="SpawnLocations" type="Node2D" parent="LevelOrigin"]
+
+[node name="SpawnLocation" parent="LevelOrigin/SpawnLocations" instance=ExtResource( 2 )]
+position = Vector2( 880, 336 )
 
 [node name="Particles2D" type="Particles2D" parent="."]
 position = Vector2( 471.252, -208 )

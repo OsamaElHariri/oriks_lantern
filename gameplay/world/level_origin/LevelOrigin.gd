@@ -20,6 +20,7 @@ var mushroom = [
 var top_cell_coords = []
 
 func _ready():
+	connect_to_spawn_points()
 	var platforms = get_node_or_null("Platforms")
 	if platforms != null:
 		for platform in platforms.get_children():
@@ -101,3 +102,25 @@ func draw_platform_in_tilemap(platform):
 			$TileMap.set_cell(map_pos.x, map_pos.y, 0)
 			current_x += $TileMap.cell_size.x
 		current_y += $TileMap.cell_size.y
+
+func connect_to_spawn_points():
+	var location_nodes = get_node_or_null("SpawnLocations")
+	if location_nodes == null: return
+	for location in location_nodes.get_children():
+		location.connect("player_entered", self, "on_spawn_location_player_enetered")
+	
+func on_spawn_location_player_enetered(spawn_location, _player):
+	var location_nodes = get_node_or_null("SpawnLocations")
+	if location_nodes == null: return
+	for location in location_nodes.get_children():
+		location.is_active = location.get_instance_id() == spawn_location.get_instance_id()
+
+func get_spawn_location():
+	var location_nodes = get_node_or_null("SpawnLocations")
+	if location_nodes == null: return position
+	for location in location_nodes.get_children():
+		if location.is_active:
+			return location.global_position
+	if location_nodes.get_child_count() > 0:
+		return get_child(0).position
+	return position

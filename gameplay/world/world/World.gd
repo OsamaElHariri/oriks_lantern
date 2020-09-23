@@ -1,5 +1,7 @@
 extends Node2D
 
+const PLAYER_SCENE = preload("res://gameplay/actor/player/player/Player.tscn")
+
 var post_process = null
 
 var active_levels = []
@@ -60,6 +62,15 @@ func random_seed_spirit_wave_effect():
 		var unique_material = effect.material.duplicate(true)
 		unique_material.set_shader_param("offset_ratio", randf())
 		effect.material = unique_material
+
+func player_defeat_and_respawn():
+	player.queue_free()
+	player = PLAYER_SCENE.instance()
+	player.world = self
+	call_deferred("add_child", player)
+	$TargetFollower.target = player
+	if active_levels.size() > 0:
+		player.position = active_levels[0].get_node("LevelOrigin").get_spawn_location()
 
 func _physics_process(delta):
 	var current_a = $CanvasLayer/SpiritWaveEffects.modulate.a

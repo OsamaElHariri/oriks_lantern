@@ -104,3 +104,9 @@ func handle_visuals():
 		$Visuals.scale = Vector2(-abs(visual_scale.x), visual_scale.y)
 	elif horizontal_movement.direction > 0:
 		$Visuals.scale = Vector2(abs(visual_scale.x), visual_scale.y)
+
+func trigger_defeat(_body):
+	if spirit_player != null:
+		spirit_player.queue_free()
+	world.player_defeat_and_respawn()
+	
