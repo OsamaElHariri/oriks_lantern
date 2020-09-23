@@ -11,6 +11,8 @@ var horizontal_movement = null
 
 var spirit_player = null
 
+var jump_just_pressed_counter = INF
+
 var world
 
 func _ready():
@@ -55,13 +57,18 @@ func spirit_form_end(spirit):
 	movement.direction = spirit_player.get_node('MoveCollection').velocity
 	spirit_player = null
 
-func _physics_process(_delta):
+func _physics_process(delta):
 	check_near_walls()
 	
 	if spirit_player == null and (is_on_floor() or near_wall != null) and $WindUpAnimationTimer.time_left == 0:
 		can_summon_spirit = true
 	
-	if can_summon_spirit and Input.is_action_just_pressed("signature_action"):
+	if Input.is_action_just_pressed("signature_action"):
+		jump_just_pressed_counter = 0
+	jump_just_pressed_counter += delta
+	
+	if can_summon_spirit and jump_just_pressed_counter < 0.15:
+		jump_just_pressed_counter = INF
 		spirit_form_wind_up()
 	
 	handle_visuals()
