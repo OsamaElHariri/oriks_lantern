@@ -21,6 +21,8 @@ func get_velocity(move_collection):
 		stop()
 	
 	if can_jump(move_collection):
+		if move_collection.target.has_method('on_jump'):
+			move_collection.target.on_jump()
 		move_collection.jump_just_pressed_counter = INF
 		move_collection.on_floor_counter = INF
 		move_collection.stop_movement("GravityMovement")

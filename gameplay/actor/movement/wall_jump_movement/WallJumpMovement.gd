@@ -30,6 +30,9 @@ func get_velocity(move_collection):
 		
 		current_strength = Vector2(x_current_strength, y_strength)
 		move_collection.stop_movement("GravityMovement")
+		
+		if move_collection.target.has_method('on_wall_jump'):
+			move_collection.target.on_wall_jump()
 	
 	var augmented_current_strength = current_strength
 	if horizontal_movment != null and resisting_push and current_strength.x > current_strength.x * 0.95:

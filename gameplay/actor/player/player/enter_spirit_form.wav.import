@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/enter_spirit_form.wav-fa65cbb367174413b1c9ccca27f79c86.sample"
+
+[deps]
+
+source_file="res://gameplay/actor/player/player/enter_spirit_form.wav"
+dest_files=[ "res://.import/enter_spirit_form.wav-fa65cbb367174413b1c9ccca27f79c86.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

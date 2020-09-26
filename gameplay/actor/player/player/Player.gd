@@ -15,6 +15,9 @@ var jump_just_pressed_counter = INF
 
 var world
 
+var on_floor = true
+var on_wall = false
+
 func _ready():
 	$WindUpAnimationTimer.connect("timeout", self, "spirit_form_start")
 	horizontal_movement = $MoveCollection.get_movement("HorizontalMovement")
@@ -27,6 +30,7 @@ func spirit_form_wind_up():
 	world.spirit_form_wind_up(self)
 
 func spirit_form_start():
+	$SpiritFormAudio.play()
 	$MoveCollection.time_multiplier = 0
 	$CollisionShape2D.disabled = true
 	modulate = Color(1, 1, 1, 0)
@@ -60,6 +64,14 @@ func spirit_form_end(spirit):
 func _physics_process(delta):
 	check_near_walls()
 	
+	if !on_floor and is_on_floor():
+		just_landed()
+	on_floor = is_on_floor()
+	
+	if !on_wall and is_on_wall():
+		just_hit_wall()
+	on_wall = is_on_wall()
+	
 	if spirit_player == null and (is_on_floor() or near_wall != null) and $WindUpAnimationTimer.time_left == 0:
 		can_summon_spirit = true
 	
@@ -81,8 +93,6 @@ func check_near_walls():
 
 func handle_visuals():
 	var visual_scale = $Visuals.scale
-	var on_floor = is_on_floor()
-	var on_wall = is_on_wall()
 	if !on_wall and !on_floor:
 		if $MoveCollection.velocity.y < 0:
 			$AnimationPlayer.play("ascend")
@@ -109,4 +119,25 @@ func trigger_defeat(_body):
 	if spirit_player != null:
 		spirit_player.queue_free()
 	world.player_defeat_and_respawn()
-	
+
+func randomize_footstep_sound():
+	$FootstepsAudio.pitch_scale = 0.9 + randf() * 0.3
+	$FootstepsAudio.volume_db = -2 * randf() - 10
+
+func just_landed():
+	$FallLandingAudio.pitch_scale = 0.8 + randf() * 0.4
+	$FallLandingAudio.play()
+
+func just_hit_wall():
+	if !on_floor:
+		pass
+#		$FallLandingAudio.pitch_scale = 0.8 + randf() * 0.4
+#		$FallLandingAudio.play()
+
+func on_jump():
+	$JumpAudio.pitch_scale = 0.8 + randf() * 0.4
+	$JumpAudio.play()
+
+func on_wall_jump():
+	$JumpAudio.pitch_scale = 0.8 + randf() * 0.4
+	$JumpAudio.play()
