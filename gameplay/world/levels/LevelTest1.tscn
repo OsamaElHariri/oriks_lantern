@@ -50,14 +50,16 @@ scale = Vector2( 12, 44 )
 position = Vector2( 1064, -40 )
 scale = Vector2( 52, 188 )
 
-[node name="Spikes" parent="." instance=ExtResource( 4 )]
+[node name="Spikes" type="Node2D" parent="LevelOrigin"]
+
+[node name="Spikes" parent="LevelOrigin/Spikes" instance=ExtResource( 4 )]
 margin_left = 1168.0
 margin_top = 352.0
 margin_right = 1584.0
 margin_bottom = 384.0
 rect_rotation = 180.0
 
-[node name="Spikes2" parent="." instance=ExtResource( 4 )]
+[node name="Spikes2" parent="LevelOrigin/Spikes" instance=ExtResource( 4 )]
 margin_left = 944.0
 margin_top = 176.0
 margin_right = 1232.0

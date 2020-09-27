@@ -38,17 +38,26 @@ scale = Vector2( 476, 264 )
 [node name="Platforms" type="Node2D" parent="LevelOrigin"]
 
 [node name="BasicPlatform" parent="LevelOrigin/Platforms" instance=ExtResource( 4 )]
-position = Vector2( 7.99998, 472 )
-scale = Vector2( 476, 28 )
+position = Vector2( -32, 512 )
+scale = Vector2( 496, 48 )
 
 [node name="BasicPlatform2" parent="LevelOrigin/Platforms" instance=ExtResource( 4 )]
-position = Vector2( -824, 72 )
-scale = Vector2( 60, 172 )
+position = Vector2( -864, 72 )
+scale = Vector2( 80, 172 )
+
+[node name="BasicPlatform3" parent="LevelOrigin/Platforms" instance=ExtResource( 4 )]
+position = Vector2( -976, -456 )
+scale = Vector2( 24, 92 )
+
+[node name="BasicPlatform4" parent="LevelOrigin/Platforms" instance=ExtResource( 4 )]
+position = Vector2( -11.9999, -576 )
+scale = Vector2( 486, 16 )
 
 [node name="SpawnLocations" type="Node2D" parent="LevelOrigin"]
 
 [node name="SpawnLocation" parent="LevelOrigin/SpawnLocations" instance=ExtResource( 2 )]
-position = Vector2( 880, 336 )
+position = Vector2( 880, 64 )
+scale = Vector2( 1, 2.52 )
 
 [node name="Particles2D" type="Particles2D" parent="."]
 position = Vector2( 471.252, -208 )

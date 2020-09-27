@@ -1,0 +1,54 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://gameplay/world/level_origin/SpawnLocation.tscn" type="PackedScene" id=1]
+[ext_resource path="res://gameplay/world/level_origin/LevelBounds.tscn" type="PackedScene" id=2]
+[ext_resource path="res://gameplay/world/level_origin/LevelOrigin.tscn" type="PackedScene" id=3]
+[ext_resource path="res://gameplay/platform/basic_platform/BasicPlatform.tscn" type="PackedScene" id=4]
+[ext_resource path="res://gameplay/platform/spikes/Spikes.tscn" type="PackedScene" id=5]
+
+[node name="SpiritFormLevel1" type="Node2D"]
+
+[node name="LevelOrigin" parent="." instance=ExtResource( 3 )]
+
+[node name="LevelBounds" parent="LevelOrigin" instance=ExtResource( 2 )]
+position = Vector2( 184, -24.0001 )
+scale = Vector2( 500, 308 )
+
+[node name="Platforms" type="Node2D" parent="LevelOrigin"]
+
+[node name="BasicPlatform" parent="LevelOrigin/Platforms" instance=ExtResource( 4 )]
+position = Vector2( 184, 520 )
+scale = Vector2( 500, 52 )
+
+[node name="BasicPlatform2" parent="LevelOrigin/Platforms" instance=ExtResource( 4 )]
+position = Vector2( 784, -200 )
+scale = Vector2( 200, 68 )
+
+[node name="BasicPlatform3" parent="LevelOrigin/Platforms" instance=ExtResource( 4 )]
+position = Vector2( 1096, 176 )
+scale = Vector2( 44, 120 )
+
+[node name="BasicPlatform6" parent="LevelOrigin/Platforms" instance=ExtResource( 4 )]
+position = Vector2( 184, -704 )
+scale = Vector2( 500, 24 )
+spawn_top_decor = false
+
+[node name="BasicPlatform7" parent="LevelOrigin/Platforms" instance=ExtResource( 4 )]
+position = Vector2( -864, -232 )
+scale = Vector2( 24, 228 )
+spawn_top_decor = false
+
+[node name="SpawnLocations" type="Node2D" parent="LevelOrigin"]
+
+[node name="SpawnLocation" parent="LevelOrigin/SpawnLocations" instance=ExtResource( 1 )]
+position = Vector2( -672, 288 )
+scale = Vector2( 1, 5.08 )
+
+[node name="Spikes" type="Node2D" parent="LevelOrigin"]
+
+[node name="Spikes" parent="LevelOrigin/Spikes" instance=ExtResource( 5 )]
+margin_left = 992.0
+margin_top = 416.0
+margin_right = 1952.0
+margin_bottom = 448.0
+rect_rotation = -89.9999

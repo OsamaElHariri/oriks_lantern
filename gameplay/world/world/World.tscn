@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=2]
+[gd_scene load_steps=19 format=2]
 
 [ext_resource path="res://gameplay/world/world/PostProcess.gd" type="Script" id=1]
 [ext_resource path="res://gameplay/world/camera/WorldCamera.tscn" type="PackedScene" id=2]
@@ -7,12 +7,15 @@
 [ext_resource path="res://gameplay/world/levels/LevelTest0.tscn" type="PackedScene" id=5]
 [ext_resource path="res://gameplay/actor/player/player/Player.tscn" type="PackedScene" id=6]
 [ext_resource path="res://gameplay/world/level_origin/blank.png" type="Texture" id=7]
-[ext_resource path="res://gameplay/world/levels/LevelTest1.tscn" type="PackedScene" id=8]
+[ext_resource path="res://gameplay/world/levels/JumpLevel1.tscn" type="PackedScene" id=8]
 [ext_resource path="res://gameplay/world/level_origin/background.png" type="Texture" id=9]
 [ext_resource path="res://gameplay/world/level_origin/background1.png" type="Texture" id=10]
 [ext_resource path="res://gameplay/world/level_origin/background2.png" type="Texture" id=11]
 [ext_resource path="res://gameplay/world/level_origin/background3.png" type="Texture" id=12]
 [ext_resource path="res://gameplay/world/world/SpiritWaveEffect.tscn" type="PackedScene" id=13]
+[ext_resource path="res://gameplay/world/levels/SpiritFormLevel1.tscn" type="PackedScene" id=14]
+[ext_resource path="res://gameplay/world/levels/SpiritFormLevel2.tscn" type="PackedScene" id=15]
+[ext_resource path="res://gameplay/world/levels/SpiritFormLevel3.tscn" type="PackedScene" id=16]
 
 [sub_resource type="Shader" id=1]
 code = "shader_type canvas_item;
@@ -111,7 +114,7 @@ position = Vector2( 2080, 800 )
 scale = Vector2( 1.37329, 1 )
 
 [node name="Player" parent="." instance=ExtResource( 6 )]
-position = Vector2( -184.933, 196.562 )
+position = Vector2( 4944, -1168 )
 
 [node name="TargetFollower" type="Node2D" parent="."]
 script = ExtResource( 3 )
@@ -169,5 +172,14 @@ region_rect = Rect2( 0, 0, 1920, 1080 )
 
 [node name="LevelTest0" parent="Levels" instance=ExtResource( 5 )]
 
-[node name="LevelTest1" parent="Levels" instance=ExtResource( 8 )]
-position = Vector2( 1920, 288 )
+[node name="JumpLevel1" parent="Levels" instance=ExtResource( 8 )]
+position = Vector2( 1776, 80 )
+
+[node name="SpiritFormLevel1" parent="Levels" instance=ExtResource( 14 )]
+position = Vector2( 3776, -752 )
+
+[node name="JumpLevel2" parent="Levels" instance=ExtResource( 15 )]
+position = Vector2( 7696, -1024 )
+
+[node name="JumpLevel3" parent="Levels" instance=ExtResource( 16 )]
+position = Vector2( 5776, -1360 )

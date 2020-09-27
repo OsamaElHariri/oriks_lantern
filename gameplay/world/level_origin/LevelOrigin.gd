@@ -98,7 +98,7 @@ func draw_platform_in_tilemap(platform):
 		current_x = top_left.x
 		while current_x < bottom_right.x:
 			var map_pos = $TileMap.world_to_map(Vector2(current_x, current_y))
-			if current_y == top_left.y: top_cell_coords.append(map_pos)
+			if current_y == top_left.y and platform.spawn_top_decor: top_cell_coords.append(map_pos)
 			$TileMap.set_cell(map_pos.x, map_pos.y, 0)
 			current_x += $TileMap.cell_size.x
 		current_y += $TileMap.cell_size.y

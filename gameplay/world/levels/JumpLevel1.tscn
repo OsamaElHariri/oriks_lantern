@@ -1,0 +1,56 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://gameplay/world/level_origin/LevelBounds.tscn" type="PackedScene" id=1]
+[ext_resource path="res://gameplay/world/level_origin/LevelOrigin.tscn" type="PackedScene" id=2]
+[ext_resource path="res://gameplay/platform/basic_platform/BasicPlatform.tscn" type="PackedScene" id=3]
+[ext_resource path="res://gameplay/platform/spikes/Spikes.tscn" type="PackedScene" id=4]
+[ext_resource path="res://gameplay/world/level_origin/SpawnLocation.tscn" type="PackedScene" id=5]
+
+[node name="JumpLevel1" type="Node2D"]
+
+[node name="LevelOrigin" parent="." instance=ExtResource( 2 )]
+
+[node name="LevelBounds" parent="LevelOrigin" instance=ExtResource( 1 )]
+position = Vector2( 184, -4.19617e-05 )
+scale = Vector2( 500, 296 )
+
+[node name="Platforms" type="Node2D" parent="LevelOrigin"]
+
+[node name="BasicPlatform" parent="LevelOrigin/Platforms" instance=ExtResource( 3 )]
+position = Vector2( -536, 480 )
+scale = Vector2( 140, 72 )
+
+[node name="BasicPlatform3" parent="LevelOrigin/Platforms" instance=ExtResource( 3 )]
+position = Vector2( 576, 480 )
+scale = Vector2( 304, 72 )
+
+[node name="BasicPlatform2" parent="LevelOrigin/Platforms" instance=ExtResource( 3 )]
+position = Vector2( -144, 496 )
+scale = Vector2( 56, 64 )
+spawn_top_decor = false
+
+[node name="BasicPlatform4" parent="LevelOrigin/Platforms" instance=ExtResource( 3 )]
+position = Vector2( 1072, -40 )
+scale = Vector2( 56, 188 )
+
+[node name="BasicPlatform5" parent="LevelOrigin/Platforms" instance=ExtResource( 3 )]
+position = Vector2( 720, 80 )
+scale = Vector2( 32, 80 )
+
+[node name="BasicPlatform6" parent="LevelOrigin/Platforms" instance=ExtResource( 3 )]
+position = Vector2( 176, -648 )
+scale = Vector2( 496, 20 )
+
+[node name="SpawnLocations" type="Node2D" parent="LevelOrigin"]
+
+[node name="SpawnLocation" parent="LevelOrigin/SpawnLocations" instance=ExtResource( 5 )]
+position = Vector2( -672, 288 )
+scale = Vector2( 1, 5.08 )
+
+[node name="Spikes" type="Node2D" parent="LevelOrigin"]
+
+[node name="Spikes" parent="LevelOrigin/Spikes" instance=ExtResource( 4 )]
+margin_left = -256.0
+margin_top = 352.0
+margin_right = 192.0
+margin_bottom = 384.0
