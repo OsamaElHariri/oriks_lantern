@@ -1,7 +1,8 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://gameplay/platform/spikes/danger_mushroom.png" type="Texture" id=1]
 [ext_resource path="res://gameplay/platform/spikes/Spikes.gd" type="Script" id=2]
+[ext_resource path="res://gameplay/platform/spikes/danger_mushroom_smoke.png" type="Texture" id=3]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 48, 16 )
@@ -21,7 +22,23 @@ __meta__ = {
 }
 
 [node name="Area2D" type="Area2D" parent="."]
-visible = false
+position = Vector2( 48, 16 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
 shape = SubResource( 1 )
+
+[node name="Visuals" type="Node2D" parent="."]
+
+[node name="DangerMushroomSmoke" type="Sprite" parent="Visuals"]
+position = Vector2( 48.1182, 2.17043 )
+scale = Vector2( 1, 0.921494 )
+texture = ExtResource( 3 )
+region_enabled = true
+region_rect = Rect2( 0, 0, 96, 64 )
+
+[node name="DangerMushroomSmoke2" type="Sprite" parent="Visuals"]
+position = Vector2( 48.1182, 8.15279 )
+scale = Vector2( 1, 0.734545 )
+texture = ExtResource( 3 )
+region_enabled = true
+region_rect = Rect2( 0, 0, 96, 64 )
