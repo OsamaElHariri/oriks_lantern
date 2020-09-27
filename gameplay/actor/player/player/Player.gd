@@ -30,6 +30,7 @@ func spirit_form_wind_up():
 	world.spirit_form_wind_up(self)
 
 func spirit_form_start():
+	$SpiritFormAudio.pitch_scale = 0.95 + randf() * 0.1
 	$SpiritFormAudio.play()
 	$MoveCollection.time_multiplier = 0
 	$CollisionShape2D.disabled = true

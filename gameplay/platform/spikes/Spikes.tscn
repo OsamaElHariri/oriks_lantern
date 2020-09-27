@@ -1,21 +1,26 @@
 [gd_scene load_steps=4 format=2]
 
-[ext_resource path="res://gameplay/platform/solid_platform/solid_platform.png" type="Texture" id=1]
+[ext_resource path="res://gameplay/platform/spikes/danger_mushroom.png" type="Texture" id=1]
 [ext_resource path="res://gameplay/platform/spikes/Spikes.gd" type="Script" id=2]
 
 [sub_resource type="RectangleShape2D" id=1]
-extents = Vector2( 140, 5 )
+extents = Vector2( 48, 16 )
 
-[node name="Spikes" type="Node2D"]
+[node name="Spikes" type="TextureRect"]
+margin_left = -24.0
+margin_top = -16.0
+margin_right = 72.0
+margin_bottom = 16.0
+rect_scale = Vector2( 0.5, 0.5 )
+texture = ExtResource( 1 )
+stretch_mode = 2
 script = ExtResource( 2 )
+__meta__ = {
+"_edit_use_anchors_": false,
+"_editor_description_": ""
+}
 
 [node name="Area2D" type="Area2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
 shape = SubResource( 1 )
-
-[node name="solid_platform" type="Sprite" parent="."]
-modulate = Color( 1, 0, 0, 1 )
-position = Vector2( 0.127291, 0.0290241 )
-scale = Vector2( 4.35108, 0.144726 )
-texture = ExtResource( 1 )
