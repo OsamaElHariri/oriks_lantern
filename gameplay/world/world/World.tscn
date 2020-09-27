@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=2]
+[gd_scene load_steps=20 format=2]
 
 [ext_resource path="res://gameplay/world/world/PostProcess.gd" type="Script" id=1]
 [ext_resource path="res://gameplay/world/camera/WorldCamera.tscn" type="PackedScene" id=2]
@@ -16,6 +16,7 @@
 [ext_resource path="res://gameplay/world/levels/SpiritFormLevel1.tscn" type="PackedScene" id=14]
 [ext_resource path="res://gameplay/world/levels/SpiritFormLevel2.tscn" type="PackedScene" id=15]
 [ext_resource path="res://gameplay/world/levels/SpiritFormLevel3.tscn" type="PackedScene" id=16]
+[ext_resource path="res://gameplay/world/levels/SpiritFormLevel4.tscn" type="PackedScene" id=17]
 
 [sub_resource type="Shader" id=1]
 code = "shader_type canvas_item;
@@ -114,7 +115,7 @@ position = Vector2( 2080, 800 )
 scale = Vector2( 1.37329, 1 )
 
 [node name="Player" parent="." instance=ExtResource( 6 )]
-position = Vector2( 4944, -1168 )
+position = Vector2( -208, 288 )
 
 [node name="TargetFollower" type="Node2D" parent="."]
 script = ExtResource( 3 )
@@ -179,7 +180,10 @@ position = Vector2( 1776, 80 )
 position = Vector2( 3776, -752 )
 
 [node name="JumpLevel2" parent="Levels" instance=ExtResource( 15 )]
-position = Vector2( 7696, -1024 )
+position = Vector2( 9648, -2624 )
 
 [node name="JumpLevel3" parent="Levels" instance=ExtResource( 16 )]
-position = Vector2( 5776, -1360 )
+position = Vector2( 7728, -2960 )
+
+[node name="JumpLevel4" parent="Levels" instance=ExtResource( 17 )]
+position = Vector2( 5776, -2224 )

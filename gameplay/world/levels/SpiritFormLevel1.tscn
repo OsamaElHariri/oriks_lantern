@@ -11,8 +11,8 @@
 [node name="LevelOrigin" parent="." instance=ExtResource( 3 )]
 
 [node name="LevelBounds" parent="LevelOrigin" instance=ExtResource( 2 )]
-position = Vector2( 184, -24.0001 )
-scale = Vector2( 500, 308 )
+position = Vector2( 184, -16.0001 )
+scale = Vector2( 500, 304 )
 
 [node name="Platforms" type="Node2D" parent="LevelOrigin"]
 
@@ -29,7 +29,7 @@ position = Vector2( 1096, 176 )
 scale = Vector2( 44, 120 )
 
 [node name="BasicPlatform6" parent="LevelOrigin/Platforms" instance=ExtResource( 4 )]
-position = Vector2( 184, -704 )
+position = Vector2( 184, -688 )
 scale = Vector2( 500, 24 )
 spawn_top_decor = false
 

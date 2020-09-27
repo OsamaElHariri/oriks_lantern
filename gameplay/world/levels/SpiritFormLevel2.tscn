@@ -44,8 +44,8 @@ position = Vector2( -336, -344 )
 scale = Vector2( 32, 108 )
 
 [node name="BasicPlatform9" parent="LevelOrigin/Platforms" instance=ExtResource( 4 )]
-position = Vector2( 16, -456 )
-scale = Vector2( 144, 52 )
+position = Vector2( 16, -488 )
+scale = Vector2( 144, 36 )
 
 [node name="BasicPlatform5" parent="LevelOrigin/Platforms" instance=ExtResource( 4 )]
 position = Vector2( 392, -176 )
