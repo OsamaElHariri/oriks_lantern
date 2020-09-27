@@ -31,10 +31,10 @@ func _ready():
 			var is_top_cell = auto_tile_coord == Vector2(1, 0) or auto_tile_coord == Vector2(1, 5)
 			if is_top_cell and randf() < 0.6:
 				var sprite = spawn_grass()
-				sprite.position = $TileMap.map_to_world(pos)
+				sprite.position = $TileMap.map_to_world(pos) + Vector2(0, 2)
 			if is_top_cell and randf() < 0.5:
 				var sprite = spawn_plant() if randf() < 0.5 else spawn_mushroom()
-				sprite.position = $TileMap.map_to_world(pos)
+				sprite.position = $TileMap.map_to_world(pos) + Vector2(0, 2)
 
 func spawn_grass():
 	var sprite = Sprite.new()
