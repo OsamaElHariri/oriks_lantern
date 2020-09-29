@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=2]
+[gd_scene load_steps=26 format=2]
 
 [ext_resource path="res://gameplay/world/world/PostProcess.gd" type="Script" id=1]
 [ext_resource path="res://gameplay/world/camera/WorldCamera.tscn" type="PackedScene" id=2]
@@ -17,6 +17,7 @@
 [ext_resource path="res://gameplay/world/levels/SpiritFormLevel2.tscn" type="PackedScene" id=15]
 [ext_resource path="res://gameplay/world/levels/SpiritFormLevel3.tscn" type="PackedScene" id=16]
 [ext_resource path="res://gameplay/world/levels/SpiritFormLevel4.tscn" type="PackedScene" id=17]
+[ext_resource path="res://gameplay/world/level_origin/glow.png" type="Texture" id=18]
 
 [sub_resource type="Shader" id=1]
 code = "shader_type canvas_item;
@@ -59,6 +60,35 @@ shader_param/origin = Vector2( 0, 0 )
 shader_param/ring_radius = 0.0
 shader_param/ring_thickness = 0.0
 shader_param/grey_scale = 0.0
+
+[sub_resource type="Gradient" id=3]
+offsets = PoolRealArray( 0, 0.297872, 0.675532, 1 )
+colors = PoolColorArray( 1, 1, 1, 0, 0.270588, 0.941176, 0.87451, 0.470588, 0.270588, 0.941176, 0.87451, 0.470588, 1, 1, 1, 0 )
+
+[sub_resource type="GradientTexture" id=4]
+gradient = SubResource( 3 )
+
+[sub_resource type="Curve" id=5]
+_data = [ Vector2( 0, 0.634091 ), 0.0, 0.376786, 0, 0, Vector2( 1, 0.470455 ), -0.548052, 0.0, 0, 0 ]
+
+[sub_resource type="CurveTexture" id=6]
+curve = SubResource( 5 )
+
+[sub_resource type="ParticlesMaterial" id=7]
+emission_shape = 2
+emission_box_extents = Vector3( 1920, 1080, 1 )
+flag_disable_z = true
+spread = 180.0
+gravity = Vector3( 0, 0, 0 )
+initial_velocity = 10.0
+initial_velocity_random = 0.2
+orbit_velocity = 0.0
+orbit_velocity_random = 0.05
+scale = 0.5
+scale_random = 0.3
+scale_curve = SubResource( 6 )
+color_ramp = SubResource( 4 )
+hue_variation_random = 0.1
 
 [node name="World" type="Node2D"]
 script = ExtResource( 4 )
@@ -137,6 +167,17 @@ texture = ExtResource( 9 )
 region_enabled = true
 region_rect = Rect2( 0, 0, 1920, 1080 )
 
+[node name="Particles2D" type="Particles2D" parent="TargetFollower/WorldCamera/ParallaxBackground/ParallaxLayer"]
+modulate = Color( 1, 1, 1, 0.313726 )
+position = Vector2( 960, 540 )
+scale = Vector2( 0.3, 0.3 )
+amount = 24
+lifetime = 5.0
+preprocess = 5.0
+randomness = 0.2
+process_material = SubResource( 7 )
+texture = ExtResource( 18 )
+
 [node name="ParallaxLayer2" type="ParallaxLayer" parent="TargetFollower/WorldCamera/ParallaxBackground"]
 motion_scale = Vector2( 0.4, 0.4 )
 motion_mirroring = Vector2( 1920, 1080 )
@@ -147,6 +188,17 @@ scale = Vector2( -1, 1 )
 texture = ExtResource( 10 )
 region_enabled = true
 region_rect = Rect2( 0, 0, 1920, 1080 )
+
+[node name="Particles2D" type="Particles2D" parent="TargetFollower/WorldCamera/ParallaxBackground/ParallaxLayer2"]
+modulate = Color( 1, 1, 1, 0.470588 )
+position = Vector2( 960, 540 )
+scale = Vector2( 0.5, 0.5 )
+amount = 24
+lifetime = 5.0
+preprocess = 5.0
+randomness = 0.2
+process_material = SubResource( 7 )
+texture = ExtResource( 18 )
 
 [node name="ParallaxLayer3" type="ParallaxLayer" parent="TargetFollower/WorldCamera/ParallaxBackground"]
 motion_scale = Vector2( 0.6, 0.6 )
@@ -159,6 +211,17 @@ texture = ExtResource( 11 )
 region_enabled = true
 region_rect = Rect2( 0, 0, 1920, 1080 )
 
+[node name="Particles2D" type="Particles2D" parent="TargetFollower/WorldCamera/ParallaxBackground/ParallaxLayer3"]
+modulate = Color( 1, 1, 1, 0.588235 )
+position = Vector2( 960, 540 )
+scale = Vector2( 0.6, 0.6 )
+amount = 24
+lifetime = 5.0
+preprocess = 5.0
+randomness = 0.2
+process_material = SubResource( 7 )
+texture = ExtResource( 18 )
+
 [node name="ParallaxLayer4" type="ParallaxLayer" parent="TargetFollower/WorldCamera/ParallaxBackground"]
 motion_scale = Vector2( 0.8, 0.8 )
 motion_offset = Vector2( 500, 0 )
@@ -168,6 +231,54 @@ motion_mirroring = Vector2( 1920, 1080 )
 texture = ExtResource( 12 )
 region_enabled = true
 region_rect = Rect2( 0, 0, 1920, 1080 )
+
+[node name="Particles2D" type="Particles2D" parent="TargetFollower/WorldCamera/ParallaxBackground/ParallaxLayer4"]
+modulate = Color( 1, 1, 1, 0.784314 )
+position = Vector2( 960, 540 )
+scale = Vector2( 0.9, 0.9 )
+amount = 24
+lifetime = 5.0
+preprocess = 5.0
+randomness = 0.2
+process_material = SubResource( 7 )
+texture = ExtResource( 18 )
+
+[node name="ParallaxBackground2" type="ParallaxBackground" parent="TargetFollower/WorldCamera"]
+layer = 100
+
+[node name="ParallaxLayer5" type="ParallaxLayer" parent="TargetFollower/WorldCamera/ParallaxBackground2"]
+z_index = 200
+motion_scale = Vector2( 1.2, 1.2 )
+motion_offset = Vector2( 500, 0 )
+motion_mirroring = Vector2( 1920, 1080 )
+
+[node name="Particles2D" type="Particles2D" parent="TargetFollower/WorldCamera/ParallaxBackground2/ParallaxLayer5"]
+modulate = Color( 1, 1, 1, 0.823529 )
+position = Vector2( 960, 540 )
+scale = Vector2( 1.2, 1.2 )
+amount = 24
+lifetime = 5.0
+preprocess = 5.0
+randomness = 0.2
+process_material = SubResource( 7 )
+texture = ExtResource( 18 )
+
+[node name="ParallaxLayer6" type="ParallaxLayer" parent="TargetFollower/WorldCamera/ParallaxBackground2"]
+z_index = 250
+motion_scale = Vector2( 1.4, 1.4 )
+motion_offset = Vector2( 500, 0 )
+motion_mirroring = Vector2( 1920, 1080 )
+
+[node name="Particles2D" type="Particles2D" parent="TargetFollower/WorldCamera/ParallaxBackground2/ParallaxLayer6"]
+modulate = Color( 1, 1, 1, 0.823529 )
+position = Vector2( 960, 540 )
+scale = Vector2( 1.5, 1.5 )
+amount = 24
+lifetime = 5.0
+preprocess = 5.0
+randomness = 0.2
+process_material = SubResource( 7 )
+texture = ExtResource( 18 )
 
 [node name="Levels" type="Node2D" parent="."]
 

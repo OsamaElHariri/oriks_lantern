@@ -26,10 +26,12 @@ func spirit_form_start(current_player):
 	$TargetFollower/WorldCamera.is_narrowing = false
 	$TargetFollower.target = current_player.spirit_player
 	post_process.spirit_form_start(current_player)
+	set_particles_speed_scale(0.3)
 
 func spirit_form_end(current_player):
 	$TargetFollower.target = current_player
 	post_process.spirit_form_end(current_player)
+	set_particles_speed_scale(1)
 
 func on_player_entered_level(level):
 	active_levels = remove_active_level(level)
@@ -85,5 +87,10 @@ func _physics_process(delta):
 	else:
 		$CanvasLayer/PostProcess.grey_direction = 1
 		$CanvasLayer/SpiritWaveEffects.modulate.a = clamp(current_a, 0.15, 0.3)
+
+func set_particles_speed_scale(speed_scale):
+	for child in $TargetFollower/WorldCamera/ParallaxBackground.get_children():
+		child.get_node("Particles2D").speed_scale = speed_scale
 	
-	
+	for child in $TargetFollower/WorldCamera/ParallaxBackground2.get_children():
+		child.get_node("Particles2D").speed_scale = speed_scale

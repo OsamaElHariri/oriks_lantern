@@ -19,7 +19,6 @@ scale = Vector2( 488, 540 )
 [node name="BasicPlatform2" parent="LevelOrigin/Platforms" instance=ExtResource( 4 )]
 position = Vector2( 160, 1272 )
 scale = Vector2( 488, 68 )
-spawn_top_decor = false
 
 [node name="BasicPlatform3" parent="LevelOrigin/Platforms" instance=ExtResource( 4 )]
 position = Vector2( 192, 672 )
@@ -34,7 +33,6 @@ spawn_top_decor = false
 [node name="BasicPlatform8" parent="LevelOrigin/Platforms" instance=ExtResource( 4 )]
 position = Vector2( 688, -296 )
 scale = Vector2( 224, 84 )
-spawn_top_decor = false
 
 [node name="BasicPlatform7" parent="LevelOrigin/Platforms" instance=ExtResource( 4 )]
 position = Vector2( 160, -904 )

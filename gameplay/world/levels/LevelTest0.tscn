@@ -74,6 +74,9 @@ position = Vector2( 391.252, -176 )
 rotation = 0.683829
 scale = Vector2( 1, 1.56292 )
 texture = ExtResource( 5 )
+__meta__ = {
+"_editor_description_": ""
+}
 
 [node name="sunlight2" type="Sprite" parent="."]
 modulate = Color( 0.960784, 0.964706, 0.658824, 1 )
