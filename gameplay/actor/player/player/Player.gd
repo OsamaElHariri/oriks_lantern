@@ -42,6 +42,7 @@ func spirit_form_start():
 	spirit_player.player = self
 	can_summon_spirit = false
 	world.spirit_form_start(self)
+	EMITTER.emit('player_spirit_form_start', self)
 
 func spirit_form_end(spirit):
 	position = spirit.position

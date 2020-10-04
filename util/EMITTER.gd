@@ -8,6 +8,7 @@ extends Node2D
 # call EMITTER.emit(data), where data is whatever information you want to send
 # with the signal
 
+signal player_spirit_form_start
 signal player_entered_level
 signal player_exited_level
 
