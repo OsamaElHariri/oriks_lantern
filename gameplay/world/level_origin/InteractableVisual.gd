@@ -7,6 +7,7 @@ var forces = {}
 var visual_texture_size
 var visual_material
 
+var move_sway_range = 100
 var spirit_pulse_range = 600
 
 func _ready():
@@ -16,7 +17,16 @@ func _ready():
 	visual_material = $visual.material
 	visual_material.set_shader_param("y_offset", randi() % 100)
 	visual_material.set_shader_param("y_speed_offset", randf() - 0.5)
+	EMITTER.connect("player_movement_heartbeat", self, 'on_player_movement_heartbeat')
 	EMITTER.connect("player_spirit_form_start", self, 'on_player_spirit_form_start')
+
+func on_player_movement_heartbeat(player):
+	var direction = player.horizontal_movement.direction
+	var diff = global_position.x - player.global_position.x
+	
+	if abs(diff) < move_sway_range:
+		add_force((1 - abs(diff) / spirit_pulse_range) * 0.1 * direction * sign(scale.x), smooth, 2)
+
 
 func on_player_spirit_form_start(player):
 	var diff = global_position.x - player.global_position.x

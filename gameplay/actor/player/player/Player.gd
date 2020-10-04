@@ -18,6 +18,9 @@ var world
 var on_floor = true
 var on_wall = false
 
+var movement_heartbeat_interval = 0.3
+var movement_heartbeat_counter = 0
+
 func _ready():
 	$WindUpAnimationTimer.connect("timeout", self, "spirit_form_start")
 	horizontal_movement = $MoveCollection.get_movement("HorizontalMovement")
@@ -85,6 +88,7 @@ func _physics_process(delta):
 		jump_just_pressed_counter = INF
 		spirit_form_wind_up()
 	
+	emit_movement_heartbeat(delta)
 	handle_visuals()
 
 func check_near_walls():
@@ -92,6 +96,15 @@ func check_near_walls():
 	for body in $WallCheckArea.get_overlapping_bodies():
 		if body.is_in_group("wall_jump_platform"):
 			near_wall = body
+
+func emit_movement_heartbeat(delta):
+	if horizontal_movement.direction == 0:
+		movement_heartbeat_counter = 0
+	else:
+		movement_heartbeat_counter += delta
+		if movement_heartbeat_counter > movement_heartbeat_interval:
+			movement_heartbeat_counter = 0
+			EMITTER.emit('player_movement_heartbeat', self)
 
 func handle_visuals():
 	var visual_scale = $Visuals.scale
