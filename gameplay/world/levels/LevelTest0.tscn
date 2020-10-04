@@ -2,7 +2,7 @@
 
 [ext_resource path="res://gameplay/world/level_origin/LevelOrigin.tscn" type="PackedScene" id=1]
 [ext_resource path="res://gameplay/world/level_origin/SpawnLocation.tscn" type="PackedScene" id=2]
-[ext_resource path="res://gameplay/world/level_origin/InteractableVisual.tscn" type="PackedScene" id=3]
+[ext_resource path="res://gameplay/world/level_origin/decor/TreeDecor.tscn" type="PackedScene" id=3]
 [ext_resource path="res://gameplay/platform/basic_platform/BasicPlatform.tscn" type="PackedScene" id=4]
 [ext_resource path="res://gameplay/world/level_origin/sunlight.png" type="Texture" id=5]
 [ext_resource path="res://gameplay/world/level_origin/glow.png" type="Texture" id=6]
@@ -43,8 +43,8 @@ position = Vector2( -32, 512 )
 scale = Vector2( 496, 48 )
 
 [node name="BasicPlatform2" parent="LevelOrigin/Platforms" instance=ExtResource( 4 )]
-position = Vector2( -864, 72 )
-scale = Vector2( 80, 172 )
+position = Vector2( -848, 72 )
+scale = Vector2( 88, 172 )
 
 [node name="BasicPlatform3" parent="LevelOrigin/Platforms" instance=ExtResource( 4 )]
 position = Vector2( -976, -456 )
@@ -86,10 +86,5 @@ rotation = 0.683829
 scale = Vector2( 0.379406, 1.56292 )
 texture = ExtResource( 5 )
 
-[node name="InteractableVisual" parent="." instance=ExtResource( 3 )]
-position = Vector2( -192, 416 )
-z_index = 100
-
-[node name="InteractableVisual2" parent="." instance=ExtResource( 3 )]
-position = Vector2( -848, 112 )
-scale = Vector2( -1, 1 )
+[node name="TreeDecor" parent="." instance=ExtResource( 3 )]
+position = Vector2( -806.266, 208 )

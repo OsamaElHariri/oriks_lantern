@@ -36,7 +36,7 @@ void fragment() {
 		float diff = dist - ring_radius;
 		float distortion = 1.0 - abs(diff) / ring_thickness;
 		float radius = dist;
-		radius = dist - diff * distortion / 4.0;
+		radius = dist - diff * distortion / 3.0;
 		COLOR.rgb = textureLod(SCREEN_TEXTURE, vec2(radius * SCREEN_UV.x / dist, radius * SCREEN_UV.y / dist), 0.0).rgb;
 	} else {
 		COLOR.rgb = textureLod(SCREEN_TEXTURE, SCREEN_UV, 0.0).rgb;

@@ -1,0 +1,84 @@
+[gd_scene load_steps=12 format=2]
+
+[ext_resource path="res://gameplay/world/level_origin/decor/tree_decor_1.png" type="Texture" id=1]
+[ext_resource path="res://gameplay/world/level_origin/decor/tree_leaves_1.png" type="Texture" id=2]
+[ext_resource path="res://gameplay/world/level_origin/decor/tree_base_1.png" type="Texture" id=3]
+[ext_resource path="res://gameplay/world/level_origin/decor/tree_trunk_1.png" type="Texture" id=4]
+[ext_resource path="res://gameplay/world/level_origin/InteractableVisual.gd" type="Script" id=5]
+[ext_resource path="res://gameplay/world/level_origin/decor/SmoothCurveDecor.tres" type="Curve" id=6]
+[ext_resource path="res://gameplay/world/level_origin/decor/HardStartCurveDecor.tres" type="Curve" id=7]
+[ext_resource path="res://gameplay/world/level_origin/decor/sway.shader" type="Shader" id=8]
+[ext_resource path="res://gameplay/world/level_origin/decor/tree_decor_2.png" type="Texture" id=9]
+
+[sub_resource type="ShaderMaterial" id=1]
+shader = ExtResource( 8 )
+shader_param/y_offset = 0.0
+shader_param/y_speed = 0.0
+shader_param/y_sway = 0.0
+shader_param/x_strength = 0.0
+
+[sub_resource type="ShaderMaterial" id=2]
+shader = ExtResource( 8 )
+shader_param/y_offset = 0.0
+shader_param/y_speed = 0.0
+shader_param/y_sway = 0.0
+shader_param/x_strength = 0.0
+
+[node name="TreeDecor" type="Node2D"]
+
+[node name="Roots" type="Node2D" parent="."]
+
+[node name="tree_base_1" type="Sprite" parent="Roots"]
+texture = ExtResource( 3 )
+
+[node name="tree_trunk_1" type="Sprite" parent="."]
+position = Vector2( -13.7657, -78.846 )
+texture = ExtResource( 4 )
+
+[node name="Decor" type="Node2D" parent="."]
+position = Vector2( -20.5339, -95.9959 )
+scale = Vector2( 1, -1 )
+script = ExtResource( 5 )
+smooth = ExtResource( 6 )
+hard_start = ExtResource( 7 )
+x_strength_multiplier = 0.3
+height_sway_ratio = 0.04
+y_speed = 2.0
+y_speed_random = 0.5
+
+[node name="visual" type="Sprite" parent="Decor"]
+material = SubResource( 1 )
+position = Vector2( -1.43353, 41.2088 )
+texture = ExtResource( 1 )
+offset = Vector2( 1.43353, -41.2088 )
+
+[node name="Decor2" type="Node2D" parent="."]
+position = Vector2( -20.5339, -95.9959 )
+scale = Vector2( 1, -1 )
+script = ExtResource( 5 )
+smooth = ExtResource( 6 )
+hard_start = ExtResource( 7 )
+x_strength_multiplier = 0.2
+height_sway_ratio = 0.04
+y_speed = 1.5
+y_speed_random = 0.5
+
+[node name="visual" type="Sprite" parent="Decor2"]
+material = SubResource( 1 )
+position = Vector2( -1.43353, 41.2088 )
+texture = ExtResource( 9 )
+offset = Vector2( 1.43353, -41.2088 )
+
+[node name="Leaves" type="Node2D" parent="."]
+position = Vector2( -20.5339, -148.357 )
+script = ExtResource( 5 )
+smooth = ExtResource( 6 )
+hard_start = ExtResource( 7 )
+x_strength_multiplier = 0.08
+height_sway_ratio = 0.1
+y_speed = 0.1
+y_speed_random = 0.1
+
+[node name="visual" type="Sprite" parent="Leaves"]
+material = SubResource( 2 )
+texture = ExtResource( 2 )

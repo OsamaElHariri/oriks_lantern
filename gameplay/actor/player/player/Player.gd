@@ -98,7 +98,9 @@ func check_near_walls():
 			near_wall = body
 
 func emit_movement_heartbeat(delta):
-	if horizontal_movement.direction == 0:
+	if horizontal_movement.direction == 0 \
+		or (on_wall and on_floor) \
+		or spirit_player != null:
 		movement_heartbeat_counter = 0
 	else:
 		movement_heartbeat_counter += delta

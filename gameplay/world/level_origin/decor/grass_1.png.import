@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/leaves_1.png-0f473914973fa23b059599512d51c570.stex"
+path="res://.import/grass_1.png-8862079f69de86065bb7353d3608cb63.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://gameplay/world/level_origin/leaves_1.png"
-dest_files=[ "res://.import/leaves_1.png-0f473914973fa23b059599512d51c570.stex" ]
+source_file="res://gameplay/world/level_origin/decor/grass_1.png"
+dest_files=[ "res://.import/grass_1.png-8862079f69de86065bb7353d3608cb63.stex" ]
 
 [params]
 
