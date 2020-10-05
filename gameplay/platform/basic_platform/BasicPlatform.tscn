@@ -1,7 +1,8 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://gameplay/world/level_origin/blank.png" type="Texture" id=1]
 [ext_resource path="res://gameplay/platform/basic_platform/BasicPlatform.gd" type="Script" id=2]
+[ext_resource path="res://gameplay/platform/basic_platform/platform_texture.png" type="Texture" id=3]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 2, 2 )
@@ -9,6 +10,12 @@ extents = Vector2( 2, 2 )
 [node name="BasicPlatform" type="Sprite"]
 texture = ExtResource( 1 )
 script = ExtResource( 2 )
+
+[node name="PlatformTexture" type="Sprite" parent="."]
+texture = ExtResource( 3 )
+flip_h = true
+flip_v = true
+region_enabled = true
 
 [node name="StaticBody2D" type="StaticBody2D" parent="." groups=[
 "wall_jump_platform",

@@ -12,6 +12,11 @@ export var y_speed_random = 0.0
 
 export var move_sway_range_multiplier = 1.0
 
+export var x_delay = 0.0
+
+export var has_shadow = false
+
+
 var forces = {}
 var visual_texture_size
 var visual_material
@@ -24,6 +29,13 @@ func _ready():
 		$visual.texture = variations[randi() % variations.size()]
 	visual_texture_size = $visual.texture.get_size()
 	$visual.material = $visual.material.duplicate(true)
+	var shadow = get_node_or_null("VisualShadow")
+	if shadow != null:
+		if has_shadow:
+			shadow.texture = $visual.texture
+			shadow.material = $visual.material
+		else:
+			shadow.queue_free()
 	
 	move_sway_range = visual_texture_size.x * move_sway_range_multiplier
 	
@@ -51,7 +63,7 @@ func on_player_spirit_form_start(player):
 func add_force(force, curve, duration):
 	forces[force] = {
 		'force': force,
-		'duration': 0,
+		'duration': -x_delay,
 		'max_duration': duration,
 		'curve': curve
 	}

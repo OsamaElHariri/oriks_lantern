@@ -61,7 +61,7 @@ func draw_platform_in_tilemap(platform):
 	var bottom_right = platform.position + platform_size * platform.scale / 2
 	var current_x = top_left.x
 	var current_y = top_left.y
-	platform.visible = false
+	platform.adjust_textures()
 	while current_y < bottom_right.y:
 		current_x = top_left.x
 		while current_x < bottom_right.x:

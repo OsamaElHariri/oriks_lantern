@@ -47,10 +47,17 @@ script = ExtResource( 1 )
 smooth = SubResource( 1 )
 hard_start = SubResource( 2 )
 variations = [ ExtResource( 2 ), ExtResource( 3 ), ExtResource( 4 ), ExtResource( 5 ) ]
+x_strength_multiplier = 1.5
 height_sway_ratio = 0.1
 y_speed = 2.0
 y_speed_random = 1.0
-move_sway_range_multiplier = 1.5
+move_sway_range_multiplier = 1.7
+
+[node name="VisualShadow" type="Sprite" parent="."]
+modulate = Color( 0, 0, 0, 0.117647 )
+material = SubResource( 4 )
+position = Vector2( 0, -32 )
+texture = ExtResource( 2 )
 
 [node name="visual" type="Sprite" parent="."]
 material = SubResource( 4 )

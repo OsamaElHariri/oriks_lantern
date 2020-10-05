@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=12 format=2]
 
 [ext_resource path="res://gameplay/world/level_origin/LevelOrigin.tscn" type="PackedScene" id=1]
 [ext_resource path="res://gameplay/world/level_origin/SpawnLocation.tscn" type="PackedScene" id=2]
@@ -7,6 +7,7 @@
 [ext_resource path="res://gameplay/world/level_origin/sunlight.png" type="Texture" id=5]
 [ext_resource path="res://gameplay/world/level_origin/glow.png" type="Texture" id=6]
 [ext_resource path="res://gameplay/world/level_origin/LevelBounds.tscn" type="PackedScene" id=7]
+[ext_resource path="res://gameplay/world/level_origin/decor/inner_decor_1.png" type="Texture" id=8]
 
 [sub_resource type="Gradient" id=1]
 offsets = PoolRealArray( 0, 0.116732, 0.832685, 1 )
@@ -88,3 +89,7 @@ texture = ExtResource( 5 )
 
 [node name="TreeDecor" parent="." instance=ExtResource( 3 )]
 position = Vector2( -806.266, 208 )
+
+[node name="inner_decor_1" type="Sprite" parent="."]
+position = Vector2( -864, 432 )
+texture = ExtResource( 8 )
