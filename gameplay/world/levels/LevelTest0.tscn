@@ -50,10 +50,12 @@ scale = Vector2( 88, 172 )
 [node name="BasicPlatform3" parent="LevelOrigin/Platforms" instance=ExtResource( 4 )]
 position = Vector2( -976, -456 )
 scale = Vector2( 24, 92 )
+spawn_top_decor = false
 
 [node name="BasicPlatform4" parent="LevelOrigin/Platforms" instance=ExtResource( 4 )]
-position = Vector2( -11.9999, -576 )
-scale = Vector2( 486, 16 )
+position = Vector2( -11.9999, -592 )
+scale = Vector2( 486, 24 )
+spawn_top_decor = false
 
 [node name="SpawnLocations" type="Node2D" parent="LevelOrigin"]
 

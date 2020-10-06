@@ -21,9 +21,12 @@ var on_wall = false
 var movement_heartbeat_interval = 0.3
 var movement_heartbeat_counter = 0
 
+var level_transition_indicator
+
 func _ready():
 	$WindUpAnimationTimer.connect("timeout", self, "spirit_form_start")
 	horizontal_movement = $MoveCollection.get_movement("HorizontalMovement")
+	level_transition_indicator = $LevelTransitionIndicator
 
 func spirit_form_wind_up():
 	$WindUpAnimationPlayer.play("wind_up")
@@ -62,6 +65,7 @@ func spirit_form_end(spirit):
 	movement.strength_decay = 100
 	can_summon_spirit = false
 	world.spirit_form_end(self)
+	level_transition_indicator.global_position = global_position
 	
 	movement.direction = spirit_player.get_node('MoveCollection').velocity
 	spirit_player = null
@@ -87,6 +91,11 @@ func _physics_process(delta):
 	if can_summon_spirit and jump_just_pressed_counter < 0.15:
 		jump_just_pressed_counter = INF
 		spirit_form_wind_up()
+	
+	if spirit_player != null:
+		level_transition_indicator.global_position = spirit_player.global_position
+	else:
+		level_transition_indicator.global_position = global_position
 	
 	emit_movement_heartbeat(delta)
 	handle_visuals()

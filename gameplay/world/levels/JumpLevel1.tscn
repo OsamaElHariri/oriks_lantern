@@ -57,17 +57,39 @@ margin_top = 352.0
 margin_right = 192.0
 margin_bottom = 384.0
 
-[node name="LeavesDecor" parent="." instance=ExtResource( 6 )]
+[node name="Decor" type="Node2D" parent="."]
+
+[node name="LeavesDecor" parent="Decor" instance=ExtResource( 6 )]
 position = Vector2( 1046.65, -54 )
 scale = Vector2( 0.601266, 0.710526 )
 has_shadow = true
 
-[node name="LeavesDecor2" parent="." instance=ExtResource( 6 )]
+[node name="LeavesDecor2" parent="Decor" instance=ExtResource( 6 )]
 position = Vector2( 1072, -54 )
 scale = Vector2( 0.601266, 0.710526 )
 has_shadow = true
 
-[node name="inner_decor_2" type="Sprite" parent="."]
+[node name="inner_decor_2" type="Sprite" parent="Decor"]
 position = Vector2( 1072, 9.53674e-07 )
+scale = Vector2( 0.601266, 0.710526 )
+texture = ExtResource( 7 )
+
+[node name="LeavesDecor4" parent="Decor" instance=ExtResource( 6 )]
+position = Vector2( 784, 400 )
+scale = Vector2( 0.601266, 0.710526 )
+has_shadow = true
+
+[node name="inner_decor_3" type="Sprite" parent="Decor"]
+position = Vector2( 783.5, 454 )
+scale = Vector2( 0.601266, 0.710526 )
+texture = ExtResource( 7 )
+
+[node name="LeavesDecor6" parent="Decor" instance=ExtResource( 6 )]
+position = Vector2( 114.939, 480 )
+scale = Vector2( 0.601266, 0.710526 )
+has_shadow = true
+
+[node name="inner_decor_4" type="Sprite" parent="Decor"]
+position = Vector2( 140.292, 534 )
 scale = Vector2( 0.601266, 0.710526 )
 texture = ExtResource( 7 )

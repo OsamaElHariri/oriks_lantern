@@ -19,6 +19,9 @@ func _ready():
 	EMITTER.connect("player_entered_level", self, "on_player_entered_level")
 	EMITTER.connect("player_exited_level", self, "on_player_exited_level")
 
+func get_camera():
+	return $TargetFollower/WorldCamera
+
 func spirit_form_wind_up(_current_player):
 	$TargetFollower/WorldCamera.is_narrowing = true
 
@@ -37,11 +40,13 @@ func on_player_entered_level(level):
 	active_levels = remove_active_level(level)
 	active_levels.append(level)
 	set_camera_limits(active_levels[0])
+	level.get_node("LevelOrigin").level_active()
 
 func on_player_exited_level(level):
 	active_levels = remove_active_level(level)
 	if !active_levels.empty():
 		set_camera_limits(active_levels[0])
+	level.get_node("LevelOrigin").level_inactive()
 
 func remove_active_level(level):
 	var new_active_levels = []

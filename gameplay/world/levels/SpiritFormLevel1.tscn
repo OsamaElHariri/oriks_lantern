@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://gameplay/world/level_origin/SpawnLocation.tscn" type="PackedScene" id=1]
 [ext_resource path="res://gameplay/world/level_origin/LevelBounds.tscn" type="PackedScene" id=2]
@@ -7,6 +7,7 @@
 [ext_resource path="res://gameplay/platform/spikes/Spikes.tscn" type="PackedScene" id=5]
 [ext_resource path="res://gameplay/world/level_origin/decor/LeavesDecor.tscn" type="PackedScene" id=6]
 [ext_resource path="res://gameplay/world/level_origin/decor/inner_decor_2.png" type="Texture" id=7]
+[ext_resource path="res://gameplay/world/level_origin/decor/fore_ground_decor_1.png" type="Texture" id=8]
 
 [node name="SpiritFormLevel1" type="Node2D"]
 
@@ -54,6 +55,14 @@ margin_top = 416.0
 margin_right = 1952.0
 margin_bottom = 448.0
 rect_rotation = -89.9999
+
+[node name="ForegroundDecor" type="Node2D" parent="LevelOrigin"]
+
+[node name="fore_ground_decor_1" type="Sprite" parent="LevelOrigin/ForegroundDecor"]
+position = Vector2( 1072, -304 )
+rotation = 2.35619
+z_index = 200
+texture = ExtResource( 8 )
 
 [node name="inner_decor_2" type="Sprite" parent="."]
 position = Vector2( 656, -162 )
