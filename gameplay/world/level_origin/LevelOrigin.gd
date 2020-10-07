@@ -6,14 +6,15 @@ var GRASS_DECOR = preload("res://gameplay/world/level_origin/decor/GrassDecor.ts
 
 var top_cell_coords = []
 
-var world
-var world_camera
 var is_level_active = false
 
 func _ready():
 	randomize()
-	world = get_world_node()
-	world_camera = world.get_camera()
+	
+	var foreground_decor = get_node_or_null("ForegroundDecor")
+	if foreground_decor != null:
+		foreground_decor.visible = false
+	
 	connect_to_spawn_points()
 	var platforms = get_node_or_null("Platforms")
 	if platforms != null:
@@ -29,16 +30,6 @@ func _ready():
 			if is_top_cell and randf() < 0.4:
 				var sprite = spawn_leaves_decor()
 				sprite.position = $TileMap.map_to_world(pos)
-
-func get_world_node():
-	var parent = get_parent()
-	while parent != null:
-		if "World" == parent.get_name():
-		  break
-		else:
-		  parent = parent.get_parent()
-	
-	return parent
 
 func spawn_leaves_decor():
 	var leaves_decor = LEAVES_DECOR.instance()
@@ -92,7 +83,7 @@ func connect_to_spawn_points():
 	if location_nodes == null: return
 	for location in location_nodes.get_children():
 		location.connect("player_entered", self, "on_spawn_location_player_enetered")
-	
+
 func on_spawn_location_player_enetered(spawn_location, _player):
 	var location_nodes = get_node_or_null("SpawnLocations")
 	if location_nodes == null: return
@@ -110,13 +101,16 @@ func get_spawn_location():
 	return position
 
 func level_active():
+	is_level_active = true
 	var foreground_decor = get_node_or_null("ForegroundDecor")
 	if foreground_decor != null:
-		foreground_decor.position = Vector2.ZERO
-	is_level_active = true
+		foreground_decor.visible = true
 
 func level_inactive():
 	is_level_active = false
+	var foreground_decor = get_node_or_null("ForegroundDecor")
+	if foreground_decor != null:
+		foreground_decor.visible = false
 
 func _physics_process(_delta):
 	var foreground_decor = get_node_or_null("ForegroundDecor")
@@ -125,4 +119,7 @@ func _physics_process(_delta):
 
 func move_foreground_decor(node):
 	if is_level_active:
-		node.position -= world_camera.velocity * 0.3
+		for child in node.get_children():
+			if "speed" in child:
+				var screen_pos = get_viewport_transform().get_origin() - OS.get_screen_size() / 2
+				child.position = (global_position + screen_pos) * child.speed

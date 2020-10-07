@@ -5,8 +5,9 @@ signal player_entered
 var is_active = false
 
 func _ready():
-	connect("body_entered", self, "on_body_entered")
+	connect("area_entered", self, "on_area_entered")
 
-func on_body_entered(body):
+func on_area_entered(area):
+	var player = area.get_parent()
 	is_active = true
-	emit_signal("player_entered", self, body)
+	emit_signal("player_entered", self, player)
