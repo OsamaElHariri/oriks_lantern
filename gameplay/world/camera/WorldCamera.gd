@@ -6,7 +6,7 @@ var velocity = Vector2.ZERO
 
 func _physics_process(_delta):
 	if is_narrowing:
-		zoom = zoom - (zoom - Vector2(0.97, 0.97)) * 0.2
+		zoom = zoom - (zoom - Vector2(0.985, 0.985)) * 0.2
 	else:
 		zoom = zoom - (zoom - Vector2(1, 1)) * 0.6
 	

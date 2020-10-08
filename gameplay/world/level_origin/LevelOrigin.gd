@@ -14,6 +14,10 @@ func _ready():
 	var foreground_decor = get_node_or_null("ForegroundDecor")
 	if foreground_decor != null:
 		foreground_decor.visible = false
+		var current_modulate = 1
+		for child in foreground_decor.get_children():
+			current_modulate -= 0.25
+			child.modulate = Color(current_modulate, current_modulate, current_modulate)
 	
 	connect_to_spawn_points()
 	var platforms = get_node_or_null("Platforms")
