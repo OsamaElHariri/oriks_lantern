@@ -24,7 +24,8 @@ func get_velocity(move_collection):
 	if move_collection.is_on_floor or move_collection.is_on_wall:
 		stop()
 	
-	if !move_collection.is_on_floor and move_collection.target.near_wall != null && move_collection.jump_just_pressed:
+	if !move_collection.is_on_floor and move_collection.target.near_wall != null && move_collection.jump_just_pressed_counter < 0.1:
+		move_collection.jump_just_pressed_counter = INF
 		x_direction = sign(move_collection.target.global_position.x - move_collection.target.near_wall.global_position.x)
 		var x_current_strength = x_strength
 		

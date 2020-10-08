@@ -181,7 +181,7 @@ material = SubResource( 1 )
 texture = ExtResource( 14 )
 
 [node name="Node2D3" type="Node2D" parent="LevelOrigin/ForegroundDecor/Parallax1"]
-position = Vector2( -553.5, 1408 )
+position = Vector2( -553.5, 1472 )
 script = ExtResource( 6 )
 __meta__ = {
 "_editor_description_": ""
@@ -199,7 +199,7 @@ material = SubResource( 1 )
 texture = ExtResource( 13 )
 
 [node name="front_rock_blur_2" type="Sprite" parent="LevelOrigin/ForegroundDecor/Parallax1"]
-position = Vector2( 198.5, 1681.5 )
+position = Vector2( 198.5, 1745.5 )
 scale = Vector2( 1, 1.34276 )
 texture = ExtResource( 7 )
 
@@ -209,7 +209,7 @@ script = ExtResource( 8 )
 speed = 0.7
 
 [node name="Node2D" type="Node2D" parent="LevelOrigin/ForegroundDecor/Parallax2"]
-position = Vector2( -192, 1808 )
+position = Vector2( -192, 1872 )
 script = ExtResource( 6 )
 __meta__ = {
 "_editor_description_": ""
