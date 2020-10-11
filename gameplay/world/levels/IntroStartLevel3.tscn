@@ -1,0 +1,102 @@
+[gd_scene load_steps=13 format=2]
+
+[ext_resource path="res://gameplay/world/level_origin/LevelBounds.tscn" type="PackedScene" id=1]
+[ext_resource path="res://gameplay/platform/basic_platform/BasicPlatform.tscn" type="PackedScene" id=2]
+[ext_resource path="res://gameplay/world/levels/Decor/grave.png" type="Texture" id=3]
+[ext_resource path="res://gameplay/world/level_origin/glow.png" type="Texture" id=4]
+[ext_resource path="res://gameplay/world/level_origin/LevelOrigin.tscn" type="PackedScene" id=5]
+[ext_resource path="res://gameplay/world/level_origin/SpawnLocation.tscn" type="PackedScene" id=6]
+[ext_resource path="res://gameplay/world/level_origin/sunlight.png" type="Texture" id=7]
+[ext_resource path="res://gameplay/world/level_origin/decor/front_rock_blur_1.png" type="Texture" id=8]
+[ext_resource path="res://gameplay/world/levels/Decor/bare_tree.png" type="Texture" id=9]
+
+[sub_resource type="Gradient" id=1]
+offsets = PoolRealArray( 0, 0.116732, 0.832685, 1 )
+colors = PoolColorArray( 1, 1, 1, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0 )
+
+[sub_resource type="GradientTexture" id=2]
+gradient = SubResource( 1 )
+
+[sub_resource type="ParticlesMaterial" id=3]
+emission_shape = 2
+emission_box_extents = Vector3( 700, 180, 1 )
+flag_disable_z = true
+direction = Vector3( 1, 0.5, 0 )
+gravity = Vector3( 0, 0, 0 )
+initial_velocity = 10.0
+orbit_velocity = 0.0
+orbit_velocity_random = 0.5
+tangential_accel_random = 0.3
+scale = 0.05
+color_ramp = SubResource( 2 )
+
+[node name="LevelTest3" type="Node2D"]
+
+[node name="LevelOrigin" parent="." instance=ExtResource( 5 )]
+
+[node name="LevelBounds" parent="LevelOrigin" instance=ExtResource( 1 )]
+position = Vector2( 24, 2.86102e-05 )
+scale = Vector2( 468, 264 )
+
+[node name="Platforms" type="Node2D" parent="LevelOrigin"]
+
+[node name="BasicPlatform" parent="LevelOrigin/Platforms" instance=ExtResource( 2 )]
+position = Vector2( 480.032, 512 )
+scale = Vector2( 239.984, 48 )
+
+[node name="BasicPlatform2" parent="LevelOrigin/Platforms" instance=ExtResource( 2 )]
+position = Vector2( -494.745, 512 )
+scale = Vector2( 248.627, 48 )
+spawn_top_decor = false
+
+[node name="SpawnLocations" type="Node2D" parent="LevelOrigin"]
+
+[node name="SpawnLocation" parent="LevelOrigin/SpawnLocations" instance=ExtResource( 6 )]
+position = Vector2( 880, 64 )
+scale = Vector2( 1, 2.52 )
+
+[node name="ForegroundDecor" type="Node2D" parent="LevelOrigin"]
+z_index = 100
+
+[node name="Parallax1" type="Node2D" parent="LevelOrigin/ForegroundDecor"]
+modulate = Color( 0.709804, 0.709804, 0.709804, 1 )
+
+[node name="front_rock_blur_1" type="Sprite" parent="LevelOrigin/ForegroundDecor/Parallax1"]
+position = Vector2( -16, 704 )
+texture = ExtResource( 8 )
+
+[node name="Decor" type="Node2D" parent="."]
+
+[node name="Particles2D" type="Particles2D" parent="Decor"]
+position = Vector2( -92.3594, -208 )
+rotation = -0.863938
+amount = 200
+lifetime = 6.0
+preprocess = 1.0
+process_material = SubResource( 3 )
+texture = ExtResource( 4 )
+
+[node name="sunlight" type="Sprite" parent="Decor"]
+modulate = Color( 0.960784, 0.964706, 0.658824, 1 )
+position = Vector2( -248.748, -61.1688 )
+rotation = 0.683829
+scale = Vector2( 1, 1.56292 )
+texture = ExtResource( 7 )
+__meta__ = {
+"_editor_description_": ""
+}
+
+[node name="sunlight2" type="Sprite" parent="Decor"]
+modulate = Color( 0.960784, 0.964706, 0.658824, 1 )
+position = Vector2( 7.25165, -77.1688 )
+rotation = 0.683829
+scale = Vector2( 0.379406, 1.56292 )
+texture = ExtResource( 7 )
+
+[node name="bare_tree" type="Sprite" parent="Decor"]
+position = Vector2( -747.497, 78.0072 )
+texture = ExtResource( 9 )
+
+[node name="grave" type="Sprite" parent="Decor"]
+position = Vector2( -574.367, 387.306 )
+texture = ExtResource( 3 )

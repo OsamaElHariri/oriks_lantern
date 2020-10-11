@@ -1,5 +1,8 @@
 extends Node2D
 
+signal level_active
+signal level_inactive
+
 var LEAVES_DECOR = preload("res://gameplay/world/level_origin/decor/LeavesDecor.tscn")
 var BIG_PLANT_DECOR = preload("res://gameplay/world/level_origin/decor/BigPlantDecor.tscn")
 var GRASS_DECOR = preload("res://gameplay/world/level_origin/decor/GrassDecor.tscn")
@@ -7,9 +10,11 @@ var GRASS_DECOR = preload("res://gameplay/world/level_origin/decor/GrassDecor.ts
 var top_cell_coords = []
 
 var is_level_active = false
+var world
 
 func _ready():
 	randomize()
+	world = get_world()
 	
 	var foreground_decor = get_node_or_null("ForegroundDecor")
 	if foreground_decor != null:
@@ -34,6 +39,12 @@ func _ready():
 			if is_top_cell and randf() < 0.4:
 				var sprite = spawn_leaves_decor()
 				sprite.position = $TileMap.map_to_world(pos)
+
+func get_world():
+	var parent = get_parent()
+	while parent != null and parent.name != 'World':
+		parent = parent.get_parent()
+	return parent
 
 func spawn_leaves_decor():
 	var leaves_decor = LEAVES_DECOR.instance()
@@ -109,12 +120,14 @@ func level_active():
 	var foreground_decor = get_node_or_null("ForegroundDecor")
 	if foreground_decor != null:
 		foreground_decor.visible = true
+	emit_signal("level_active")
 
 func level_inactive():
 	is_level_active = false
 	var foreground_decor = get_node_or_null("ForegroundDecor")
 	if foreground_decor != null:
 		foreground_decor.visible = false
+	emit_signal("level_inactive")
 
 func _physics_process(_delta):
 	var foreground_decor = get_node_or_null("ForegroundDecor")

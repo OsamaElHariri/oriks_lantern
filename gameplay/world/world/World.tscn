@@ -1,4 +1,4 @@
-[gd_scene load_steps=26 format=2]
+[gd_scene load_steps=29 format=2]
 
 [ext_resource path="res://gameplay/world/world/PostProcess.gd" type="Script" id=1]
 [ext_resource path="res://gameplay/world/camera/WorldCamera.tscn" type="PackedScene" id=2]
@@ -18,6 +18,9 @@
 [ext_resource path="res://gameplay/world/levels/SpiritFormLevel3.tscn" type="PackedScene" id=16]
 [ext_resource path="res://gameplay/world/levels/SpiritFormLevel4.tscn" type="PackedScene" id=17]
 [ext_resource path="res://gameplay/world/level_origin/glow.png" type="Texture" id=18]
+[ext_resource path="res://gameplay/world/levels/IntroStartLevel1.tscn" type="PackedScene" id=19]
+[ext_resource path="res://gameplay/world/levels/IntroStartLevel2.tscn" type="PackedScene" id=20]
+[ext_resource path="res://gameplay/world/levels/IntroStartLevel3.tscn" type="PackedScene" id=21]
 
 [sub_resource type="Shader" id=1]
 code = "shader_type canvas_item;
@@ -145,7 +148,7 @@ position = Vector2( 2080, 800 )
 scale = Vector2( 1.37329, 1 )
 
 [node name="Player" parent="." instance=ExtResource( 6 )]
-position = Vector2( 176, 224 )
+position = Vector2( -1360, 144 )
 
 [node name="TargetFollower" type="Node2D" parent="."]
 script = ExtResource( 3 )
@@ -168,6 +171,7 @@ region_enabled = true
 region_rect = Rect2( 0, 0, 1920, 1080 )
 
 [node name="Particles2D" type="Particles2D" parent="TargetFollower/WorldCamera/ParallaxBackground/ParallaxLayer"]
+visible = false
 modulate = Color( 1, 1, 1, 0.313726 )
 position = Vector2( 960, 540 )
 scale = Vector2( 0.3, 0.3 )
@@ -190,6 +194,7 @@ region_enabled = true
 region_rect = Rect2( 0, 0, 1920, 1080 )
 
 [node name="Particles2D" type="Particles2D" parent="TargetFollower/WorldCamera/ParallaxBackground/ParallaxLayer2"]
+visible = false
 modulate = Color( 1, 1, 1, 0.470588 )
 position = Vector2( 960, 540 )
 scale = Vector2( 0.5, 0.5 )
@@ -212,6 +217,7 @@ region_enabled = true
 region_rect = Rect2( 0, 0, 1920, 1080 )
 
 [node name="Particles2D" type="Particles2D" parent="TargetFollower/WorldCamera/ParallaxBackground/ParallaxLayer3"]
+visible = false
 modulate = Color( 1, 1, 1, 0.588235 )
 position = Vector2( 960, 540 )
 scale = Vector2( 0.6, 0.6 )
@@ -233,6 +239,7 @@ region_enabled = true
 region_rect = Rect2( 0, 0, 1920, 1080 )
 
 [node name="Particles2D" type="Particles2D" parent="TargetFollower/WorldCamera/ParallaxBackground/ParallaxLayer4"]
+visible = false
 modulate = Color( 1, 1, 1, 0.784314 )
 position = Vector2( 960, 540 )
 scale = Vector2( 0.9, 0.9 )
@@ -253,6 +260,7 @@ motion_offset = Vector2( 500, 0 )
 motion_mirroring = Vector2( 1920, 1080 )
 
 [node name="Particles2D" type="Particles2D" parent="TargetFollower/WorldCamera/ParallaxBackground2/ParallaxLayer5"]
+visible = false
 modulate = Color( 1, 1, 1, 0.823529 )
 position = Vector2( 960, 540 )
 scale = Vector2( 1.2, 1.2 )
@@ -270,6 +278,7 @@ motion_offset = Vector2( 500, 0 )
 motion_mirroring = Vector2( 1920, 1080 )
 
 [node name="Particles2D" type="Particles2D" parent="TargetFollower/WorldCamera/ParallaxBackground2/ParallaxLayer6"]
+visible = false
 modulate = Color( 1, 1, 1, 0.823529 )
 position = Vector2( 960, 540 )
 scale = Vector2( 1.5, 1.5 )
@@ -298,3 +307,12 @@ position = Vector2( 7728, -2960 )
 
 [node name="JumpLevel4" parent="Levels" instance=ExtResource( 17 )]
 position = Vector2( 5776, -2224 )
+
+[node name="IntroStartLevel1" parent="Levels" instance=ExtResource( 19 )]
+position = Vector2( -1984, -16 )
+
+[node name="IntroStartLevel2" parent="Levels" instance=ExtResource( 20 )]
+position = Vector2( -3968, -16 )
+
+[node name="LevelTest3" parent="Levels" instance=ExtResource( 21 )]
+position = Vector2( -7520, -432 )
