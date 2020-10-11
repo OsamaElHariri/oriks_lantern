@@ -179,12 +179,12 @@ position = Vector2( 1154, 0 )
 z_index = 20
 
 [node name="robot_body_front" type="Sprite" parent="Visuals"]
-position = Vector2( -59.6693, -521.956 )
+position = Vector2( -51.6774, -554.497 )
 texture = ExtResource( 3 )
 
 [node name="robot_wheel" type="Sprite" parent="Visuals/robot_body_front"]
-position = Vector2( 46.6453, 420.578 )
-rotation = -2.0823
+position = Vector2( 46.789, 440.681 )
+rotation = -1.82705
 texture = ExtResource( 6 )
 
 [node name="robot_body_back" type="Sprite" parent="Visuals/robot_body_front"]
@@ -193,7 +193,7 @@ z_index = -5
 texture = ExtResource( 7 )
 
 [node name="bottom_chomper" type="Sprite" parent="Visuals/robot_body_front"]
-position = Vector2( -75.711, 206.625 )
+position = Vector2( -75.711, 228.145 )
 z_index = -1
 texture = ExtResource( 4 )
 
@@ -203,7 +203,7 @@ z_index = -1
 texture = ExtResource( 2 )
 
 [node name="tom_chomper" type="Sprite" parent="Visuals/robot_body_front"]
-position = Vector2( -75.711, -244.497 )
+position = Vector2( -75.711, -267.026 )
 rotation = -3.14159
 z_index = -1
 texture = ExtResource( 4 )
@@ -215,7 +215,7 @@ texture = ExtResource( 2 )
 
 [node name="top_crusher" type="Sprite" parent="Visuals/robot_body_front"]
 position = Vector2( 64.4419, -40.8301 )
-rotation = 0.0513381
+rotation = -0.051162
 texture = ExtResource( 1 )
 offset = Vector2( -225.902, -121.482 )
 
@@ -228,13 +228,13 @@ texture = ExtResource( 1 )
 
 [node name="robot_crusher" type="Sprite" parent="Visuals/robot_body_front/top_crusher"]
 position = Vector2( -453.795, -268.307 )
-rotation = -4.05974
+rotation = -1.53776
 z_index = -1
 texture = ExtResource( 5 )
 
 [node name="top_crusher2" type="Sprite" parent="Visuals/robot_body_front"]
 position = Vector2( 67.8602, 182.407 )
-rotation = -0.51635
+rotation = -0.639913
 texture = ExtResource( 1 )
 offset = Vector2( -225.902, -121.482 )
 
@@ -247,7 +247,7 @@ texture = ExtResource( 1 )
 
 [node name="robot_crusher" type="Sprite" parent="Visuals/robot_body_front/top_crusher2"]
 position = Vector2( -453.795, -268.307 )
-rotation = 4.05974
+rotation = 1.53776
 z_index = -1
 texture = ExtResource( 5 )
 

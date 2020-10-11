@@ -12,12 +12,24 @@ func _ready():
 	world_camera = $LevelOrigin.world.get_node_or_null("TargetFollower/WorldCamera")
 
 func on_level_active():
+	var player = $LevelOrigin.world.player
+	var hat = player.get_node_or_null("Visuals/Sprites/torso/hat")
+	player.scale = Vector2.ONE * 0.85
+	if hat:
+		hat.visible = false
+	
 	$Robot.visible = true
 	var background = $LevelOrigin.world.get_node_or_null("TargetFollower/WorldCamera/ParallaxBackground/ParallaxLayer/background")
 	if background:
 		background.modulate = Color(0.09, 0.06, 0.91)
 
 func on_level_inactive():
+	var player = $LevelOrigin.world.player
+	var hat = player.get_node_or_null("Visuals/Sprites/torso/hat")
+	player.scale = Vector2.ONE
+	if hat:
+		hat.visible = true
+	
 	$Robot.visible = false
 	var background = $LevelOrigin.world.get_node_or_null("TargetFollower/WorldCamera/ParallaxBackground/ParallaxLayer/background")
 	if background:
