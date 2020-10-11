@@ -12,6 +12,7 @@ signal player_spirit_form_start
 signal player_movement_heartbeat
 signal player_entered_level
 signal player_exited_level
+signal request_screen_shake
 
 func emit (signal_id, data=null):
 	if data !=null:

@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=2]
+[gd_scene load_steps=13 format=2]
 
 [ext_resource path="res://gameplay/world/levels/Decor/intro_cutscene/robot_crusher_arm.png" type="Texture" id=1]
 [ext_resource path="res://gameplay/world/levels/Decor/intro_cutscene/robot_chomper_back.png" type="Texture" id=2]
@@ -148,19 +148,43 @@ tracks/0/keys = {
 "values": [ 0.0, -360.0 ]
 }
 
+[sub_resource type="Animation" id=5]
+resource_name = "enter"
+length = 0.5
+tracks/0/type = "bezier"
+tracks/0/path = NodePath("../Visuals:position:x")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"points": PoolRealArray( 1154, -0.25, 0, 0.25, 0, 32, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0, 0.5 )
+}
+tracks/1/type = "bezier"
+tracks/1/path = NodePath("../Visuals:position:y")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = false
+tracks/1/keys = {
+"points": PoolRealArray(  ),
+"times": PoolRealArray(  )
+}
+
 [node name="CrusherRobot" type="Node2D"]
 
 [node name="Visuals" type="Node2D" parent="."]
-position = Vector2( 31.5792, 0 )
+position = Vector2( 1154, 0 )
 z_index = 20
 
 [node name="robot_body_front" type="Sprite" parent="Visuals"]
-position = Vector2( -74.8447, -554.497 )
+position = Vector2( -59.6693, -521.956 )
 texture = ExtResource( 3 )
 
 [node name="robot_wheel" type="Sprite" parent="Visuals/robot_body_front"]
-position = Vector2( 46.789, 442.116 )
-rotation = -1.6686
+position = Vector2( 46.6453, 420.578 )
+rotation = -2.0823
 texture = ExtResource( 6 )
 
 [node name="robot_body_back" type="Sprite" parent="Visuals/robot_body_front"]
@@ -169,7 +193,7 @@ z_index = -5
 texture = ExtResource( 7 )
 
 [node name="bottom_chomper" type="Sprite" parent="Visuals/robot_body_front"]
-position = Vector2( -75.711, 160.742 )
+position = Vector2( -75.711, 206.625 )
 z_index = -1
 texture = ExtResource( 4 )
 
@@ -179,7 +203,7 @@ z_index = -1
 texture = ExtResource( 2 )
 
 [node name="tom_chomper" type="Sprite" parent="Visuals/robot_body_front"]
-position = Vector2( -75.711, -196.464 )
+position = Vector2( -75.711, -244.497 )
 rotation = -3.14159
 z_index = -1
 texture = ExtResource( 4 )
@@ -191,7 +215,7 @@ texture = ExtResource( 2 )
 
 [node name="top_crusher" type="Sprite" parent="Visuals/robot_body_front"]
 position = Vector2( 64.4419, -40.8301 )
-rotation = -0.00417243
+rotation = 0.0513381
 texture = ExtResource( 1 )
 offset = Vector2( -225.902, -121.482 )
 
@@ -204,13 +228,13 @@ texture = ExtResource( 1 )
 
 [node name="robot_crusher" type="Sprite" parent="Visuals/robot_body_front/top_crusher"]
 position = Vector2( -453.795, -268.307 )
-rotation = -5.46458
+rotation = -4.05974
 z_index = -1
 texture = ExtResource( 5 )
 
 [node name="top_crusher2" type="Sprite" parent="Visuals/robot_body_front"]
 position = Vector2( 67.8602, 182.407 )
-rotation = -0.575745
+rotation = -0.51635
 texture = ExtResource( 1 )
 offset = Vector2( -225.902, -121.482 )
 
@@ -223,7 +247,7 @@ texture = ExtResource( 1 )
 
 [node name="robot_crusher" type="Sprite" parent="Visuals/robot_body_front/top_crusher2"]
 position = Vector2( -453.795, -268.307 )
-rotation = 5.46458
+rotation = 4.05974
 z_index = -1
 texture = ExtResource( 5 )
 
@@ -246,3 +270,6 @@ anims/main = SubResource( 3 )
 autoplay = "main"
 playback_speed = 0.3
 anims/main = SubResource( 4 )
+
+[node name="PositionAnimationPlayer" type="AnimationPlayer" parent="Animations"]
+anims/enter = SubResource( 5 )
