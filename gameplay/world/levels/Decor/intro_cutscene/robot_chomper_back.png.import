@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/grave.png-ca5779f14289b09a3d8829dbb433f988.stex"
+path="res://.import/robot_chomper_back.png-0a932b12334eeed89a4b6dd2b3f75ce6.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://gameplay/world/levels/Decor/grave.png"
-dest_files=[ "res://.import/grave.png-ca5779f14289b09a3d8829dbb433f988.stex" ]
+source_file="res://gameplay/world/levels/Decor/intro_cutscene/robot_chomper_back.png"
+dest_files=[ "res://.import/robot_chomper_back.png-0a932b12334eeed89a4b6dd2b3f75ce6.stex" ]
 
 [params]
 
