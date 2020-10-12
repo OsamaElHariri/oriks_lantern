@@ -1,7 +1,5 @@
 extends Node
 
-
-
 var right_pressed = false
 var left_pressed = false
 var up_pressed = false
@@ -10,11 +8,13 @@ var right_just_pressed = false
 var left_just_pressed = false
 var jump_just_pressed = false
 var jump_pressed = false
+var action_just_pressed = false
 
 var left_just_pressed_time = 0
 var right_just_pressed_time = 0
 
 var jump_just_pressed_counter = INF
+var action_just_pressed_counter = INF
 
 func update(delta):
 	right_pressed = Input.is_action_pressed("ui_right")
@@ -37,3 +37,8 @@ func update(delta):
 	jump_just_pressed_counter += delta
 	if jump_just_pressed:
 		jump_just_pressed_counter = 0
+	
+	action_just_pressed = Input.is_action_just_pressed("signature_action")
+	action_just_pressed_counter += delta
+	if action_just_pressed:
+		action_just_pressed_counter = 0

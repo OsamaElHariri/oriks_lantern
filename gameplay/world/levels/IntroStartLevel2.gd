@@ -1,7 +1,17 @@
 extends Node2D
 
+const PLAYER_SCENE = preload("res://gameplay/actor/player/player/Player.tscn")
+const EMPTY_INPUT = preload("res://gameplay/actor/movement/move_collection/EmptyInput.gd")
+
+var FATHER_TORSO = load("res://gameplay/actor/player/player/father_visuals/torso.png")
+var FATHER_HAND = load("res://gameplay/actor/player/player/father_visuals/hand.png")
+var FATHER_LEG = load("res://gameplay/actor/player/player/father_visuals/leg.png")
+
+
 var world_camera
 var initial_robot_pos
+
+var player_father
 
 func _ready():
 	$Robot.visible = false
@@ -22,6 +32,21 @@ func on_level_active():
 	var background = $LevelOrigin.world.get_node_or_null("TargetFollower/WorldCamera/ParallaxBackground/ParallaxLayer/background")
 	if background:
 		background.modulate = Color(0.09, 0.06, 0.91)
+	
+	player_father = PLAYER_SCENE.instance()
+	player_father.world = $LevelOrigin.world
+	player_father.get_node("MoveCollection").input = EMPTY_INPUT.new()
+	player_father.get_node("LevelTransitionIndicator").collision_layer = 0
+	
+	player_father.get_node("Visuals/Sprites/torso").texture = FATHER_TORSO
+	player_father.get_node("Visuals/Sprites/torso/Legs/frontleg").texture = FATHER_LEG
+	player_father.get_node("Visuals/Sprites/torso/Legs/frontleg/leg").texture = FATHER_LEG
+	player_father.get_node("Visuals/Sprites/torso/Legs/backleg").texture = FATHER_LEG
+	player_father.get_node("Visuals/Sprites/torso/Legs/backleg/leg").texture = FATHER_LEG
+	player_father.get_node("Visuals/Sprites/torso/hand").texture = FATHER_HAND
+	player_father.get_node("Visuals/Sprites/torso/backhand").texture = FATHER_HAND
+	player_father.scale = Vector2.ONE * 1.3
+	call_deferred('add_child', player_father)
 
 func on_level_inactive():
 	var player = $LevelOrigin.world.player

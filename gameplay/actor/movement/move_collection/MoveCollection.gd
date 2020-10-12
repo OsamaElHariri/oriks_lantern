@@ -19,7 +19,8 @@ var on_floor_counter = INF
 var input = null
 
 func _ready():
-	input = PLAYER_INPUT.new()
+	if input == null:
+		input = PLAYER_INPUT.new()
 	target = get_parent()
 	for child in get_children():
 		_movements[child.name] = child

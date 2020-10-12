@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/actor_placeholder.png-44e7bdfd59528586888f6018740e80c3.stex"
+path="res://.import/torso.png-3836472d305985156e0f4c7c56b347b7.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://gameplay/actor/player/player/actor_placeholder.png"
-dest_files=[ "res://.import/actor_placeholder.png-44e7bdfd59528586888f6018740e80c3.stex" ]
+source_file="res://gameplay/actor/player/player/father_visuals/torso.png"
+dest_files=[ "res://.import/torso.png-3836472d305985156e0f4c7c56b347b7.stex" ]
 
 [params]
 
