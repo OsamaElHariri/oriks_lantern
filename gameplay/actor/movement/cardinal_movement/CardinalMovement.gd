@@ -8,16 +8,17 @@ var target_direction = Vector2(0, -1)
 var lerp_delta = 0.2
 
 func get_velocity(move_collection):
+	var input = move_collection.input
 	var new_target_direction = Vector2(0, 0)
 	
-	if move_collection.left_pressed:
+	if input.left_pressed:
 		new_target_direction.x = -1
-	elif move_collection.right_pressed:
+	elif input.right_pressed:
 		new_target_direction.x = 1
 	
-	if move_collection.up_pressed:
+	if input.up_pressed:
 		new_target_direction.y = -1
-	elif move_collection.down_pressed:
+	elif input.down_pressed:
 		new_target_direction.y = 1
 	
 	if new_target_direction.x != 0 or new_target_direction.y != 0:

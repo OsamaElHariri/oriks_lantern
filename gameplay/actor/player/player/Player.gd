@@ -56,7 +56,6 @@ func spirit_form_end(spirit):
 	modulate = Color(1, 1, 1, 1)
 	$CollisionShape2D.disabled = false
 	var move_collection = $MoveCollection
-	move_collection.lock_controls = false
 	move_collection.stop_movement("GravityMovement")
 	move_collection.stop_movement("JumpMovement")
 	move_collection.stop_movement("WallJumpMovement")

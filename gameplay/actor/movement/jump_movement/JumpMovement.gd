@@ -8,7 +8,7 @@ var current_strength = 0
 var near_wall = null
 
 func get_velocity(move_collection):
-	var decay = strength_decay if move_collection.jump_pressed else strength_decay * 4
+	var decay = strength_decay if move_collection.input.jump_pressed else strength_decay * 4
 	if move_collection.is_on_ceiling:
 		decay *= 3
 	if (move_collection.is_on_wall and move_collection.target.near_wall == near_wall) \
@@ -23,7 +23,7 @@ func get_velocity(move_collection):
 	if can_jump(move_collection):
 		if move_collection.target.has_method('on_jump'):
 			move_collection.target.on_jump()
-		move_collection.jump_just_pressed_counter = INF
+		move_collection.input.jump_just_pressed_counter = INF
 		move_collection.on_floor_counter = INF
 		move_collection.stop_movement("GravityMovement")
 		current_strength = strength
@@ -33,12 +33,12 @@ func get_velocity(move_collection):
 
 func can_jump(move_collection):
 	if move_collection.is_on_floor \
-	and move_collection.jump_just_pressed_counter < 0.1:
+	and move_collection.input.jump_just_pressed_counter < 0.1:
 		return true
 	
 #	cayote jump
 	if move_collection.target.near_wall == null \
-	and move_collection.jump_just_pressed \
+	and move_collection.input.jump_just_pressed \
 	and move_collection.on_floor_counter < 0.15:
 		return true
 	

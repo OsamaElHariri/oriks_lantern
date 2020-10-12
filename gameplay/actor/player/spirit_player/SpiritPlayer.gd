@@ -9,7 +9,7 @@ var current_duration = 0
 var player
 
 func _ready():
-	$MoveCollection.input_update()
+	$MoveCollection.input.update(0)
 
 func _physics_process(delta):
 	current_duration += delta

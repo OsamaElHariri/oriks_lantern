@@ -15,7 +15,7 @@ func init_movement(move_collection):
 	horizontal_movment = move_collection.get_movement("HorizontalMovement")
 
 func get_velocity(move_collection):
-	var resisting_push = resisting_wall_push(move_collection)
+	var resisting_push = resisting_wall_push(move_collection.input)
 	var decay = Vector2(x_strength_decay, y_strength_decay) * move_collection.time_multiplier
 	if move_collection.is_on_ceiling:
 		decay *= 3
@@ -24,8 +24,8 @@ func get_velocity(move_collection):
 	if move_collection.is_on_floor or move_collection.is_on_wall:
 		stop()
 	
-	if !move_collection.is_on_floor and move_collection.target.near_wall != null && move_collection.jump_just_pressed_counter < 0.1:
-		move_collection.jump_just_pressed_counter = INF
+	if !move_collection.is_on_floor and move_collection.target.near_wall != null && move_collection.input.jump_just_pressed_counter < 0.1:
+		move_collection.input.jump_just_pressed_counter = INF
 		x_direction = sign(move_collection.target.global_position.x - move_collection.target.near_wall.global_position.x)
 		var x_current_strength = x_strength
 		
@@ -44,7 +44,7 @@ func get_velocity(move_collection):
 func stop():
 	current_strength = Vector2.ZERO
 
-func resisting_wall_push(move_collection):
-	return (x_direction < 0 and move_collection.right_pressed) \
-		or (x_direction > 0 and move_collection.left_pressed)
+func resisting_wall_push(input):
+	return (x_direction < 0 and input.right_pressed) \
+		or (x_direction > 0 and input.left_pressed)
 

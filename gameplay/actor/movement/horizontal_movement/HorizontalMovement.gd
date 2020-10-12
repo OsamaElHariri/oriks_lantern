@@ -8,14 +8,15 @@ var current_speed = 0
 var direction = 0
 
 func get_velocity(move_collection):
-	if move_collection.left_pressed and move_collection.right_pressed:
-		if move_collection.left_just_pressed_time > move_collection.right_just_pressed_time:
+	var input = move_collection.input
+	if input.left_pressed and input.right_pressed:
+		if input.left_just_pressed_time > input.right_just_pressed_time:
 			move_left(move_collection)
 		else:
 			move_right(move_collection)
-	elif move_collection.left_pressed:
+	elif input.left_pressed:
 		move_left(move_collection)
-	elif move_collection.right_pressed:
+	elif input.right_pressed:
 		move_right(move_collection)
 	else:
 		current_speed = max(current_speed - ramp_down_speed * sign(current_speed) * move_collection.time_multiplier, 0)
