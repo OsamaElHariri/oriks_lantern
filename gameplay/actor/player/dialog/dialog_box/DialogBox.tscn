@@ -1,0 +1,21 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://gameplay/actor/player/dialog/dialog_box/dialog_box_tail.png" type="Texture" id=1]
+[ext_resource path="res://gameplay/actor/player/dialog/dialog_box/dialog_box_border.png" type="Texture" id=2]
+[ext_resource path="res://gameplay/actor/player/dialog/dialog_box/dialog_box_body.png" type="Texture" id=3]
+[ext_resource path="res://gameplay/actor/player/dialog/dialog_box/DialogBox.gd" type="Script" id=4]
+
+[node name="DialogBox" type="Node2D"]
+script = ExtResource( 4 )
+
+[node name="Visuals" type="Node2D" parent="."]
+
+[node name="dialog_box_border" type="Sprite" parent="Visuals"]
+texture = ExtResource( 2 )
+
+[node name="dialog_box_tail" type="Sprite" parent="Visuals"]
+texture = ExtResource( 1 )
+offset = Vector2( 0, -288 )
+
+[node name="dialog_box_body" type="Sprite" parent="Visuals"]
+texture = ExtResource( 3 )
