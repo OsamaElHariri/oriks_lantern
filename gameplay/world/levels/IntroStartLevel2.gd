@@ -32,21 +32,7 @@ func on_level_active():
 	var background = $LevelOrigin.world.get_node_or_null("TargetFollower/WorldCamera/ParallaxBackground/ParallaxLayer/background")
 	if background:
 		background.modulate = Color(0.09, 0.06, 0.91)
-	
-	player_father = PLAYER_SCENE.instance()
-	player_father.world = $LevelOrigin.world
-	player_father.get_node("MoveCollection").input = EMPTY_INPUT.new()
-	player_father.get_node("LevelTransitionIndicator").collision_layer = 0
-	
-	player_father.get_node("Visuals/Sprites/torso").texture = FATHER_TORSO
-	player_father.get_node("Visuals/Sprites/torso/Legs/frontleg").texture = FATHER_LEG
-	player_father.get_node("Visuals/Sprites/torso/Legs/frontleg/leg").texture = FATHER_LEG
-	player_father.get_node("Visuals/Sprites/torso/Legs/backleg").texture = FATHER_LEG
-	player_father.get_node("Visuals/Sprites/torso/Legs/backleg/leg").texture = FATHER_LEG
-	player_father.get_node("Visuals/Sprites/torso/hand").texture = FATHER_HAND
-	player_father.get_node("Visuals/Sprites/torso/backhand").texture = FATHER_HAND
-	player_father.scale = Vector2.ONE * 1.3
-	call_deferred('add_child', player_father)
+	spawn_father()
 
 func on_level_inactive():
 	var player = $LevelOrigin.world.player
@@ -60,9 +46,28 @@ func on_level_inactive():
 	if background:
 		background.modulate = Color(1, 1, 1)
 
+func spawn_father():
+	player_father = PLAYER_SCENE.instance()
+	player_father.world = $LevelOrigin.world
+	player_father.get_node("MoveCollection").input = EMPTY_INPUT.new()
+	player_father.get_node("LevelTransitionIndicator").collision_layer = 0
+	
+	player_father.get_node("Visuals/Sprites/torso").texture = FATHER_TORSO
+	player_father.get_node("Visuals/Sprites/torso/Legs/frontleg").texture = FATHER_LEG
+	player_father.get_node("Visuals/Sprites/torso/Legs/frontleg/leg").texture = FATHER_LEG
+	player_father.get_node("Visuals/Sprites/torso/Legs/backleg").texture = FATHER_LEG
+	player_father.get_node("Visuals/Sprites/torso/Legs/backleg/leg").texture = FATHER_LEG
+	player_father.get_node("Visuals/Sprites/torso/hand").texture = FATHER_HAND
+	player_father.get_node("Visuals/Sprites/torso/backhand").texture = FATHER_HAND
+	player_father.scale = Vector2.ONE * 1.3
+	player_father.remove_from_group('player')
+	player_father.add_to_group('player_father')
+	call_deferred('add_child', player_father)
+
 func on_robot_trigger(_player_tracker):
 	$Robot/CrusherRobot/Animations/PositionAnimationPlayer.play("enter")
 	EMITTER.emit("request_screen_shake", 0.8)
+	$Dialog/DialogAnimationPlayer.play("panic")
 
 func _physics_process(_delta):
 	if world_camera:

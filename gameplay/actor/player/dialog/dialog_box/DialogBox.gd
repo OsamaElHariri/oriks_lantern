@@ -1,6 +1,6 @@
 extends Node2D
 
-var target = Vector2.ZERO
+var target
 var tail
 var tail_height
 
@@ -8,8 +8,11 @@ func _ready():
 	tail = $Visuals/dialog_box_tail
 	tail_height = tail.texture.get_size().y
 
+func set_bbtext(text):
+	$RichTextLabel.bbcode_text = '%s%s%s' % ['[center]', text, '[/center]']
+
 func _process(_delta):
-	target = get_global_mouse_position()
-	var diff = target - global_position
-	tail.rotation = Vector2.UP.angle_to(target)
-	tail.scale = Vector2(1, diff.length() / tail_height)
+	if not target: return
+	var diff = target.global_position - global_position
+	tail.rotation = Vector2.UP.angle_to(diff)
+	tail.scale = Vector2(1, abs((diff / scale).length()) / tail_height)
