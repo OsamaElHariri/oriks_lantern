@@ -12,6 +12,7 @@ var world_camera
 var initial_robot_pos
 
 var player_father
+var has_triggered_scene = false
 
 func _ready():
 	$Robot.visible = false
@@ -35,6 +36,7 @@ func on_level_active():
 	spawn_father()
 
 func on_level_inactive():
+	has_triggered_scene = false
 	var player = $LevelOrigin.world.player
 	var hat = player.get_node_or_null("Visuals/Sprites/torso/hat")
 	player.scale = Vector2.ONE
@@ -45,6 +47,12 @@ func on_level_inactive():
 	var background = $LevelOrigin.world.get_node_or_null("TargetFollower/WorldCamera/ParallaxBackground/ParallaxLayer/background")
 	if background:
 		background.modulate = Color(1, 1, 1)
+	if player_father:
+		player_father.queue_free()
+		player_father = null
+		$Dialog/DialogAnimationPlayer.stop()
+		for child in $Dialog.get_children():
+			if child.has_method('free_dialog'): child.free_dialog()
 
 func spawn_father():
 	player_father = PLAYER_SCENE.instance()
@@ -65,6 +73,8 @@ func spawn_father():
 	call_deferred('add_child', player_father)
 
 func on_robot_trigger(_player_tracker):
+	if has_triggered_scene: return
+	has_triggered_scene = true
 	$Robot/CrusherRobot/Animations/PositionAnimationPlayer.play("enter")
 	EMITTER.emit("request_screen_shake", 0.8)
 	$Dialog/DialogAnimationPlayer.play("panic")

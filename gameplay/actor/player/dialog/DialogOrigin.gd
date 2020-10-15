@@ -18,3 +18,7 @@ func spawn_dialog(bbtext):
 func remove_dialog():
 	if dialog_box: dialog_box.remove()
 	dialog_box = null
+
+func free_dialog():
+	if dialog_box: dialog_box.queue_free()
+	dialog_box = null
