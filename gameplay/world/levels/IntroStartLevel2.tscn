@@ -22,9 +22,15 @@ tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0.1 ),
-"transitions": PoolRealArray( 1 ),
+"times": PoolRealArray( 0.1, 0.6, 1.7 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
 "values": [ {
+"args": [ "OK" ],
+"method": "spawn_dialog"
+}, {
+"args": [ "I can't make it!" ],
+"method": "spawn_dialog"
+}, {
 "args": [ "OK" ],
 "method": "spawn_dialog"
 } ]
@@ -36,7 +42,7 @@ tracks/1/loop_wrap = true
 tracks/1/imported = false
 tracks/1/enabled = true
 tracks/1/keys = {
-"times": PoolRealArray( 3 ),
+"times": PoolRealArray( 2.7 ),
 "transitions": PoolRealArray( 1 ),
 "values": [ {
 "args": [ "You can make it!" ],
