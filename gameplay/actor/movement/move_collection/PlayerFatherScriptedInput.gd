@@ -59,7 +59,7 @@ func explanation_scene():
 
 func escape_scene():
 	up_pressed = true
-	if between(2, 3):
+	if between(1.5, 9):
 		left_just_pressed = true
 		left_pressed = true
 	else:
@@ -73,7 +73,7 @@ func escape_scene():
 		right_pressed = false
 		right_just_pressed = false
 	
-	if between(1.5, 3):
+	if between(1, 2.4):
 		action_just_pressed = true
 		action_pressed = true
 		action_just_pressed_counter = 0
@@ -81,6 +81,15 @@ func escape_scene():
 		action_pressed = false
 		action_just_pressed = false
 		action_just_pressed_counter = INF
+	
+	if between(4.9, 5):
+		jump_just_pressed = true
+		jump_pressed = true
+		jump_just_pressed_counter = 0
+	else:
+		jump_just_pressed = false
+		jump_pressed = false
+		jump_just_pressed_counter = INF
 
 func between(p1 ,p2):
 	return scripted_time >= p1 and scripted_time <= p2

@@ -38,7 +38,7 @@ tracks/1/keys = {
 "args": [  ],
 "method": "remove_dialog"
 }, {
-"args": [ "Amazing, isn't it" ],
+"args": [ "Amazing, isn't it?" ],
 "method": "spawn_dialog"
 }, {
 "args": [ "This is a rare one" ],
@@ -47,7 +47,7 @@ tracks/1/keys = {
 "args": [ "The soul of the forest is so clear" ],
 "method": "spawn_dialog"
 }, {
-"args": [ "Can you feel it, Orik?" ],
+"args": [ "Do you feel it in this flower, Orik?" ],
 "method": "spawn_dialog"
 }, {
 "args": [  ],
@@ -76,7 +76,7 @@ tracks/2/keys = {
 "args": [ "Wow, I..." ],
 "method": "spawn_dialog"
 }, {
-"args": [ "I can" ],
+"args": [ "I do" ],
 "method": "spawn_dialog"
 }, {
 "args": [  ],
@@ -188,7 +188,7 @@ tracks/1/keys = {
 
 [sub_resource type="Animation" id=2]
 resource_name = "panic"
-length = 10.0
+length = 20.0
 tracks/0/type = "method"
 tracks/0/path = NodePath("PlayerDialog")
 tracks/0/interp = 1
@@ -234,8 +234,8 @@ tracks/1/loop_wrap = true
 tracks/1/imported = false
 tracks/1/enabled = true
 tracks/1/keys = {
-"times": PoolRealArray( 0, 0.6, 1.4, 3, 3.7, 4.2, 6.5, 8.5 ),
-"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1 ),
+"times": PoolRealArray( 0, 0.6, 1.4, 3, 3.7, 4.2, 6.5, 8.5, 9.3, 11, 12.4, 16 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
 "values": [ {
 "args": [  ],
 "method": "remove_dialog"
@@ -260,6 +260,18 @@ tracks/1/keys = {
 }, {
 "args": [  ],
 "method": "remove_dialog"
+}, {
+"args": [ "Let's get out of here" ],
+"method": "spawn_dialog"
+}, {
+"args": [  ],
+"method": "remove_dialog"
+}, {
+"args": [ "We're gonna make it!" ],
+"method": "spawn_dialog"
+}, {
+"args": [  ],
+"method": "remove_dialog"
 } ]
 }
 tracks/2/type = "value"
@@ -269,10 +281,10 @@ tracks/2/loop_wrap = true
 tracks/2/imported = false
 tracks/2/enabled = true
 tracks/2/keys = {
-"times": PoolRealArray( 0, 0.4, 0.6 ),
-"transitions": PoolRealArray( 1, 1, 1 ),
+"times": PoolRealArray( 0, 0.4, 0.6, 9.1, 9.2, 11.2, 11.5 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1 ),
 "update": 0,
-"values": [ Vector2( -2128, -112 ), Vector2( -2128, -112 ), Vector2( -2352, -304 ) ]
+"values": [ Vector2( -2128, -112 ), Vector2( -2128, -112 ), Vector2( -2352, -304 ), Vector2( -2352, -304 ), Vector2( -2880, -320 ), Vector2( -2880, -320 ), Vector2( -4608, -336 ) ]
 }
 tracks/3/type = "value"
 tracks/3/path = NodePath("PlayerDialog:position")
@@ -302,7 +314,7 @@ tracks/4/keys = {
 }
 
 [sub_resource type="RectangleShape2D" id=1]
-extents = Vector2( 160, 560 )
+extents = Vector2( 112, 560 )
 
 [sub_resource type="RectangleShape2D" id=6]
 extents = Vector2( 48, 560 )
@@ -313,22 +325,22 @@ script = ExtResource( 6 )
 [node name="LevelOrigin" parent="." instance=ExtResource( 2 )]
 
 [node name="LevelBounds" parent="LevelOrigin" instance=ExtResource( 5 )]
-position = Vector2( -1856, -288 )
-scale = Vector2( 1408, 408 )
+position = Vector2( -2056, -288 )
+scale = Vector2( 1508, 408 )
 
 [node name="Platforms" type="Node2D" parent="LevelOrigin"]
 
 [node name="BasicPlatform" parent="LevelOrigin/Platforms" instance=ExtResource( 3 )]
-position = Vector2( -1856, 512 )
-scale = Vector2( 1408, 48 )
+position = Vector2( -2056, 512 )
+scale = Vector2( 1508, 48 )
 
 [node name="BasicPlatform2" parent="LevelOrigin/Platforms" instance=ExtResource( 3 )]
-position = Vector2( -3288, 376 )
-scale = Vector2( 692, 20 )
+position = Vector2( -3488, 376 )
+scale = Vector2( 792, 20 )
 
 [node name="BasicPlatform6" parent="LevelOrigin/Platforms" instance=ExtResource( 3 )]
-position = Vector2( -4176, -40 )
-scale = Vector2( 248, 20 )
+position = Vector2( -4376, -40 )
+scale = Vector2( 348, 20 )
 
 [node name="BasicPlatform4" parent="LevelOrigin/Platforms" instance=ExtResource( 3 )]
 position = Vector2( -1472, 376 )
@@ -340,8 +352,8 @@ scale = Vector2( 36, 20 )
 spawn_top_decor = false
 
 [node name="BasicPlatform3" parent="LevelOrigin/Platforms" instance=ExtResource( 3 )]
-position = Vector2( -3480, 168 )
-scale = Vector2( 596, 84 )
+position = Vector2( -3680, 168 )
+scale = Vector2( 696, 84 )
 
 [node name="SpawnLocations" type="Node2D" parent="LevelOrigin"]
 
@@ -371,7 +383,7 @@ position = Vector2( -2048, -16 )
 dialog_group = "player"
 
 [node name="FatherDialog" parent="Dialog" instance=ExtResource( 8 )]
-position = Vector2( -2352, -304 )
+position = Vector2( -4608, -336 )
 dialog_group = "player_father"
 
 [node name="DialogAnimationPlayer" type="AnimationPlayer" parent="Dialog"]
