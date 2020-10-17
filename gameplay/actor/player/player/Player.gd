@@ -166,3 +166,6 @@ func on_jump():
 func on_wall_jump():
 	$JumpAudio.pitch_scale = 0.8 + randf() * 0.4
 	$JumpAudio.play()
+
+func get_dialog_target():
+	return $Visuals/Sprites/torso

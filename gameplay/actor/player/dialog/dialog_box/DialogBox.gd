@@ -32,7 +32,7 @@ func _process(delta):
 	
 	var diff = target.global_position - global_position
 	tail.rotation = Vector2.UP.angle_to(diff)
-	tail.scale = Vector2(1, abs((diff / scale).length()) / tail_height)
+	tail.scale = Vector2(1, (abs((diff / scale).length()) - 160) / tail_height)
 	
 	if current_animation <= 0:
 		queue_free()
