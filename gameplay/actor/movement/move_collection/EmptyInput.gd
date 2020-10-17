@@ -8,6 +8,7 @@ var right_just_pressed = false
 var left_just_pressed = false
 var jump_just_pressed = false
 var jump_pressed = false
+var action_pressed = false
 var action_just_pressed = false
 
 var left_just_pressed_time = 0

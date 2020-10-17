@@ -25,8 +25,9 @@ func _process(delta):
 	if not target: return
 	
 	current_animation += delta * 7 * animation_direction
+	current_animation = clamp(current_animation, 0, 1)
 	var anim = current_curve.interpolate(current_animation)
-	$Visuals.modulate = Color(1, 1, 1, anim)
+	$Visuals.modulate = Color(1, 1, 1, current_animation)
 	$Visuals.scale = Vector2.ONE * anim
 	
 	var diff = target.global_position - global_position

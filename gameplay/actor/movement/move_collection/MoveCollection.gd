@@ -18,6 +18,8 @@ var on_floor_counter = INF
 
 var input = null
 
+var disabled_movements = {}
+
 func _ready():
 	if input == null:
 		input = PLAYER_INPUT.new()
@@ -37,6 +39,12 @@ func stop_movement(movement_name):
 	if movement and movement.has_method("stop"):
 		movement.stop()
 
+func disable_movement(movement_name):
+	disabled_movements[movement_name] = true
+
+func enable_movement(movement_name):
+	disabled_movements[movement_name] = false
+
 func add_follow_through_movement():
 	var movement = FOLLOW_THROUGH_MOVEMENT.instance()
 	add_child(movement)
@@ -47,6 +55,8 @@ func _physics_process(delta):
 	
 	var updated_velocity = Vector2(0, 0)
 	for child in get_children():
+		if disabled_movements.has(child.get_name()) and  disabled_movements[child.get_name()]:
+			continue
 		if child.has_method("get_velocity"):
 			updated_velocity += child.get_velocity(self)
 	

@@ -2,7 +2,7 @@
 
 [ext_resource path="res://gameplay/world/world/fading_rect.png" type="Texture" id=1]
 
-[sub_resource type="Shader" id=3]
+[sub_resource type="Shader" id=1]
 code = "shader_type canvas_item;
 
 uniform float offset_ratio = 1.0;
@@ -17,7 +17,7 @@ void fragment() {
 }"
 
 [sub_resource type="ShaderMaterial" id=2]
-shader = SubResource( 3 )
+shader = SubResource( 1 )
 shader_param/offset_ratio = 1.0
 
 [node name="SpiritWaveEffect" type="Sprite"]

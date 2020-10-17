@@ -315,4 +315,4 @@ position = Vector2( -1984, -16 )
 position = Vector2( -3968, -16 )
 
 [node name="LevelTest3" parent="Levels" instance=ExtResource( 21 )]
-position = Vector2( -7520, -432 )
+position = Vector2( -9600, -512 )

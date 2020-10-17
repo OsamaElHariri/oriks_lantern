@@ -8,6 +8,7 @@ var right_just_pressed = false
 var left_just_pressed = false
 var jump_just_pressed = false
 var jump_pressed = false
+var action_pressed = false
 var action_just_pressed = false
 
 var left_just_pressed_time = 0
@@ -38,6 +39,7 @@ func update(delta):
 	if jump_just_pressed:
 		jump_just_pressed_counter = 0
 	
+	action_pressed = Input.is_action_pressed("signature_action")
 	action_just_pressed = Input.is_action_just_pressed("signature_action")
 	action_just_pressed_counter += delta
 	if action_just_pressed:

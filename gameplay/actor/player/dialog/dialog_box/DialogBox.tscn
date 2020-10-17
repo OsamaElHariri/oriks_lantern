@@ -6,20 +6,20 @@
 [ext_resource path="res://gameplay/actor/player/dialog/dialog_box/dialog_box_body.png" type="Texture" id=4]
 [ext_resource path="res://assets/font/DroidSans.ttf" type="DynamicFontData" id=5]
 
-[sub_resource type="Curve" id=2]
+[sub_resource type="Curve" id=1]
 _data = [ Vector2( 0, 0 ), 0.0, 0.0, 0, 0, Vector2( 1, 1 ), -2.08232, 0.0, 0, 0 ]
 
-[sub_resource type="Curve" id=3]
+[sub_resource type="Curve" id=2]
 _data = [ Vector2( 0, 1 ), 0.0, -3.0, 0, 0, Vector2( 0.117512, 0.318182 ), -1.10827, -1.10827, 0, 0, Vector2( 1, 0 ), 0.0, 0.0, 0, 0 ]
 
-[sub_resource type="DynamicFont" id=1]
-size = 60
+[sub_resource type="DynamicFont" id=3]
+size = 90
 font_data = ExtResource( 5 )
 
 [node name="DialogBox" type="Node2D"]
 script = ExtResource( 3 )
-curve = SubResource( 2 )
-curve_back = SubResource( 3 )
+curve = SubResource( 1 )
+curve_back = SubResource( 2 )
 
 [node name="Visuals" type="Node2D" parent="."]
 
@@ -36,9 +36,9 @@ texture = ExtResource( 4 )
 [node name="RichTextLabel" type="RichTextLabel" parent="Visuals"]
 margin_left = -362.0
 margin_top = -162.0
-margin_right = 373.0
-margin_bottom = 160.0
-custom_fonts/normal_font = SubResource( 1 )
+margin_right = 352.0
+margin_bottom = 176.0
+custom_fonts/normal_font = SubResource( 3 )
 custom_colors/default_color = Color( 0, 0, 0, 1 )
 bbcode_enabled = true
 __meta__ = {

@@ -9,6 +9,7 @@ var near_wall = null
 
 var horizontal_movement = null
 
+var spirit_player_duration = 0.5
 var spirit_player = null
 
 var world
@@ -20,6 +21,8 @@ var movement_heartbeat_interval = 0.3
 var movement_heartbeat_counter = 0
 
 var level_transition_indicator
+
+var signature_action_enabled = true
 
 func _ready():
 	$WindUpAnimationTimer.connect("timeout", self, "spirit_form_start")
@@ -40,6 +43,7 @@ func spirit_form_start():
 	$CollisionShape2D.disabled = true
 	modulate = Color(1, 1, 1, 0)
 	spirit_player = SPIRIT_PLAYER.instance()
+	spirit_player.duration = spirit_player_duration
 	ignore_area_enter = spirit_player
 	get_parent().add_child(spirit_player)
 	spirit_player.position = position
@@ -83,7 +87,7 @@ func _physics_process(delta):
 		can_summon_spirit = true
 	
 	var input = $MoveCollection.input
-	if can_summon_spirit and input.action_just_pressed_counter < 0.15:
+	if signature_action_enabled and can_summon_spirit and input.action_just_pressed_counter < 0.15:
 		input.action_just_pressed_counter = INF
 		spirit_form_wind_up()
 	

@@ -14,7 +14,7 @@ func _ready():
 	player = $Player
 	player.world = self
 	post_process = $CanvasLayer/PostProcess
-	$TargetFollower.target = player
+	$TargetFollower.target = player.get_node("LevelTransitionIndicator")
 	random_seed_spirit_wave_effect()
 	EMITTER.connect("player_entered_level", self, "on_player_entered_level")
 	EMITTER.connect("player_exited_level", self, "on_player_exited_level")
@@ -27,12 +27,10 @@ func spirit_form_wind_up(_current_player):
 
 func spirit_form_start(current_player):
 	$TargetFollower/WorldCamera.is_narrowing = false
-	$TargetFollower.target = current_player.spirit_player
 	post_process.spirit_form_start(current_player)
 	set_particles_speed_scale(0.3)
 
 func spirit_form_end(current_player):
-	$TargetFollower.target = current_player
 	post_process.spirit_form_end(current_player)
 	set_particles_speed_scale(1)
 
@@ -75,7 +73,7 @@ func player_defeat_and_respawn():
 	player = PLAYER_SCENE.instance()
 	player.world = self
 	call_deferred("add_child", player)
-	$TargetFollower.target = player
+	$TargetFollower.target = player.get_node("LevelTransitionIndicator")
 	if active_levels.size() > 0:
 		player.position = active_levels[0].get_node("LevelOrigin").get_spawn_location()
 
