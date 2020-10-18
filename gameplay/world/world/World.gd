@@ -57,10 +57,10 @@ func set_camera_limits(level):
 	var area = level.get_node("LevelOrigin/LevelArea/CollisionShape2D")
 	var pos = area.global_position
 	var extents = area.get_shape().extents
-	$TargetFollower/WorldCamera.limit_left = pos.x - extents.x
-	$TargetFollower/WorldCamera.limit_top = pos.y - extents.y
-	$TargetFollower/WorldCamera.limit_right = pos.x + extents.x
-	$TargetFollower/WorldCamera.limit_bottom = pos.y + extents.y
+	$TargetFollower.limit_left = pos.x - extents.x
+	$TargetFollower.limit_top = pos.y - extents.y
+	$TargetFollower.limit_right = pos.x + extents.x
+	$TargetFollower.limit_bottom = pos.y + extents.y
 
 func random_seed_spirit_wave_effect():
 	for effect in $CanvasLayer/SpiritWaveEffects.get_children():
