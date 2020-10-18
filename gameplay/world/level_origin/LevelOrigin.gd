@@ -18,10 +18,9 @@ func _ready():
 	
 	var foreground_decor = get_node_or_null("ForegroundDecor")
 	if foreground_decor != null:
-		foreground_decor.visible = false
 		var current_modulate = 1
 		for child in foreground_decor.get_children():
-			current_modulate -= 0.25
+			current_modulate -= 0.2
 			child.modulate = Color(current_modulate, current_modulate, current_modulate)
 	
 	connect_to_spawn_points()
@@ -124,9 +123,6 @@ func level_active():
 
 func level_inactive():
 	is_level_active = false
-	var foreground_decor = get_node_or_null("ForegroundDecor")
-	if foreground_decor != null:
-		foreground_decor.visible = false
 	emit_signal("level_inactive")
 
 func _physics_process(_delta):
@@ -135,8 +131,7 @@ func _physics_process(_delta):
 		move_foreground_decor(foreground_decor)
 
 func move_foreground_decor(node):
-	if is_level_active:
-		for child in node.get_children():
-			if "speed" in child:
-				var screen_pos = get_viewport_transform().get_origin() - OS.get_screen_size() / 2
-				child.position = (global_position + screen_pos) * child.speed
+	for child in node.get_children():
+		if "speed" in child:
+			var screen_pos = get_viewport_transform().get_origin() - OS.get_screen_size() / 2
+			child.position = (global_position + screen_pos) * child.speed

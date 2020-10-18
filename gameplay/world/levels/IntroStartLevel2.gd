@@ -32,6 +32,7 @@ func _ready():
 
 func on_level_active():
 	var player = $LevelOrigin.world.player
+	player.position.x -= 600
 	player.signature_action_enabled = false
 	player.get_node("MoveCollection").disable_movement("WallJumpMovement")
 	var hat = player.get_node_or_null("Visuals/Sprites/torso/hat")
