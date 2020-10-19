@@ -308,7 +308,7 @@ position = Vector2( 5776, -2224 )
 [node name="IntroStartLevel1" parent="Levels" instance=ExtResource( 19 )]
 
 [node name="IntroStartLevel2" parent="Levels" instance=ExtResource( 20 )]
-position = Vector2( -3056, 0 )
+position = Vector2( -3824, 0 )
 
 [node name="LevelTest3" parent="Levels" instance=ExtResource( 21 )]
-position = Vector2( -10176, -496 )
+position = Vector2( -10944, -496 )
