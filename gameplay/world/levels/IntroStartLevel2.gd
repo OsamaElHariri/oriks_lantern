@@ -31,6 +31,7 @@ func _ready():
 	world_camera = $LevelOrigin.world.get_node_or_null("TargetFollower/WorldCamera")
 
 func on_level_active():
+	$Decor/EnvironmentAnimationPlayer.play("thunder")
 	var player = $LevelOrigin.world.player
 	player.position.x -= 600
 	player.signature_action_enabled = false
@@ -133,4 +134,5 @@ func _physics_process(_delta):
 	
 	if world_camera:
 		$Robot/CrusherRobot.global_position.x = -get_viewport_transform().get_origin().x + OS.get_screen_size().x
+		$Decor/screen_center_fade_overlay.global_position = -get_viewport_transform().get_origin() + OS.get_screen_size() / 2
 

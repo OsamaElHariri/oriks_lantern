@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=2]
+[gd_scene load_steps=24 format=2]
 
 [ext_resource path="res://gameplay/world/level_origin/SpawnLocation.tscn" type="PackedScene" id=1]
 [ext_resource path="res://gameplay/world/level_origin/LevelOrigin.tscn" type="PackedScene" id=2]
@@ -12,6 +12,7 @@
 [ext_resource path="res://gameplay/world/level_origin/ForegroundParallax.gd" type="Script" id=10]
 [ext_resource path="res://gameplay/world/level_origin/decor/thick_fading_tree.png" type="Texture" id=11]
 [ext_resource path="res://gameplay/world/level_origin/decor/rain_droplet.png" type="Texture" id=12]
+[ext_resource path="res://gameplay/world/levels/Decor/intro_cutscene/screen_center_fade_overlay.png" type="Texture" id=13]
 
 [sub_resource type="ParticlesMaterial" id=9]
 emission_shape = 2
@@ -352,6 +353,22 @@ orbit_velocity = 0.0
 orbit_velocity_random = 0.0
 angle = -11.0
 
+[sub_resource type="Animation" id=10]
+resource_name = "thunder"
+length = 2.0
+tracks/0/type = "value"
+tracks/0/path = NodePath("screen_center_fade_overlay:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0.5, 0.7, 0.8, 0.9, 1 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 0.196078 ), Color( 1, 1, 1, 0.0784314 ), Color( 1, 1, 1, 0.588235 ), Color( 1, 1, 1, 0 ) ]
+}
+
 [sub_resource type="RectangleShape2D" id=6]
 extents = Vector2( 112, 560 )
 
@@ -477,6 +494,15 @@ visibility_rect = Rect2( -3300, 1200, 6000, 200 )
 local_coords = false
 process_material = SubResource( 1 )
 texture = ExtResource( 12 )
+
+[node name="screen_center_fade_overlay" type="Sprite" parent="Decor"]
+modulate = Color( 1, 1, 1, 0.0457329 )
+position = Vector2( -432, 176 )
+z_index = 1000
+texture = ExtResource( 13 )
+
+[node name="EnvironmentAnimationPlayer" type="AnimationPlayer" parent="Decor"]
+anims/thunder = SubResource( 10 )
 
 [node name="CutsceneTrigger" type="Area2D" parent="."]
 position = Vector2( -1680, -224 )
