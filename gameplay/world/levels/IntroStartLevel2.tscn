@@ -14,7 +14,7 @@
 [ext_resource path="res://gameplay/world/level_origin/decor/rain_droplet.png" type="Texture" id=12]
 [ext_resource path="res://gameplay/world/levels/Decor/intro_cutscene/screen_center_fade_overlay.png" type="Texture" id=13]
 
-[sub_resource type="ParticlesMaterial" id=9]
+[sub_resource type="ParticlesMaterial" id=1]
 emission_shape = 2
 emission_box_extents = Vector3( 3200, 100, 1 )
 flag_disable_z = true
@@ -27,7 +27,7 @@ orbit_velocity_random = 0.0
 angle = -11.0
 scale = 2.0
 
-[sub_resource type="ParticlesMaterial" id=8]
+[sub_resource type="ParticlesMaterial" id=2]
 emission_shape = 2
 emission_box_extents = Vector3( 4000, 100, 1 )
 flag_disable_z = true
@@ -40,7 +40,7 @@ orbit_velocity_random = 0.0
 angle = -6.0
 scale = 6.0
 
-[sub_resource type="Animation" id=2]
+[sub_resource type="Animation" id=3]
 length = 20.0
 tracks/0/type = "value"
 tracks/0/path = NodePath("FatherDialog:position")
@@ -154,7 +154,7 @@ tracks/4/keys = {
 "values": [ Vector2( -1536, -64 ) ]
 }
 
-[sub_resource type="Animation" id=3]
+[sub_resource type="Animation" id=4]
 length = 3.0
 tracks/0/type = "value"
 tracks/0/path = NodePath("FatherDialog:position")
@@ -183,7 +183,7 @@ tracks/1/keys = {
 } ]
 }
 
-[sub_resource type="Animation" id=4]
+[sub_resource type="Animation" id=5]
 length = 2.0
 tracks/0/type = "value"
 tracks/0/path = NodePath("FatherDialog:position")
@@ -215,7 +215,7 @@ tracks/1/keys = {
 } ]
 }
 
-[sub_resource type="Animation" id=5]
+[sub_resource type="Animation" id=6]
 length = 20.0
 tracks/0/type = "method"
 tracks/0/path = NodePath("PlayerDialog")
@@ -341,7 +341,7 @@ tracks/4/keys = {
 } ]
 }
 
-[sub_resource type="ParticlesMaterial" id=1]
+[sub_resource type="ParticlesMaterial" id=7]
 emission_shape = 2
 emission_box_extents = Vector3( 3200, 100, 1 )
 flag_disable_z = true
@@ -353,7 +353,7 @@ orbit_velocity = 0.0
 orbit_velocity_random = 0.0
 angle = -11.0
 
-[sub_resource type="Animation" id=10]
+[sub_resource type="Animation" id=8]
 resource_name = "thunder"
 length = 2.0
 tracks/0/type = "value"
@@ -363,16 +363,16 @@ tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0.5, 0.7, 0.8, 0.9, 1 ),
-"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
+"times": PoolRealArray( 0, 0.5, 0.7, 0.8, 0.9, 1 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1 ),
 "update": 0,
-"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 0.196078 ), Color( 1, 1, 1, 0.0784314 ), Color( 1, 1, 1, 0.588235 ), Color( 1, 1, 1, 0 ) ]
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 0.196078 ), Color( 1, 1, 1, 0.0784314 ), Color( 1, 1, 1, 0.588235 ), Color( 1, 1, 1, 0.117647 ) ]
 }
 
-[sub_resource type="RectangleShape2D" id=6]
+[sub_resource type="RectangleShape2D" id=9]
 extents = Vector2( 112, 560 )
 
-[sub_resource type="RectangleShape2D" id=7]
+[sub_resource type="RectangleShape2D" id=10]
 extents = Vector2( 48, 560 )
 
 [node name="IntroStartLevel2" type="Node2D"]
@@ -434,7 +434,7 @@ amount = 40
 preprocess = 3.0
 visibility_rect = Rect2( -3300, 1200, 6000, 200 )
 local_coords = false
-process_material = SubResource( 9 )
+process_material = SubResource( 1 )
 texture = ExtResource( 12 )
 
 [node name="Parallax3" type="Node2D" parent="LevelOrigin/ForegroundDecor"]
@@ -454,7 +454,7 @@ amount = 20
 preprocess = 3.0
 visibility_rect = Rect2( -3300, 1200, 6000, 200 )
 local_coords = false
-process_material = SubResource( 8 )
+process_material = SubResource( 2 )
 texture = ExtResource( 12 )
 
 [node name="Robot" type="Node2D" parent="."]
@@ -474,10 +474,10 @@ position = Vector2( 96, -112 )
 dialog_group = "player_father"
 
 [node name="DialogAnimationPlayer" type="AnimationPlayer" parent="Dialog"]
-anims/explanation = SubResource( 2 )
-anims/hey_orik = SubResource( 3 )
-anims/look_at_this = SubResource( 4 )
-anims/panic = SubResource( 5 )
+anims/explanation = SubResource( 3 )
+anims/hey_orik = SubResource( 4 )
+anims/look_at_this = SubResource( 5 )
+anims/panic = SubResource( 6 )
 
 [node name="Decor" type="Node2D" parent="."]
 
@@ -492,17 +492,17 @@ amount = 80
 preprocess = 3.0
 visibility_rect = Rect2( -3300, 1200, 6000, 200 )
 local_coords = false
-process_material = SubResource( 1 )
+process_material = SubResource( 7 )
 texture = ExtResource( 12 )
 
 [node name="screen_center_fade_overlay" type="Sprite" parent="Decor"]
-modulate = Color( 1, 1, 1, 0.0457329 )
+modulate = Color( 1, 1, 1, 0 )
 position = Vector2( -432, 176 )
 z_index = 1000
 texture = ExtResource( 13 )
 
 [node name="EnvironmentAnimationPlayer" type="AnimationPlayer" parent="Decor"]
-anims/thunder = SubResource( 10 )
+anims/thunder = SubResource( 8 )
 
 [node name="CutsceneTrigger" type="Area2D" parent="."]
 position = Vector2( -1680, -224 )
@@ -511,7 +511,7 @@ collision_mask = 524288
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="CutsceneTrigger"]
 position = Vector2( -160, 0 )
-shape = SubResource( 6 )
+shape = SubResource( 9 )
 
 [node name="PanicCutsceneTrigger" type="Area2D" parent="."]
 position = Vector2( -2304, -224 )
@@ -520,4 +520,4 @@ collision_mask = 524288
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="PanicCutsceneTrigger"]
 position = Vector2( 64, 0 )
-shape = SubResource( 7 )
+shape = SubResource( 10 )

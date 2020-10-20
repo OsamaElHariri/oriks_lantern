@@ -4,6 +4,8 @@ extends Node2D
 var target = null
 var offset = Vector2.ZERO
 
+var snap_camera = false
+
 var limit_left
 var limit_right
 var limit_top
@@ -33,3 +35,8 @@ func _process(_delta):
 			global_position.y = max(limit_top + screen_size.y / 2, global_position.y)
 		if limit_bottom:
 			global_position.y = min(limit_bottom - screen_size.y / 2, global_position.y)
+	
+	var camera = get_node_or_null("WorldCamera")
+	if camera:
+		camera.smoothing_enabled = !snap_camera
+	snap_camera = false

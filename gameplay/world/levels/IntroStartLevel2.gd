@@ -128,6 +128,8 @@ func _physics_process(_delta):
 	else:
 		$LevelOrigin.world.player.visible = true
 	
+	$Decor/screen_center_fade_overlay.visible = $LevelOrigin.is_level_active
+	
 	if not has_played_look_at_this and $LevelOrigin.is_level_active and $LevelOrigin.world.player.global_position.x < $Dialog/FatherDialog.global_position.x - 200:
 		has_played_look_at_this = true
 		$Dialog/DialogAnimationPlayer.play("look_at_this")
