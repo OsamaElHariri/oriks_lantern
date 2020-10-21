@@ -443,7 +443,8 @@ script = ExtResource( 10 )
 speed = 0.5
 
 [node name="thick_fading_tree" type="Sprite" parent="LevelOrigin/ForegroundDecor/Parallax3"]
-position = Vector2( -7712, -288 )
+position = Vector2( -7936, -288 )
+scale = Vector2( 0.96, 1 )
 z_index = 3
 texture = ExtResource( 11 )
 

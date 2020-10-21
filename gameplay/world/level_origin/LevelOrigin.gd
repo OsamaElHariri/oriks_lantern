@@ -12,6 +12,9 @@ var top_cell_coords = []
 var is_level_active = false
 var world
 
+var level_width = 0
+var level_height = 0
+
 func _ready():
 	randomize()
 	world = get_world()

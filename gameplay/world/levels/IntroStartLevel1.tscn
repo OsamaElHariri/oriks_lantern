@@ -60,7 +60,7 @@ speed = 0.5
 
 [node name="thick_fading_tree" type="Sprite" parent="LevelOrigin/ForegroundDecor/Parallax3"]
 position = Vector2( -3456, 64 )
-scale = Vector2( 0.962292, 1 )
+scale = Vector2( 0.96, 1 )
 z_index = 2
 texture = ExtResource( 4 )
 
