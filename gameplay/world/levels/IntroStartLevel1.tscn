@@ -22,8 +22,8 @@ scale = Vector2( 764, 548 )
 [node name="Platforms" type="Node2D" parent="LevelOrigin"]
 
 [node name="BasicPlatform" parent="LevelOrigin/Platforms" instance=ExtResource( 5 )]
-position = Vector2( -568, 512 )
-scale = Vector2( 764, 48 )
+position = Vector2( -568, 624 )
+scale = Vector2( 764, 104 )
 
 [node name="SpawnLocations" type="Node2D" parent="LevelOrigin"]
 
@@ -40,7 +40,8 @@ script = ExtResource( 6 )
 speed = 0.4
 
 [node name="front_rock_blur_1" type="Sprite" parent="LevelOrigin/ForegroundDecor/Parallax1"]
-position = Vector2( -16, 656 )
+position = Vector2( 372.75, 683.406 )
+scale = Vector2( 1.34562, 1.59385 )
 texture = ExtResource( 7 )
 
 [node name="Parallax2" type="Node2D" parent="LevelOrigin/ForegroundDecor"]

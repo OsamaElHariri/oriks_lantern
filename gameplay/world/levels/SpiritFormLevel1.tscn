@@ -7,8 +7,8 @@
 [ext_resource path="res://gameplay/platform/spikes/Spikes.tscn" type="PackedScene" id=5]
 [ext_resource path="res://gameplay/world/level_origin/decor/LeavesDecor.tscn" type="PackedScene" id=6]
 [ext_resource path="res://gameplay/world/level_origin/decor/inner_decor_2.png" type="Texture" id=7]
-[ext_resource path="res://gameplay/world/level_origin/decor/front_rock_blur_1.png" type="Texture" id=8]
-[ext_resource path="res://gameplay/world/level_origin/decor/front_rock_blur_2.png" type="Texture" id=9]
+[ext_resource path="res://gameplay/world/level_origin/decor/foreground_ground_blur_2.png" type="Texture" id=8]
+[ext_resource path="res://gameplay/world/level_origin/decor/foreground_ground_blur_1.png" type="Texture" id=9]
 [ext_resource path="res://gameplay/world/level_origin/ForegroundParallax.gd" type="Script" id=10]
 [ext_resource path="res://gameplay/world/level_origin/decor/leaves_4_blur_1.png" type="Texture" id=11]
 [ext_resource path="res://gameplay/world/level_origin/InteractableVisual.gd" type="Script" id=12]
@@ -37,8 +37,8 @@ scale = Vector2( 500, 304 )
 [node name="Platforms" type="Node2D" parent="LevelOrigin"]
 
 [node name="BasicPlatform" parent="LevelOrigin/Platforms" instance=ExtResource( 4 )]
-position = Vector2( 184, 520 )
-scale = Vector2( 500, 52 )
+position = Vector2( 184, 752 )
+scale = Vector2( 500, 168 )
 
 [node name="BasicPlatform2" parent="LevelOrigin/Platforms" instance=ExtResource( 4 )]
 position = Vector2( 784, -200 )
@@ -49,13 +49,13 @@ position = Vector2( 1096, 176 )
 scale = Vector2( 44, 120 )
 
 [node name="BasicPlatform6" parent="LevelOrigin/Platforms" instance=ExtResource( 4 )]
-position = Vector2( 184, -688 )
-scale = Vector2( 500, 24 )
+position = Vector2( 184, -1136 )
+scale = Vector2( 500, 248 )
 spawn_top_decor = false
 
 [node name="BasicPlatform7" parent="LevelOrigin/Platforms" instance=ExtResource( 4 )]
-position = Vector2( -864, -232 )
-scale = Vector2( 24, 228 )
+position = Vector2( -864, -704 )
+scale = Vector2( 24, 464 )
 spawn_top_decor = false
 
 [node name="SpawnLocations" type="Node2D" parent="LevelOrigin"]
@@ -80,10 +80,6 @@ z_index = 100
 modulate = Color( 0.701961, 0.701961, 0.701961, 1 )
 script = ExtResource( 10 )
 speed = 0.4
-
-[node name="front_rock_blur_2" type="Sprite" parent="LevelOrigin/ForegroundDecor/Parallax1"]
-position = Vector2( 672, 640 )
-texture = ExtResource( 8 )
 
 [node name="Node2D" type="Node2D" parent="LevelOrigin/ForegroundDecor/Parallax1"]
 position = Vector2( 1200, -132 )
@@ -128,14 +124,21 @@ __meta__ = {
 "_editor_description_": ""
 }
 
+[node name="foreground_ground_blur_1" type="Sprite" parent="LevelOrigin/ForegroundDecor/Parallax1"]
+position = Vector2( 256, 880 )
+scale = Vector2( 1.54608, 1 )
+texture = ExtResource( 9 )
+
+[node name="foreground_ground_blur_2" type="Sprite" parent="LevelOrigin/ForegroundDecor/Parallax1"]
+position = Vector2( 2272, 416 )
+scale = Vector2( 1.05199, 1.86625 )
+texture = ExtResource( 9 )
+
 [node name="Parallax2" type="Node2D" parent="LevelOrigin/ForegroundDecor"]
 modulate = Color( 0.588235, 0.588235, 0.588235, 1 )
+z_index = 5
 script = ExtResource( 10 )
 speed = 0.7
-
-[node name="front_rock_blur_2" type="Sprite" parent="LevelOrigin/ForegroundDecor/Parallax2"]
-position = Vector2( 224, 720 )
-texture = ExtResource( 9 )
 
 [node name="Node2D" type="Node2D" parent="LevelOrigin/ForegroundDecor/Parallax2"]
 position = Vector2( 1296, 272 )
@@ -160,7 +163,7 @@ __meta__ = {
 }
 
 [node name="Node2D2" type="Node2D" parent="LevelOrigin/ForegroundDecor/Parallax2"]
-position = Vector2( 64, 464 )
+position = Vector2( -1328, 752 )
 script = ExtResource( 12 )
 __meta__ = {
 "_editor_description_": ""
@@ -175,11 +178,20 @@ move_sway_range_multiplier = 0.0
 
 [node name="visual" type="Sprite" parent="LevelOrigin/ForegroundDecor/Parallax2/Node2D2"]
 material = SubResource( 1 )
-position = Vector2( 192, 56 )
 texture = ExtResource( 16 )
 __meta__ = {
 "_editor_description_": ""
 }
+
+[node name="foreground_ground_blur_2" type="Sprite" parent="LevelOrigin/ForegroundDecor/Parallax2"]
+position = Vector2( -320, 1920 )
+scale = Vector2( 1.85492, 2.78927 )
+texture = ExtResource( 8 )
+
+[node name="foreground_ground_blur_3" type="Sprite" parent="LevelOrigin/ForegroundDecor/Parallax2"]
+position = Vector2( 3184, 624 )
+scale = Vector2( 1.85492, 2.78927 )
+texture = ExtResource( 8 )
 
 [node name="inner_decor_2" type="Sprite" parent="."]
 position = Vector2( 656, -162 )
