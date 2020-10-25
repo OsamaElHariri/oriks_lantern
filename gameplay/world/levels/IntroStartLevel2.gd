@@ -23,6 +23,7 @@ var father_carrying_player = false
 var has_played_main_smash = false
 
 func _ready():
+	$CutsceneStaticBody2D/CollisionShape2D.disabled = true
 	$Robot.visible = false
 	initial_robot_pos = $Robot/CrusherRobot.position
 	$CutsceneTrigger.connect("area_entered", self, "on_start_cutscene")
@@ -36,7 +37,7 @@ func on_level_active():
 	$ThunderAudioStreamPlayer.play()
 	$RainAudioStreamPlayer.play()
 	var player = $LevelOrigin.world.player
-	player.position.x -= 600
+	player.position.x -= 850
 	player.signature_action_enabled = false
 	player.get_node("MoveCollection").disable_movement("WallJumpMovement")
 	var hat = player.get_node_or_null("Visuals/Sprites/torso/hat")
@@ -122,6 +123,7 @@ func robot_trigger():
 func on_start_panic_cutscene(_player_tracker):
 	if has_triggered_escape_scene: return
 	has_triggered_escape_scene = true
+	$CutsceneStaticBody2D/CollisionShape2D.call_deferred('set_disabled', false)
 	$Dialog/DialogAnimationPlayer.play("panic")
 
 func trigger_father_help_player():

@@ -1,4 +1,4 @@
-[gd_scene load_steps=31 format=2]
+[gd_scene load_steps=32 format=2]
 
 [ext_resource path="res://gameplay/world/level_origin/SpawnLocation.tscn" type="PackedScene" id=1]
 [ext_resource path="res://gameplay/world/level_origin/LevelOrigin.tscn" type="PackedScene" id=2]
@@ -169,7 +169,7 @@ tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0, 1.3 ),
+"times": PoolRealArray( 0, 0.3 ),
 "transitions": PoolRealArray( 1, 1 ),
 "update": 0,
 "values": [ Vector2( -80, -112 ), Vector2( 96, -112 ) ]
@@ -181,7 +181,7 @@ tracks/1/loop_wrap = true
 tracks/1/imported = false
 tracks/1/enabled = true
 tracks/1/keys = {
-"times": PoolRealArray( 2 ),
+"times": PoolRealArray( 1 ),
 "transitions": PoolRealArray( 1 ),
 "values": [ {
 "args": [ "Hey Orik, come here a sec" ],
@@ -387,15 +387,18 @@ tracks/1/keys = {
 "values": [ -80.0, -0.5 ]
 }
 
-[sub_resource type="DynamicFont" id=11]
+[sub_resource type="DynamicFont" id=9]
 size = 40
 font_data = ExtResource( 18 )
 
-[sub_resource type="RectangleShape2D" id=9]
+[sub_resource type="RectangleShape2D" id=10]
 extents = Vector2( 112, 560 )
 
-[sub_resource type="RectangleShape2D" id=10]
+[sub_resource type="RectangleShape2D" id=11]
 extents = Vector2( 48, 560 )
+
+[sub_resource type="RectangleShape2D" id=12]
+extents = Vector2( 96, 656 )
 
 [node name="IntroStartLevel2" type="Node2D"]
 script = ExtResource( 6 )
@@ -489,12 +492,12 @@ position = Vector2( 960, 416 )
 [node name="Dialog" type="Node2D" parent="."]
 
 [node name="PlayerDialog" parent="Dialog" instance=ExtResource( 8 )]
-position = Vector2( -2048, -16 )
+position = Vector2( -1536, -64 )
 dialog_group = "player"
 pitch_scale = 2
 
 [node name="FatherDialog" parent="Dialog" instance=ExtResource( 8 )]
-position = Vector2( -4608, -336 )
+position = Vector2( -80, -112 )
 dialog_group = "player_father"
 
 [node name="DialogAnimationPlayer" type="AnimationPlayer" parent="Dialog"]
@@ -538,7 +541,7 @@ margin_left = -140.263
 margin_top = -24.8315
 margin_right = 140.737
 margin_bottom = 23.1685
-custom_fonts/font = SubResource( 11 )
+custom_fonts/font = SubResource( 9 )
 text = "Press C to Jump"
 __meta__ = {
 "_edit_use_anchors_": false
@@ -551,7 +554,7 @@ collision_mask = 524288
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="CutsceneTrigger"]
 position = Vector2( -160, 0 )
-shape = SubResource( 9 )
+shape = SubResource( 10 )
 
 [node name="PanicCutsceneTrigger" type="Area2D" parent="."]
 position = Vector2( -2304, -224 )
@@ -560,7 +563,7 @@ collision_mask = 524288
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="PanicCutsceneTrigger"]
 position = Vector2( 64, 0 )
-shape = SubResource( 10 )
+shape = SubResource( 11 )
 
 [node name="ThunderAudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 15 )
@@ -576,3 +579,17 @@ volume_db = -5.0
 [node name="SmallSmashAudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 17 )
 volume_db = -20.0
+
+[node name="LevelBlockStaticBody2D" type="StaticBody2D" parent="."]
+position = Vector2( 1472, -240 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="LevelBlockStaticBody2D"]
+position = Vector2( -400, 0 )
+shape = SubResource( 12 )
+
+[node name="CutsceneStaticBody2D" type="StaticBody2D" parent="."]
+position = Vector2( 1472, -240 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CutsceneStaticBody2D"]
+position = Vector2( -3408, -80 )
+shape = SubResource( 12 )
