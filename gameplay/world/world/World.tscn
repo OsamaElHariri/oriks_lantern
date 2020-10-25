@@ -1,4 +1,4 @@
-[gd_scene load_steps=29 format=2]
+[gd_scene load_steps=30 format=2]
 
 [ext_resource path="res://gameplay/world/world/PostProcess.gd" type="Script" id=1]
 [ext_resource path="res://gameplay/world/camera/WorldCamera.tscn" type="PackedScene" id=2]
@@ -21,6 +21,7 @@
 [ext_resource path="res://gameplay/world/levels/IntroStartLevel1.tscn" type="PackedScene" id=19]
 [ext_resource path="res://gameplay/world/levels/IntroStartLevel2.tscn" type="PackedScene" id=20]
 [ext_resource path="res://gameplay/world/levels/IntroStartLevel3.tscn" type="PackedScene" id=21]
+[ext_resource path="res://gameplay/world/levels/DemoEndLevel.tscn" type="PackedScene" id=22]
 
 [sub_resource type="Shader" id=1]
 code = "shader_type canvas_item;
@@ -302,6 +303,9 @@ position = Vector2( 9648, -2624 )
 
 [node name="JumpLevel3" parent="Levels" instance=ExtResource( 16 )]
 position = Vector2( 7728, -2960 )
+
+[node name="JumpLevel1" parent="Levels/JumpLevel3" instance=ExtResource( 22 )]
+position = Vector2( 5968, -720 )
 
 [node name="JumpLevel4" parent="Levels" instance=ExtResource( 17 )]
 position = Vector2( 5776, -2224 )
