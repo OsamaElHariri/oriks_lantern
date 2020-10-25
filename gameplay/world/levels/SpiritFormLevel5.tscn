@@ -1,0 +1,229 @@
+[gd_scene load_steps=18 format=2]
+
+[ext_resource path="res://gameplay/platform/spikes/Spikes.tscn" type="PackedScene" id=1]
+[ext_resource path="res://gameplay/world/level_origin/decor/sway.shader" type="Shader" id=2]
+[ext_resource path="res://gameplay/platform/basic_platform/BasicPlatform.tscn" type="PackedScene" id=3]
+[ext_resource path="res://gameplay/world/level_origin/LevelOrigin.tscn" type="PackedScene" id=4]
+[ext_resource path="res://gameplay/world/level_origin/ForegroundParallax.gd" type="Script" id=5]
+[ext_resource path="res://gameplay/world/level_origin/decor/inner_decor_2.png" type="Texture" id=6]
+[ext_resource path="res://gameplay/world/level_origin/SpawnLocation.tscn" type="PackedScene" id=7]
+[ext_resource path="res://gameplay/world/level_origin/InteractableVisual.gd" type="Script" id=8]
+[ext_resource path="res://gameplay/world/level_origin/decor/SmoothCurveDecor.tres" type="Curve" id=9]
+[ext_resource path="res://gameplay/world/level_origin/decor/LeavesDecor.tscn" type="PackedScene" id=10]
+[ext_resource path="res://gameplay/world/level_origin/decor/HardStartCurveDecor.tres" type="Curve" id=11]
+[ext_resource path="res://gameplay/world/level_origin/LevelBounds.tscn" type="PackedScene" id=12]
+[ext_resource path="res://gameplay/world/level_origin/decor/foreground_ground_blur_1.png" type="Texture" id=13]
+[ext_resource path="res://gameplay/world/level_origin/decor/foreground_ground_blur_2.png" type="Texture" id=14]
+[ext_resource path="res://gameplay/world/level_origin/decor/leaves_4_blur_1.png" type="Texture" id=15]
+[ext_resource path="res://gameplay/world/level_origin/decor/leaves_2_blur_2.png" type="Texture" id=16]
+
+[sub_resource type="ShaderMaterial" id=1]
+shader = ExtResource( 2 )
+shader_param/y_offset = 0.0
+shader_param/y_speed = 0.0
+shader_param/y_sway = 0.0
+shader_param/x_strength = 0.0
+
+[node name="SpiritFormLevel1" type="Node2D"]
+
+[node name="LevelOrigin" parent="." instance=ExtResource( 4 )]
+
+[node name="LevelBounds" parent="LevelOrigin" instance=ExtResource( 12 )]
+position = Vector2( 248, 392 )
+scale = Vector2( 532, 324 )
+
+[node name="Platforms" type="Node2D" parent="LevelOrigin"]
+
+[node name="BasicPlatform" parent="LevelOrigin/Platforms" instance=ExtResource( 3 )]
+position = Vector2( -520, 1016 )
+scale = Vector2( 148, 236 )
+
+[node name="BasicPlatform4" parent="LevelOrigin/Platforms" instance=ExtResource( 3 )]
+position = Vector2( 544.03, 1240 )
+scale = Vector2( 383.985, 124 )
+spawn_top_decor = false
+
+[node name="BasicPlatform2" parent="LevelOrigin/Platforms" instance=ExtResource( 3 )]
+position = Vector2( -344, -88 )
+scale = Vector2( 60, 52 )
+
+[node name="BasicPlatform5" parent="LevelOrigin/Platforms" instance=ExtResource( 3 )]
+position = Vector2( 304, 240 )
+scale = Vector2( 40, 208 )
+
+[node name="BasicPlatform8" parent="LevelOrigin/Platforms" instance=ExtResource( 3 )]
+position = Vector2( 936, 608 )
+scale = Vector2( 188, 192 )
+
+[node name="BasicPlatform7" parent="LevelOrigin/Platforms" instance=ExtResource( 3 )]
+position = Vector2( 304, 856 )
+scale = Vector2( 40, 44 )
+spawn_top_decor = false
+
+[node name="BasicPlatform3" parent="LevelOrigin/Platforms" instance=ExtResource( 3 )]
+position = Vector2( -344, 432 )
+scale = Vector2( 60, 136 )
+spawn_top_decor = false
+
+[node name="BasicPlatform6" parent="LevelOrigin/Platforms" instance=ExtResource( 3 )]
+position = Vector2( 248, -384 )
+scale = Vector2( 532, 104 )
+spawn_top_decor = false
+
+[node name="SpawnLocations" type="Node2D" parent="LevelOrigin"]
+
+[node name="SpawnLocation" parent="LevelOrigin/SpawnLocations" instance=ExtResource( 7 )]
+position = Vector2( -624, 288 )
+scale = Vector2( 1, 5.08 )
+
+[node name="Spikes" type="Node2D" parent="LevelOrigin"]
+
+[node name="Spikes" parent="LevelOrigin/Spikes" instance=ExtResource( 1 )]
+margin_left = -463.941
+margin_top = 144.0
+margin_right = 16.0591
+margin_bottom = 208.0
+
+[node name="Spikes9" parent="LevelOrigin/Spikes" instance=ExtResource( 1 )]
+margin_left = -224.0
+margin_top = 976.0
+margin_right = 1312.0
+margin_bottom = 1040.0
+
+[node name="Spikes6" parent="LevelOrigin/Spikes" instance=ExtResource( 1 )]
+margin_left = 224.0
+margin_top = 752.0
+margin_right = 544.0
+margin_bottom = 816.0
+
+[node name="Spikes8" parent="LevelOrigin/Spikes" instance=ExtResource( 1 )]
+margin_left = 544.0
+margin_top = 992.0
+margin_right = 2048.0
+margin_bottom = 1056.0
+rect_rotation = -89.9999
+
+[node name="Spikes10" parent="LevelOrigin/Spikes" instance=ExtResource( 1 )]
+margin_left = 208.0
+margin_top = 656.0
+margin_right = 1840.0
+margin_bottom = 720.0
+rect_rotation = -89.9999
+
+[node name="Spikes11" parent="LevelOrigin/Spikes" instance=ExtResource( 1 )]
+margin_left = 208.0
+margin_top = 944.0
+margin_right = 528.0
+margin_bottom = 1008.0
+rect_rotation = -89.9999
+
+[node name="Spikes3" parent="LevelOrigin/Spikes" instance=ExtResource( 1 )]
+margin_left = -208.0
+margin_top = -176.0
+margin_right = 144.0
+margin_bottom = -112.0
+rect_rotation = 89.9999
+
+[node name="Spikes7" parent="LevelOrigin/Spikes" instance=ExtResource( 1 )]
+margin_left = 400.0
+margin_top = -176.0
+margin_right = 1456.0
+margin_bottom = -112.0
+rect_rotation = 89.9999
+
+[node name="Spikes4" parent="LevelOrigin/Spikes" instance=ExtResource( 1 )]
+margin_left = -208.0
+margin_top = 176.0
+margin_right = 592.0
+margin_bottom = 240.0
+rect_rotation = 89.9999
+
+[node name="Spikes2" parent="LevelOrigin/Spikes" instance=ExtResource( 1 )]
+margin_left = -224.0
+margin_top = 32.0
+margin_right = 256.0
+margin_bottom = 96.0
+rect_rotation = 180.0
+
+[node name="Spikes5" parent="LevelOrigin/Spikes" instance=ExtResource( 1 )]
+margin_left = 384.0
+margin_top = 688.0
+margin_right = 703.0
+margin_bottom = 752.0
+rect_rotation = 180.0
+
+[node name="ForegroundDecor" type="Node2D" parent="LevelOrigin"]
+z_index = 100
+
+[node name="Parallax1" type="Node2D" parent="LevelOrigin/ForegroundDecor"]
+modulate = Color( 0.701961, 0.701961, 0.701961, 1 )
+script = ExtResource( 5 )
+speed = 0.4
+
+[node name="Node2D2" type="Node2D" parent="LevelOrigin/ForegroundDecor/Parallax1"]
+position = Vector2( 1216, 544 )
+script = ExtResource( 8 )
+__meta__ = {
+"_editor_description_": ""
+}
+smooth = ExtResource( 9 )
+hard_start = ExtResource( 11 )
+x_strength_multiplier = 0.3
+height_sway_ratio = 0.1
+y_speed = 1.0
+y_speed_random = 1.0
+move_sway_range_multiplier = 0.0
+
+[node name="visual" type="Sprite" parent="LevelOrigin/ForegroundDecor/Parallax1/Node2D2"]
+material = SubResource( 1 )
+texture = ExtResource( 15 )
+__meta__ = {
+"_editor_description_": ""
+}
+
+[node name="foreground_ground_blur_1" type="Sprite" parent="LevelOrigin/ForegroundDecor/Parallax1"]
+position = Vector2( 2459.7, 1008 )
+scale = Vector2( 1.54608, 1 )
+texture = ExtResource( 13 )
+
+[node name="Parallax2" type="Node2D" parent="LevelOrigin/ForegroundDecor"]
+modulate = Color( 0.588235, 0.588235, 0.588235, 1 )
+z_index = 5
+script = ExtResource( 5 )
+speed = 0.7
+
+[node name="foreground_ground_blur_2" type="Sprite" parent="LevelOrigin/ForegroundDecor/Parallax2"]
+position = Vector2( 115.08, 1864.75 )
+rotation = 0.261799
+texture = ExtResource( 14 )
+
+[node name="Node2D3" type="Node2D" parent="LevelOrigin/ForegroundDecor/Parallax2"]
+position = Vector2( 1254.31, 640 )
+script = ExtResource( 8 )
+__meta__ = {
+"_editor_description_": ""
+}
+smooth = ExtResource( 9 )
+hard_start = ExtResource( 11 )
+x_strength_multiplier = 0.3
+height_sway_ratio = 0.1
+y_speed = 1.0
+y_speed_random = 1.0
+move_sway_range_multiplier = 0.0
+
+[node name="visual" type="Sprite" parent="LevelOrigin/ForegroundDecor/Parallax2/Node2D3"]
+material = SubResource( 1 )
+position = Vector2( -1779.23, 568.75 )
+texture = ExtResource( 16 )
+__meta__ = {
+"_editor_description_": ""
+}
+
+[node name="inner_decor_2" type="Sprite" parent="."]
+position = Vector2( -497, 798 )
+scale = Vector2( 1, 1.02632 )
+texture = ExtResource( 6 )
+
+[node name="LeavesDecor" parent="." instance=ExtResource( 10 )]
+position = Vector2( -481, 720 )
+has_shadow = true

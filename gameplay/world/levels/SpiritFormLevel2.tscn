@@ -73,8 +73,8 @@ scale = Vector2( 324, 44 )
 spawn_top_decor = false
 
 [node name="BasicPlatform8" parent="LevelOrigin/Platforms" instance=ExtResource( 4 )]
-position = Vector2( 776, -672 )
-scale = Vector2( 180, 32 )
+position = Vector2( 760, -920 )
+scale = Vector2( 172, 156 )
 spawn_top_decor = false
 
 [node name="SpawnLocations" type="Node2D" parent="LevelOrigin"]
