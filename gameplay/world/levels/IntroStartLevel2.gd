@@ -20,6 +20,7 @@ var has_triggered_escape_scene = false
 var has_played_look_at_this = false
 
 var father_carrying_player = false
+var has_played_main_smash = false
 
 func _ready():
 	$Robot.visible = false
@@ -32,6 +33,8 @@ func _ready():
 
 func on_level_active():
 	$Decor/EnvironmentAnimationPlayer.play("thunder")
+	$ThunderAudioStreamPlayer.play()
+	$RainAudioStreamPlayer.play()
 	var player = $LevelOrigin.world.player
 	player.position.x -= 600
 	player.signature_action_enabled = false
@@ -98,7 +101,11 @@ func on_start_cutscene(_player_tracker):
 	$Dialog/DialogAnimationPlayer.play("explanation")
 
 func anticipation_shake():
-	EMITTER.emit("request_screen_shake", 0.5)
+	EMITTER.emit("request_screen_shake", 0.6)
+	$SmallSmashAudioStreamPlayer.play()
+	if not has_played_main_smash:
+		$MainSmashAudioStreamPlayer.play()
+	has_played_main_smash = true
 
 func set_camera_follower():
 	$LevelOrigin.world.get_node("TargetFollower").offset = Vector2(OS.get_screen_size().x * 0.16, 0)

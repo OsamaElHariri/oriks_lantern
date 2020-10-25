@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=2]
+[gd_scene load_steps=28 format=2]
 
 [ext_resource path="res://gameplay/world/level_origin/SpawnLocation.tscn" type="PackedScene" id=1]
 [ext_resource path="res://gameplay/world/level_origin/LevelOrigin.tscn" type="PackedScene" id=2]
@@ -13,6 +13,10 @@
 [ext_resource path="res://gameplay/world/level_origin/decor/thick_fading_tree.png" type="Texture" id=11]
 [ext_resource path="res://gameplay/world/level_origin/decor/rain_droplet.png" type="Texture" id=12]
 [ext_resource path="res://gameplay/world/levels/Decor/intro_cutscene/screen_center_fade_overlay.png" type="Texture" id=13]
+[ext_resource path="res://gameplay/world/levels/Decor/intro_cutscene/rain.wav" type="AudioStream" id=14]
+[ext_resource path="res://gameplay/world/levels/Decor/intro_cutscene/thunder.wav" type="AudioStream" id=15]
+[ext_resource path="res://gameplay/world/levels/Decor/intro_cutscene/smash.wav" type="AudioStream" id=16]
+[ext_resource path="res://gameplay/world/levels/Decor/intro_cutscene/small_smash.wav" type="AudioStream" id=17]
 
 [sub_resource type="ParticlesMaterial" id=1]
 emission_shape = 2
@@ -368,6 +372,18 @@ tracks/0/keys = {
 "update": 0,
 "values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 0.196078 ), Color( 1, 1, 1, 0.0784314 ), Color( 1, 1, 1, 0.588235 ), Color( 1, 1, 1, 0.117647 ) ]
 }
+tracks/1/type = "value"
+tracks/1/path = NodePath("../RainAudioStreamPlayer:volume_db")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ -80.0, -0.5 ]
+}
 
 [sub_resource type="RectangleShape2D" id=9]
 extents = Vector2( 112, 560 )
@@ -469,9 +485,10 @@ position = Vector2( 960, 416 )
 [node name="PlayerDialog" parent="Dialog" instance=ExtResource( 8 )]
 position = Vector2( -1536, -64 )
 dialog_group = "player"
+pitch_scale = 2
 
 [node name="FatherDialog" parent="Dialog" instance=ExtResource( 8 )]
-position = Vector2( 96, -112 )
+position = Vector2( -2128, -112 )
 dialog_group = "player_father"
 
 [node name="DialogAnimationPlayer" type="AnimationPlayer" parent="Dialog"]
@@ -522,3 +539,18 @@ collision_mask = 524288
 [node name="CollisionShape2D" type="CollisionShape2D" parent="PanicCutsceneTrigger"]
 position = Vector2( 64, 0 )
 shape = SubResource( 10 )
+
+[node name="ThunderAudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 15 )
+
+[node name="RainAudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 14 )
+volume_db = -80.0
+
+[node name="MainSmashAudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 16 )
+volume_db = -5.0
+
+[node name="SmallSmashAudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 17 )
+volume_db = -20.0

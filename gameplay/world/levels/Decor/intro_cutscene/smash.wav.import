@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/smash.wav-510ba1a6a342ed455948913035d499e2.sample"
+
+[deps]
+
+source_file="res://gameplay/world/levels/Decor/intro_cutscene/smash.wav"
+dest_files=[ "res://.import/smash.wav-510ba1a6a342ed455948913035d499e2.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

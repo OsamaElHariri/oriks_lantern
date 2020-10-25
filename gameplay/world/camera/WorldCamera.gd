@@ -13,7 +13,7 @@ var shake_intensity = 0
 func _ready():
 	randomize()
 	noise.seed = randi()
-	noise.period = 1
+	noise.period = 5
 	noise.octaves = 5
 	EMITTER.connect("request_screen_shake", self, "on_request_screen_shake")
 
@@ -22,7 +22,7 @@ func on_request_screen_shake(duration):
 
 func _process(delta):
 	shake_intensity = max(0, shake_intensity - delta)
-	noise_y += 1
+	noise_y += 3
 	offset.x = max_shake_offset.x * shake_intensity * noise.get_noise_2d(noise.seed * 2, noise_y)
 	offset.y = max_shake_offset.y * shake_intensity * noise.get_noise_2d(noise.seed * 3, noise_y)
 
