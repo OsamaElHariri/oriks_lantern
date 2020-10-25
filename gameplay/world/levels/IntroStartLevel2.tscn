@@ -1,4 +1,4 @@
-[gd_scene load_steps=28 format=2]
+[gd_scene load_steps=31 format=2]
 
 [ext_resource path="res://gameplay/world/level_origin/SpawnLocation.tscn" type="PackedScene" id=1]
 [ext_resource path="res://gameplay/world/level_origin/LevelOrigin.tscn" type="PackedScene" id=2]
@@ -17,6 +17,8 @@
 [ext_resource path="res://gameplay/world/levels/Decor/intro_cutscene/thunder.wav" type="AudioStream" id=15]
 [ext_resource path="res://gameplay/world/levels/Decor/intro_cutscene/smash.wav" type="AudioStream" id=16]
 [ext_resource path="res://gameplay/world/levels/Decor/intro_cutscene/small_smash.wav" type="AudioStream" id=17]
+[ext_resource path="res://assets/font/DroidSans.ttf" type="DynamicFontData" id=18]
+[ext_resource path="res://gameplay/world/levels/Decor/intro_cutscene/info_text_area.png" type="Texture" id=19]
 
 [sub_resource type="ParticlesMaterial" id=1]
 emission_shape = 2
@@ -243,10 +245,10 @@ tracks/0/keys = {
 "args": [ "I can't..." ],
 "method": "spawn_dialog"
 }, {
-"args": [ "HELP ME!" ],
+"args": [ "[shake rate=20 level=70]HELP ME![/shake]" ],
 "method": "spawn_dialog"
 }, {
-"args": [ "I CAN't MAKE IT" ],
+"args": [ "[shake rate=20 level=70]I CAN't MAKE IT[/shake]" ],
 "method": "spawn_dialog"
 }, {
 "args": [ "I can't make it!" ],
@@ -275,13 +277,13 @@ tracks/1/keys = {
 "args": [ "Come on, buddy" ],
 "method": "spawn_dialog"
 }, {
-"args": [ "We have to MOVE" ],
+"args": [ "We have to [shake rate=20 level=70]MOVE[/shake]" ],
 "method": "spawn_dialog"
 }, {
 "args": [  ],
 "method": "remove_dialog"
 }, {
-"args": [ "CALM DOWN" ],
+"args": [ "[shake rate=20 level=70]CALM DOWN[/shake]" ],
 "method": "spawn_dialog"
 }, {
 "args": [ "Calm down" ],
@@ -385,6 +387,10 @@ tracks/1/keys = {
 "values": [ -80.0, -0.5 ]
 }
 
+[sub_resource type="DynamicFont" id=11]
+size = 40
+font_data = ExtResource( 18 )
+
 [sub_resource type="RectangleShape2D" id=9]
 extents = Vector2( 112, 560 )
 
@@ -483,12 +489,12 @@ position = Vector2( 960, 416 )
 [node name="Dialog" type="Node2D" parent="."]
 
 [node name="PlayerDialog" parent="Dialog" instance=ExtResource( 8 )]
-position = Vector2( -1536, -64 )
+position = Vector2( -2048, -16 )
 dialog_group = "player"
 pitch_scale = 2
 
 [node name="FatherDialog" parent="Dialog" instance=ExtResource( 8 )]
-position = Vector2( -2128, -112 )
+position = Vector2( -4608, -336 )
 dialog_group = "player_father"
 
 [node name="DialogAnimationPlayer" type="AnimationPlayer" parent="Dialog"]
@@ -521,6 +527,22 @@ texture = ExtResource( 13 )
 
 [node name="EnvironmentAnimationPlayer" type="AnimationPlayer" parent="Decor"]
 anims/thunder = SubResource( 8 )
+
+[node name="info_text_area" type="Sprite" parent="Decor"]
+position = Vector2( -576, 480 )
+texture = ExtResource( 19 )
+
+[node name="Label" type="Label" parent="Decor/info_text_area"]
+modulate = Color( 1, 1, 1, 0.705882 )
+margin_left = -140.263
+margin_top = -24.8315
+margin_right = 140.737
+margin_bottom = 23.1685
+custom_fonts/font = SubResource( 11 )
+text = "Press C to Jump"
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="CutsceneTrigger" type="Area2D" parent="."]
 position = Vector2( -1680, -224 )

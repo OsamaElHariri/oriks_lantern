@@ -17,8 +17,8 @@ script = ExtResource( 9 )
 [node name="LevelOrigin" parent="." instance=ExtResource( 2 )]
 
 [node name="LevelBounds" parent="LevelOrigin" instance=ExtResource( 8 )]
-position = Vector2( -568, -568 )
-scale = Vector2( 764, 548 )
+position = Vector2( -80, -568 )
+scale = Vector2( 1008, 548 )
 
 [node name="Platforms" type="Node2D" parent="LevelOrigin"]
 
@@ -26,10 +26,14 @@ scale = Vector2( 764, 548 )
 position = Vector2( -568, 624 )
 scale = Vector2( 764, 104 )
 
+[node name="BasicPlatform2" parent="LevelOrigin/Platforms" instance=ExtResource( 5 )]
+position = Vector2( 1448, 328 )
+scale = Vector2( 244, 252 )
+
 [node name="SpawnLocations" type="Node2D" parent="LevelOrigin"]
 
 [node name="SpawnLocation" parent="LevelOrigin/SpawnLocations" instance=ExtResource( 1 )]
-position = Vector2( 880, 64 )
+position = Vector2( 1824, -480 )
 scale = Vector2( 1, 2.52 )
 
 [node name="ForegroundDecor" type="Node2D" parent="LevelOrigin"]

@@ -7,9 +7,9 @@
 [ext_resource path="res://gameplay/world/level_origin/SpawnLocation.tscn" type="PackedScene" id=5]
 [ext_resource path="res://gameplay/world/level_origin/decor/LeavesDecor.tscn" type="PackedScene" id=6]
 [ext_resource path="res://gameplay/world/level_origin/decor/inner_decor_2.png" type="Texture" id=7]
-[ext_resource path="res://gameplay/world/level_origin/decor/front_rock_blur_1.png" type="Texture" id=8]
+[ext_resource path="res://gameplay/world/level_origin/decor/foreground_ground_blur_1.png" type="Texture" id=8]
 [ext_resource path="res://gameplay/world/level_origin/ForegroundParallax.gd" type="Script" id=9]
-[ext_resource path="res://gameplay/world/level_origin/decor/front_rock_blur_2.png" type="Texture" id=10]
+[ext_resource path="res://gameplay/world/level_origin/decor/foreground_ground_blur_2.png" type="Texture" id=10]
 
 [node name="JumpLevel1" type="Node2D"]
 
@@ -70,8 +70,8 @@ script = ExtResource( 9 )
 speed = 0.4
 
 [node name="front_rock_blur_1" type="Sprite" parent="LevelOrigin/ForegroundDecor/Parallax1"]
-position = Vector2( -412.75, 576 )
-scale = Vector2( 1.63491, 1 )
+position = Vector2( -1024, 912 )
+scale = Vector2( 1.086, 1 )
 texture = ExtResource( 8 )
 
 [node name="Parallax2" type="Node2D" parent="LevelOrigin/ForegroundDecor"]
@@ -80,7 +80,7 @@ script = ExtResource( 9 )
 speed = 0.7
 
 [node name="front_rock_blur_2" type="Sprite" parent="LevelOrigin/ForegroundDecor/Parallax2"]
-position = Vector2( 208, 704 )
+position = Vector2( 208, 960 )
 texture = ExtResource( 10 )
 
 [node name="Decor" type="Node2D" parent="."]
@@ -107,15 +107,5 @@ has_shadow = true
 
 [node name="inner_decor_3" type="Sprite" parent="Decor"]
 position = Vector2( 783.5, 454 )
-scale = Vector2( 0.601266, 0.710526 )
-texture = ExtResource( 7 )
-
-[node name="LeavesDecor6" parent="Decor" instance=ExtResource( 6 )]
-position = Vector2( 114.939, 480 )
-scale = Vector2( 0.601266, 0.710526 )
-has_shadow = true
-
-[node name="inner_decor_4" type="Sprite" parent="Decor"]
-position = Vector2( 140.292, 534 )
 scale = Vector2( 0.601266, 0.710526 )
 texture = ExtResource( 7 )

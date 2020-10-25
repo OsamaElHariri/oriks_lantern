@@ -101,6 +101,7 @@ func on_start_cutscene(_player_tracker):
 	$Dialog/DialogAnimationPlayer.play("explanation")
 
 func anticipation_shake():
+	$Decor/info_text_area.visible = false
 	EMITTER.emit("request_screen_shake", 0.6)
 	$SmallSmashAudioStreamPlayer.play()
 	if not has_played_main_smash:
@@ -137,7 +138,7 @@ func _physics_process(_delta):
 	
 	$Decor/screen_center_fade_overlay.visible = $LevelOrigin.is_level_active
 	
-	if not has_played_look_at_this and $LevelOrigin.is_level_active and $LevelOrigin.world.player.global_position.x < $Dialog/FatherDialog.global_position.x - 200:
+	if not has_played_look_at_this and $LevelOrigin.is_level_active and $LevelOrigin.world.player.global_position.x < $Dialog/FatherDialog.global_position.x - 400:
 		has_played_look_at_this = true
 		$Dialog/DialogAnimationPlayer.play("look_at_this")
 	

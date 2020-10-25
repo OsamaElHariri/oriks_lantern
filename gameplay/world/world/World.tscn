@@ -148,7 +148,7 @@ position = Vector2( 2080, 800 )
 scale = Vector2( 1.37329, 1 )
 
 [node name="Player" parent="." instance=ExtResource( 6 )]
-position = Vector2( 0, 416 )
+position = Vector2( -992, 1008 )
 
 [node name="TargetFollower" type="Node2D" parent="."]
 script = ExtResource( 3 )
@@ -300,9 +300,6 @@ position = Vector2( 3776, -752 )
 [node name="JumpLevel2" parent="Levels" instance=ExtResource( 15 )]
 position = Vector2( 9648, -2624 )
 
-[node name="SpiritFormLevel1" parent="Levels/JumpLevel2" instance=ExtResource( 5 )]
-position = Vector2( 1920, -688 )
-
 [node name="JumpLevel3" parent="Levels" instance=ExtResource( 16 )]
 position = Vector2( 7728, -2960 )
 
@@ -310,9 +307,13 @@ position = Vector2( 7728, -2960 )
 position = Vector2( 5776, -2224 )
 
 [node name="IntroStartLevel1" parent="Levels" instance=ExtResource( 19 )]
+position = Vector2( -976, 592 )
 
 [node name="IntroStartLevel2" parent="Levels" instance=ExtResource( 20 )]
-position = Vector2( -3824, 0 )
+position = Vector2( -4800, 592 )
 
 [node name="LevelTest3" parent="Levels" instance=ExtResource( 21 )]
-position = Vector2( -10944, -496 )
+position = Vector2( -11920, 96 )
+
+[node name="SpiritFormLevel2" parent="Levels" instance=ExtResource( 5 )]
+position = Vector2( 11568, -3312 )
