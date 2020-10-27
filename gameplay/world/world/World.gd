@@ -7,9 +7,13 @@ var post_process = null
 var active_levels = []
 var player = null
 
+var main_loop_volume_direction = -1
+var robot_loop_volume_direction = -1
+var wildlife_loop_volume_direction = 1
 
 func _ready():
 	randomize()
+	$MusicLoops/WildlifeAudioStreamPlayer.play()
 	$TargetFollower/WorldCamera/ParallaxBackground.offset = OS.window_size / 2
 	player = $Player
 	player.world = self
@@ -21,6 +25,26 @@ func _ready():
 
 func get_camera():
 	return $TargetFollower/WorldCamera
+
+func play_robot_loop():
+	$MusicLoops/RobotCrashAudioStreamPlayer.play()
+	$MusicLoops/RobotCrashAudioStreamPlayer.volume_db = 0
+	robot_loop_volume_direction = 1
+
+func stop_robot_loop():
+	robot_loop_volume_direction = -0.5
+
+func stop_wildlife_loop():
+	wildlife_loop_volume_direction = -0.5
+
+func play_main_loop():
+	if not $MusicLoops/MainAudioStreamPlayer.playing:
+		$MusicLoops/MainAudioStreamPlayer.play()
+	main_loop_volume_direction = 0.5
+
+func stop_main_loop():
+	$MusicLoops/MainAudioStreamPlayer.stop()
+	main_loop_volume_direction = -1
 
 func spirit_form_wind_up(_current_player):
 	$TargetFollower/WorldCamera.is_narrowing = true
@@ -90,6 +114,10 @@ func _physics_process(delta):
 	else:
 		$CanvasLayer/PostProcess.grey_direction = 1
 		$CanvasLayer/SpiritWaveEffects.modulate.a = clamp(current_a, 0.15, 0.3)
+	
+	$MusicLoops/MainAudioStreamPlayer.volume_db = clamp($MusicLoops/MainAudioStreamPlayer.volume_db + main_loop_volume_direction, -80, 0)
+	$MusicLoops/WildlifeAudioStreamPlayer.volume_db = clamp($MusicLoops/WildlifeAudioStreamPlayer.volume_db + wildlife_loop_volume_direction, -80, 0)
+	$MusicLoops/RobotCrashAudioStreamPlayer.volume_db = clamp($MusicLoops/RobotCrashAudioStreamPlayer.volume_db + robot_loop_volume_direction, -80, 0)
 
 func set_particles_speed_scale(speed_scale):
 	for child in $TargetFollower/WorldCamera/ParallaxBackground.get_children():

@@ -14,6 +14,10 @@ func _ready():
 	current_pan_amount = pan_amount
 	$LevelOrigin.world.get_node("TargetFollower").offset = Vector2(0, -current_pan_amount)
 	$LevelOrigin.world.get_node("TargetFollower").snap_camera = true
+	$LevelOrigin.connect("level_inactive", self, "on_level_inactive")
+
+func on_level_inactive():
+	$LevelOrigin.world.stop_wildlife_loop()
 
 func _process(delta):
 	if not is_panning:

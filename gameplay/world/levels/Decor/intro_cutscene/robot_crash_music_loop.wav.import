@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/robot_crash_music_loop.wav-3ce186e969631f6cf4d0de67437e2c4b.sample"
+
+[deps]
+
+source_file="res://gameplay/world/levels/Decor/intro_cutscene/robot_crash_music_loop.wav"
+dest_files=[ "res://.import/robot_crash_music_loop.wav-3ce186e969631f6cf4d0de67437e2c4b.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=true
+compress/mode=0

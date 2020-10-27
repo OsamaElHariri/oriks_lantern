@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/dather_death_tune.wav-c7062cc1158ef1ebc9c559db613826d8.sample"
+
+[deps]
+
+source_file="res://gameplay/world/levels/Decor/intro_cutscene/dather_death_tune.wav"
+dest_files=[ "res://.import/dather_death_tune.wav-c7062cc1158ef1ebc9c559db613826d8.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

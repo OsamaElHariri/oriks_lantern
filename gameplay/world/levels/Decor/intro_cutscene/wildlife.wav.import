@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/wildlife.wav-4e004cbba31b182326970b9583b7ba2f.sample"
+
+[deps]
+
+source_file="res://gameplay/world/levels/Decor/intro_cutscene/wildlife.wav"
+dest_files=[ "res://.import/wildlife.wav-4e004cbba31b182326970b9583b7ba2f.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=true
+compress/mode=0

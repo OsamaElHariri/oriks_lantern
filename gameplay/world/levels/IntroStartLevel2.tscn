@@ -584,7 +584,7 @@ volume_db = -20.0
 position = Vector2( 1472, -240 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="LevelBlockStaticBody2D"]
-position = Vector2( -400, 0 )
+position = Vector2( -128, 0 )
 shape = SubResource( 12 )
 
 [node name="CutsceneStaticBody2D" type="StaticBody2D" parent="."]

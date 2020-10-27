@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=2]
+[gd_scene load_steps=17 format=2]
 
 [ext_resource path="res://gameplay/world/level_origin/LevelBounds.tscn" type="PackedScene" id=1]
 [ext_resource path="res://gameplay/platform/basic_platform/BasicPlatform.tscn" type="PackedScene" id=2]
@@ -10,6 +10,7 @@
 [ext_resource path="res://gameplay/world/level_origin/decor/front_rock_blur_1.png" type="Texture" id=8]
 [ext_resource path="res://gameplay/world/levels/Decor/intro_cutscene/bare_tree.png" type="Texture" id=9]
 [ext_resource path="res://gameplay/world/levels/IntroStartLevel3.gd" type="Script" id=10]
+[ext_resource path="res://gameplay/world/levels/Decor/intro_cutscene/dather_death_tune.wav" type="AudioStream" id=11]
 
 [sub_resource type="Gradient" id=1]
 offsets = PoolRealArray( 0, 0.116732, 0.832685, 1 )
@@ -34,23 +35,26 @@ color_ramp = SubResource( 2 )
 [sub_resource type="RectangleShape2D" id=4]
 extents = Vector2( 64, 432 )
 
+[sub_resource type="RectangleShape2D" id=5]
+extents = Vector2( 832, 512 )
+
 [node name="IntroStartLevel3" type="Node2D"]
 script = ExtResource( 10 )
 
 [node name="LevelOrigin" parent="." instance=ExtResource( 5 )]
 
 [node name="LevelBounds" parent="LevelOrigin" instance=ExtResource( 1 )]
-position = Vector2( 528, 2.86102e-05 )
-scale = Vector2( 760, 264 )
+position = Vector2( 264, 2.86102e-05 )
+scale = Vector2( 892, 264 )
 
 [node name="Platforms" type="Node2D" parent="LevelOrigin"]
 
 [node name="BasicPlatform" parent="LevelOrigin/Platforms" instance=ExtResource( 2 )]
-position = Vector2( 1024.03, 512 )
-scale = Vector2( 511.984, 48 )
+position = Vector2( 752.626, 512 )
+scale = Vector2( 647.686, 48 )
 
 [node name="BasicPlatform2" parent="LevelOrigin/Platforms" instance=ExtResource( 2 )]
-position = Vector2( -494.745, 512 )
+position = Vector2( -1040, 512 )
 scale = Vector2( 248.627, 48 )
 spawn_top_decor = false
 
@@ -73,7 +77,7 @@ texture = ExtResource( 8 )
 [node name="Decor" type="Node2D" parent="."]
 
 [node name="Particles2D" type="Particles2D" parent="Decor"]
-position = Vector2( -92.3594, -208 )
+position = Vector2( -560.862, -208 )
 rotation = -0.863938
 amount = 200
 lifetime = 6.0
@@ -83,7 +87,7 @@ texture = ExtResource( 4 )
 
 [node name="sunlight" type="Sprite" parent="Decor"]
 modulate = Color( 0.960784, 0.964706, 0.658824, 1 )
-position = Vector2( -248.748, -61.1688 )
+position = Vector2( -717.251, -61.1688 )
 rotation = 0.683829
 scale = Vector2( 1, 1.56292 )
 texture = ExtResource( 7 )
@@ -93,21 +97,33 @@ __meta__ = {
 
 [node name="sunlight2" type="Sprite" parent="Decor"]
 modulate = Color( 0.960784, 0.964706, 0.658824, 1 )
-position = Vector2( 7.25165, -77.1688 )
+position = Vector2( -461.251, -77.1688 )
 rotation = 0.683829
 scale = Vector2( 0.379406, 1.56292 )
 texture = ExtResource( 7 )
 
 [node name="bare_tree" type="Sprite" parent="Decor"]
-position = Vector2( -747.497, 78.0072 )
+position = Vector2( -1216, 78.0072 )
 texture = ExtResource( 9 )
 
 [node name="grave" type="Sprite" parent="Decor"]
-position = Vector2( -574.367, 387.306 )
+position = Vector2( -1042.87, 387.306 )
 texture = ExtResource( 3 )
 
 [node name="StaticBody2D" type="StaticBody2D" parent="."]
-position = Vector2( -736, -16 )
+position = Vector2( -1204.5, -16 )
+collision_layer = 3
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
 shape = SubResource( 4 )
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 11 )
+
+[node name="Area2D" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 524291
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2( -288, -112 )
+shape = SubResource( 5 )

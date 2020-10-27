@@ -1,4 +1,4 @@
-[gd_scene load_steps=30 format=2]
+[gd_scene load_steps=33 format=2]
 
 [ext_resource path="res://gameplay/world/world/PostProcess.gd" type="Script" id=1]
 [ext_resource path="res://gameplay/world/camera/WorldCamera.tscn" type="PackedScene" id=2]
@@ -22,6 +22,9 @@
 [ext_resource path="res://gameplay/world/levels/IntroStartLevel2.tscn" type="PackedScene" id=20]
 [ext_resource path="res://gameplay/world/levels/IntroStartLevel3.tscn" type="PackedScene" id=21]
 [ext_resource path="res://gameplay/world/levels/DemoEndLevel.tscn" type="PackedScene" id=22]
+[ext_resource path="res://gameplay/world/levels/Decor/intro_cutscene/robot_crash_music_loop.wav" type="AudioStream" id=23]
+[ext_resource path="res://gameplay/world/levels/Decor/intro_cutscene/main_music_loop.wav" type="AudioStream" id=24]
+[ext_resource path="res://gameplay/world/levels/Decor/intro_cutscene/wildlife.wav" type="AudioStream" id=25]
 
 [sub_resource type="Shader" id=1]
 code = "shader_type canvas_item;
@@ -321,3 +324,16 @@ position = Vector2( -11920, 96 )
 
 [node name="SpiritFormLevel2" parent="Levels" instance=ExtResource( 5 )]
 position = Vector2( 11568, -3312 )
+
+[node name="MusicLoops" type="Node2D" parent="."]
+
+[node name="RobotCrashAudioStreamPlayer" type="AudioStreamPlayer" parent="MusicLoops"]
+stream = ExtResource( 23 )
+volume_db = -80.0
+
+[node name="MainAudioStreamPlayer" type="AudioStreamPlayer" parent="MusicLoops"]
+stream = ExtResource( 24 )
+volume_db = -80.0
+
+[node name="WildlifeAudioStreamPlayer" type="AudioStreamPlayer" parent="MusicLoops"]
+stream = ExtResource( 25 )

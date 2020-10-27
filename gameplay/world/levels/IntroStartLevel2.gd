@@ -33,6 +33,7 @@ func _ready():
 	world_camera = $LevelOrigin.world.get_node_or_null("TargetFollower/WorldCamera")
 
 func on_level_active():
+	$LevelOrigin.world.stop_main_loop()
 	$Decor/EnvironmentAnimationPlayer.play("thunder")
 	$ThunderAudioStreamPlayer.play()
 	$RainAudioStreamPlayer.play()
@@ -113,6 +114,7 @@ func set_camera_follower():
 	$LevelOrigin.world.get_node("TargetFollower").offset = Vector2(OS.get_screen_size().x * 0.16, 0)
 
 func robot_trigger():
+	$LevelOrigin.world.play_robot_loop()
 	$Robot/CrusherRobot/Animations/PositionAnimationPlayer.play("enter")
 	EMITTER.emit("request_screen_shake", 0.8)
 	$LevelOrigin.world.player.get_node("MoveCollection").input = PLAYER_INPUT.new()
