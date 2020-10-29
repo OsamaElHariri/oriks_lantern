@@ -8,8 +8,8 @@ var x_camera_offset_multiplier = 0
 func _ready():
 	$LevelOrigin.connect("level_active", self, "on_level_active")
 	$LevelOrigin.connect("level_inactive", self, "on_level_inactive")
-	$Area2D.connect("body_entered", self, "on_body_entered")
-	$Area2D.connect("body_exited", self, "on_body_exited")
+	$Area2D.connect("area_entered", self, "on_area_entered")
+	$Area2D.connect("area_exited", self, "on_area_exited")
 
 func on_level_active():
 	var player = $LevelOrigin.world.player
@@ -29,13 +29,13 @@ func on_level_inactive():
 	$LevelOrigin.world.play_main_loop()
 	$LevelOrigin.world.get_node("TargetFollower").offset = Vector2.ZERO
 
-func on_body_entered(_body):
+func on_area_entered(_body):
 	is_player_close_to_grave = true
 	if (!has_played_tune):
 		$AudioStreamPlayer.play()
 	has_played_tune = true
 
-func on_body_exited(_body):
+func on_area_exited(_body):
 	is_player_close_to_grave = false
 
 func _process(delta):

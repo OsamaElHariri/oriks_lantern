@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=13 format=2]
 
 [ext_resource path="res://gameplay/world/level_origin/SpawnLocation.tscn" type="PackedScene" id=1]
 [ext_resource path="res://gameplay/world/level_origin/LevelOrigin.tscn" type="PackedScene" id=2]
@@ -10,9 +10,21 @@
 [ext_resource path="res://gameplay/world/level_origin/LevelBounds.tscn" type="PackedScene" id=8]
 [ext_resource path="res://gameplay/world/levels/IntroStartLevel1.gd" type="Script" id=9]
 [ext_resource path="res://gameplay/world/levels/Decor/intro_cutscene/title.png" type="Texture" id=10]
+[ext_resource path="res://gameplay/world/levels/Decor/intro_cutscene/arrow_keys.png" type="Texture" id=11]
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 1120, 640 )
 
 [node name="IntroStartLevel1" type="Node2D"]
 script = ExtResource( 9 )
+
+[node name="Area2D" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 524288
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2( -976, -208 )
+shape = SubResource( 1 )
 
 [node name="LevelOrigin" parent="." instance=ExtResource( 2 )]
 
@@ -55,12 +67,12 @@ script = ExtResource( 6 )
 speed = 0.7
 
 [node name="thick_fading_tree" type="Sprite" parent="LevelOrigin/ForegroundDecor/Parallax2"]
-position = Vector2( -992, -759.625 )
+position = Vector2( -1440, -759.625 )
 scale = Vector2( 0.116063, 1.33242 )
 texture = ExtResource( 4 )
 
 [node name="title" type="Sprite" parent="LevelOrigin/ForegroundDecor/Parallax2"]
-position = Vector2( 0, -1712 )
+position = Vector2( -544, -1712 )
 texture = ExtResource( 10 )
 
 [node name="Parallax3" type="Node2D" parent="LevelOrigin/ForegroundDecor"]
@@ -80,3 +92,8 @@ texture = ExtResource( 4 )
 position = Vector2( -32, 200.811 )
 z_index = -1
 texture = ExtResource( 3 )
+
+[node name="arrow_keys" type="Sprite" parent="Decor"]
+position = Vector2( -695.017, 165.992 )
+scale = Vector2( 0.546261, 0.546261 )
+texture = ExtResource( 11 )
