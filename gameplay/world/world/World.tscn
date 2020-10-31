@@ -1,4 +1,4 @@
-[gd_scene load_steps=33 format=2]
+[gd_scene load_steps=34 format=2]
 
 [ext_resource path="res://gameplay/world/world/PostProcess.gd" type="Script" id=1]
 [ext_resource path="res://gameplay/world/camera/WorldCamera.tscn" type="PackedScene" id=2]
@@ -25,6 +25,7 @@
 [ext_resource path="res://gameplay/world/levels/Decor/intro_cutscene/robot_crash_music_loop.wav" type="AudioStream" id=23]
 [ext_resource path="res://gameplay/world/levels/Decor/intro_cutscene/main_music_loop.wav" type="AudioStream" id=24]
 [ext_resource path="res://gameplay/world/levels/Decor/intro_cutscene/wildlife.wav" type="AudioStream" id=25]
+[ext_resource path="res://gameplay/world/levels/SpiritFormLevel6.tscn" type="PackedScene" id=26]
 
 [sub_resource type="Shader" id=1]
 code = "shader_type canvas_item;
@@ -307,9 +308,6 @@ position = Vector2( 9648, -2624 )
 [node name="JumpLevel3" parent="Levels" instance=ExtResource( 16 )]
 position = Vector2( 7728, -2960 )
 
-[node name="JumpLevel1" parent="Levels/JumpLevel3" instance=ExtResource( 22 )]
-position = Vector2( 5968, -720 )
-
 [node name="JumpLevel4" parent="Levels" instance=ExtResource( 17 )]
 position = Vector2( 5776, -2224 )
 
@@ -324,6 +322,12 @@ position = Vector2( -11920, 96 )
 
 [node name="SpiritFormLevel2" parent="Levels" instance=ExtResource( 5 )]
 position = Vector2( 11568, -3312 )
+
+[node name="JumpLevel5" parent="Levels" instance=ExtResource( 22 )]
+position = Vector2( 15632, -5104 )
+
+[node name="JumpLevel6" parent="Levels" instance=ExtResource( 26 )]
+position = Vector2( 13696, -4224 )
 
 [node name="MusicLoops" type="Node2D" parent="."]
 

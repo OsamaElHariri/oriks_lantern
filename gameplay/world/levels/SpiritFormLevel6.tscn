@@ -1,0 +1,306 @@
+[gd_scene load_steps=18 format=2]
+
+[ext_resource path="res://gameplay/platform/basic_platform/BasicPlatform.tscn" type="PackedScene" id=1]
+[ext_resource path="res://gameplay/platform/spikes/Spikes.tscn" type="PackedScene" id=2]
+[ext_resource path="res://gameplay/world/level_origin/decor/sway.shader" type="Shader" id=3]
+[ext_resource path="res://gameplay/world/level_origin/LevelBounds.tscn" type="PackedScene" id=4]
+[ext_resource path="res://gameplay/world/level_origin/SpawnLocation.tscn" type="PackedScene" id=5]
+[ext_resource path="res://gameplay/world/level_origin/LevelOrigin.tscn" type="PackedScene" id=6]
+[ext_resource path="res://gameplay/world/level_origin/decor/foreground_ground_blur_2.png" type="Texture" id=7]
+[ext_resource path="res://gameplay/world/level_origin/decor/foreground_ground_blur_1.png" type="Texture" id=8]
+[ext_resource path="res://gameplay/world/level_origin/ForegroundParallax.gd" type="Script" id=9]
+[ext_resource path="res://gameplay/world/level_origin/InteractableVisual.gd" type="Script" id=10]
+[ext_resource path="res://gameplay/world/level_origin/decor/SmoothCurveDecor.tres" type="Curve" id=11]
+[ext_resource path="res://gameplay/world/level_origin/decor/HardStartCurveDecor.tres" type="Curve" id=12]
+[ext_resource path="res://gameplay/world/level_origin/decor/leaves_5_blur_1.png" type="Texture" id=13]
+[ext_resource path="res://gameplay/world/level_origin/decor/leaves_3_blur_2.png" type="Texture" id=14]
+[ext_resource path="res://gameplay/world/level_origin/decor/leaves_1_blur_1.png" type="Texture" id=15]
+[ext_resource path="res://gameplay/world/level_origin/decor/leaves_5_blur_2.png" type="Texture" id=16]
+
+[sub_resource type="ShaderMaterial" id=1]
+shader = ExtResource( 3 )
+shader_param/y_offset = 0.0
+shader_param/y_speed = 0.0
+shader_param/y_sway = 0.0
+shader_param/x_strength = 0.0
+
+[node name="JumpLevel1" type="Node2D"]
+
+[node name="LevelOrigin" parent="." instance=ExtResource( 6 )]
+
+[node name="LevelBounds" parent="LevelOrigin" instance=ExtResource( 4 )]
+position = Vector2( 160, -39.9999 )
+scale = Vector2( 488, 676 )
+
+[node name="Platforms" type="Node2D" parent="LevelOrigin"]
+
+[node name="BasicPlatform2" parent="LevelOrigin/Platforms" instance=ExtResource( 1 )]
+position = Vector2( -560, 1464 )
+scale = Vector2( 128, 164 )
+
+[node name="BasicPlatform9" parent="LevelOrigin/Platforms" instance=ExtResource( 1 )]
+position = Vector2( 416, 1408 )
+scale = Vector2( 360, 136 )
+spawn_top_decor = false
+
+[node name="BasicPlatform3" parent="LevelOrigin/Platforms" instance=ExtResource( 1 )]
+position = Vector2( 88, 808 )
+scale = Vector2( 108, 44 )
+spawn_top_decor = false
+
+[node name="BasicPlatform11" parent="LevelOrigin/Platforms" instance=ExtResource( 1 )]
+position = Vector2( 104.059, 312 )
+scale = Vector2( 108, 44 )
+spawn_top_decor = false
+
+[node name="BasicPlatform8" parent="LevelOrigin/Platforms" instance=ExtResource( 1 )]
+position = Vector2( 656, -144 )
+scale = Vector2( 248, 72 )
+
+[node name="BasicPlatform7" parent="LevelOrigin/Platforms" instance=ExtResource( 1 )]
+position = Vector2( 160, -1216 )
+scale = Vector2( 488, 72 )
+spawn_top_decor = false
+
+[node name="BasicPlatform6" parent="LevelOrigin/Platforms" instance=ExtResource( 1 )]
+position = Vector2( 896, 568 )
+scale = Vector2( 112, 284 )
+spawn_top_decor = false
+
+[node name="BasicPlatform5" parent="LevelOrigin/Platforms" instance=ExtResource( 1 )]
+position = Vector2( -704, -208 )
+scale = Vector2( 56, 520 )
+spawn_top_decor = false
+
+[node name="SpawnLocations" type="Node2D" parent="LevelOrigin"]
+
+[node name="SpawnLocation" parent="LevelOrigin/SpawnLocations" instance=ExtResource( 5 )]
+position = Vector2( -736, 1088 )
+scale = Vector2( 1, 2.2 )
+
+[node name="Spikes" type="Node2D" parent="LevelOrigin"]
+
+[node name="Spikes" parent="LevelOrigin/Spikes" instance=ExtResource( 2 )]
+margin_left = -288.0
+margin_top = 1120.0
+margin_right = 1600.0
+margin_bottom = 1184.0
+
+[node name="Spikes2" parent="LevelOrigin/Spikes" instance=ExtResource( 2 )]
+margin_left = 656.0
+margin_top = 1120.0
+margin_right = 2896.0
+margin_bottom = 1184.0
+rect_rotation = -89.9999
+
+[node name="Spikes3" parent="LevelOrigin/Spikes" instance=ExtResource( 2 )]
+margin_left = -128.0
+margin_top = 704.0
+margin_right = 736.0
+margin_bottom = 768.0
+
+[node name="Spikes5" parent="LevelOrigin/Spikes" instance=ExtResource( 2 )]
+margin_left = 304.0
+margin_top = 912.0
+margin_right = 1168.0
+margin_bottom = 976.0
+rect_rotation = 180.0
+
+[node name="Spikes8" parent="LevelOrigin/Spikes" instance=ExtResource( 2 )]
+margin_left = 656.0
+margin_top = 16.0
+margin_right = 1616.0
+margin_bottom = 80.0
+rect_rotation = 180.0
+
+[node name="Spikes13" parent="LevelOrigin/Spikes" instance=ExtResource( 2 )]
+margin_left = -111.941
+margin_top = 207.0
+margin_right = 752.059
+margin_bottom = 271.0
+
+[node name="Spikes12" parent="LevelOrigin/Spikes" instance=ExtResource( 2 )]
+margin_left = 320.059
+margin_top = 415.0
+margin_right = 1184.06
+margin_bottom = 479.0
+rect_rotation = 180.0
+
+[node name="Spikes6" parent="LevelOrigin/Spikes" instance=ExtResource( 2 )]
+margin_left = -128.0
+margin_top = 383.0
+margin_right = 160.0
+margin_bottom = 447.0
+rect_rotation = -89.9999
+
+[node name="Spikes9" parent="LevelOrigin/Spikes" instance=ExtResource( 2 )]
+margin_left = -576.0
+margin_top = -655.0
+margin_right = 2401.0
+margin_bottom = -591.0
+rect_rotation = 89.9999
+
+[node name="ForegroundDecor" type="Node2D" parent="LevelOrigin"]
+z_index = 100
+
+[node name="Parallax1" type="Node2D" parent="LevelOrigin/ForegroundDecor"]
+modulate = Color( 0.705882, 0.705882, 0.705882, 1 )
+script = ExtResource( 9 )
+speed = 0.4
+
+[node name="Node2D" type="Node2D" parent="LevelOrigin/ForegroundDecor/Parallax1"]
+position = Vector2( 784, -256 )
+script = ExtResource( 10 )
+smooth = ExtResource( 11 )
+hard_start = ExtResource( 12 )
+x_strength_multiplier = 0.3
+height_sway_ratio = 0.1
+y_speed = 1.0
+y_speed_random = 1.0
+move_sway_range_multiplier = 0.0
+
+[node name="visual" type="Sprite" parent="LevelOrigin/ForegroundDecor/Parallax1/Node2D"]
+material = SubResource( 1 )
+texture = ExtResource( 13 )
+
+[node name="Node2D2" type="Node2D" parent="LevelOrigin/ForegroundDecor/Parallax1"]
+position = Vector2( 768, 800 )
+script = ExtResource( 10 )
+__meta__ = {
+"_editor_description_": ""
+}
+smooth = ExtResource( 11 )
+hard_start = ExtResource( 12 )
+x_strength_multiplier = 0.3
+height_sway_ratio = 0.1
+y_speed = 1.0
+y_speed_random = 1.0
+move_sway_range_multiplier = 0.0
+
+[node name="visual" type="Sprite" parent="LevelOrigin/ForegroundDecor/Parallax1/Node2D2"]
+material = SubResource( 1 )
+texture = ExtResource( 13 )
+
+[node name="Node2D3" type="Node2D" parent="LevelOrigin/ForegroundDecor/Parallax1"]
+position = Vector2( -553.5, 1472 )
+script = ExtResource( 10 )
+__meta__ = {
+"_editor_description_": ""
+}
+smooth = ExtResource( 11 )
+hard_start = ExtResource( 12 )
+x_strength_multiplier = 0.3
+height_sway_ratio = 0.1
+y_speed = 1.0
+y_speed_random = 1.0
+move_sway_range_multiplier = 0.0
+
+[node name="visual" type="Sprite" parent="LevelOrigin/ForegroundDecor/Parallax1/Node2D3"]
+material = SubResource( 1 )
+texture = ExtResource( 15 )
+
+[node name="foreground_ground_blur_1" type="Sprite" parent="LevelOrigin/ForegroundDecor/Parallax1"]
+position = Vector2( 576, 2064 )
+scale = Vector2( 1.50623, 1.29316 )
+texture = ExtResource( 8 )
+
+[node name="foreground_ground_blur_2" type="Sprite" parent="LevelOrigin/ForegroundDecor/Parallax1"]
+position = Vector2( 2272, 880 )
+scale = Vector2( 1.50623, 3.02313 )
+texture = ExtResource( 8 )
+
+[node name="Parallax2" type="Node2D" parent="LevelOrigin/ForegroundDecor"]
+modulate = Color( 0.584314, 0.584314, 0.584314, 1 )
+script = ExtResource( 9 )
+speed = 0.7
+
+[node name="Node2D" type="Node2D" parent="LevelOrigin/ForegroundDecor/Parallax2"]
+position = Vector2( -192, 1872 )
+script = ExtResource( 10 )
+__meta__ = {
+"_editor_description_": ""
+}
+smooth = ExtResource( 11 )
+hard_start = ExtResource( 12 )
+x_strength_multiplier = 0.3
+height_sway_ratio = 0.1
+y_speed = 1.0
+y_speed_random = 1.0
+move_sway_range_multiplier = 0.0
+
+[node name="visual" type="Sprite" parent="LevelOrigin/ForegroundDecor/Parallax2/Node2D"]
+material = SubResource( 1 )
+texture = ExtResource( 14 )
+
+[node name="Node2D2" type="Node2D" parent="LevelOrigin/ForegroundDecor/Parallax2"]
+position = Vector2( -576, -272 )
+scale = Vector2( -1, 1 )
+script = ExtResource( 10 )
+__meta__ = {
+"_editor_description_": ""
+}
+smooth = ExtResource( 11 )
+hard_start = ExtResource( 12 )
+x_strength_multiplier = 0.3
+height_sway_ratio = 0.1
+y_speed = 1.0
+y_speed_random = 1.0
+move_sway_range_multiplier = 0.0
+
+[node name="visual" type="Sprite" parent="LevelOrigin/ForegroundDecor/Parallax2/Node2D2"]
+material = SubResource( 1 )
+texture = ExtResource( 16 )
+
+[node name="Node2D3" type="Node2D" parent="LevelOrigin/ForegroundDecor/Parallax2"]
+position = Vector2( -607, 256 )
+scale = Vector2( -1, 1 )
+script = ExtResource( 10 )
+__meta__ = {
+"_editor_description_": ""
+}
+smooth = ExtResource( 11 )
+hard_start = ExtResource( 12 )
+x_strength_multiplier = 0.3
+height_sway_ratio = 0.1
+y_speed = 1.0
+y_speed_random = 1.0
+move_sway_range_multiplier = 0.0
+
+[node name="visual" type="Sprite" parent="LevelOrigin/ForegroundDecor/Parallax2/Node2D3"]
+material = SubResource( 1 )
+texture = ExtResource( 16 )
+
+[node name="Node2D4" type="Node2D" parent="LevelOrigin/ForegroundDecor/Parallax2"]
+position = Vector2( 944, 528 )
+scale = Vector2( 2, 2 )
+script = ExtResource( 10 )
+__meta__ = {
+"_editor_description_": ""
+}
+smooth = ExtResource( 11 )
+hard_start = ExtResource( 12 )
+x_strength_multiplier = 0.3
+height_sway_ratio = 0.1
+y_speed = 1.0
+y_speed_random = 1.0
+move_sway_range_multiplier = 0.0
+
+[node name="visual" type="Sprite" parent="LevelOrigin/ForegroundDecor/Parallax2/Node2D4"]
+material = SubResource( 1 )
+texture = ExtResource( 16 )
+
+[node name="foreground_ground_blur_2" type="Sprite" parent="LevelOrigin/ForegroundDecor/Parallax2"]
+position = Vector2( -2224, -167.06 )
+rotation = 3.14159
+scale = Vector2( 1.61986, 3.13299 )
+texture = ExtResource( 7 )
+
+[node name="foreground_ground_blur_3" type="Sprite" parent="LevelOrigin/ForegroundDecor/Parallax2"]
+position = Vector2( 2656, 1056 )
+scale = Vector2( 1.61986, 2.86159 )
+texture = ExtResource( 7 )
+
+[node name="foreground_ground_blur_4" type="Sprite" parent="LevelOrigin/ForegroundDecor/Parallax2"]
+position = Vector2( 528, 2272 )
+scale = Vector2( 1.22727, 1 )
+texture = ExtResource( 7 )

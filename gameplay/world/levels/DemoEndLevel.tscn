@@ -17,16 +17,16 @@ scale = Vector2( 480, 264 )
 [node name="Platforms" type="Node2D" parent="LevelOrigin"]
 
 [node name="BasicPlatform2" parent="LevelOrigin/Platforms" instance=ExtResource( 1 )]
-position = Vector2( 64, 776 )
-scale = Vector2( 440, 92 )
+position = Vector2( 72, 776 )
+scale = Vector2( 436, 92 )
 
 [node name="BasicPlatform6" parent="LevelOrigin/Platforms" instance=ExtResource( 1 )]
 position = Vector2( 1040, 328 )
 scale = Vector2( 48, 316 )
 
 [node name="BasicPlatform5" parent="LevelOrigin/Platforms" instance=ExtResource( 1 )]
-position = Vector2( 160, -335.999 )
-scale = Vector2( 488, 71.9998 )
+position = Vector2( 168, -335.999 )
+scale = Vector2( 484, 71.9998 )
 spawn_top_decor = false
 
 [node name="SpawnLocations" type="Node2D" parent="LevelOrigin"]
