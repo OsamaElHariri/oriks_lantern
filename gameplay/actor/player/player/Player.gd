@@ -71,6 +71,7 @@ func spirit_form_end(spirit):
 	
 	movement.direction = spirit_player.get_node('MoveCollection').velocity
 	spirit_player = null
+	EMITTER.emit('player_spirit_form_end', self)
 
 func _physics_process(delta):
 	check_near_walls()

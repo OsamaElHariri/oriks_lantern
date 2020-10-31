@@ -68,8 +68,8 @@ scale = Vector2( 112, 284 )
 spawn_top_decor = false
 
 [node name="BasicPlatform5" parent="LevelOrigin/Platforms" instance=ExtResource( 1 )]
-position = Vector2( -704, -208 )
-scale = Vector2( 56, 520 )
+position = Vector2( -704, -256 )
+scale = Vector2( 56, 496 )
 spawn_top_decor = false
 
 [node name="SpawnLocations" type="Node2D" parent="LevelOrigin"]
@@ -136,7 +136,7 @@ rect_rotation = -89.9999
 [node name="Spikes9" parent="LevelOrigin/Spikes" instance=ExtResource( 2 )]
 margin_left = -576.0
 margin_top = -655.0
-margin_right = 2401.0
+margin_right = 2206.0
 margin_bottom = -591.0
 rect_rotation = 89.9999
 

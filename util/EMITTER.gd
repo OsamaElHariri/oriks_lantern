@@ -9,6 +9,7 @@ extends Node2D
 # with the signal
 
 signal player_spirit_form_start
+signal player_spirit_form_end
 signal player_movement_heartbeat
 signal player_entered_level
 signal player_exited_level

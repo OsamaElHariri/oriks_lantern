@@ -497,7 +497,7 @@ dialog_group = "player"
 pitch_scale = 2
 
 [node name="FatherDialog" parent="Dialog" instance=ExtResource( 8 )]
-position = Vector2( -2128, -112 )
+position = Vector2( -2352, -304 )
 dialog_group = "player_father"
 
 [node name="DialogAnimationPlayer" type="AnimationPlayer" parent="Dialog"]
@@ -582,9 +582,10 @@ volume_db = -20.0
 
 [node name="LevelBlockStaticBody2D" type="StaticBody2D" parent="."]
 position = Vector2( 1472, -240 )
+collision_layer = 3
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="LevelBlockStaticBody2D"]
-position = Vector2( -128, 0 )
+position = Vector2( -160, 0 )
 shape = SubResource( 12 )
 
 [node name="CutsceneStaticBody2D" type="StaticBody2D" parent="."]

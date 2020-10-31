@@ -22,7 +22,10 @@ var has_played_look_at_this = false
 var father_carrying_player = false
 var has_played_main_smash = false
 
+var has_moved_collision = false
+
 func _ready():
+	$LevelBlockStaticBody2D/CollisionShape2D.disabled = true
 	$CutsceneStaticBody2D/CollisionShape2D.disabled = true
 	$Robot.visible = false
 	initial_robot_pos = $Robot/CrusherRobot.position
@@ -30,7 +33,13 @@ func _ready():
 	$PanicCutsceneTrigger.connect("area_entered", self, "on_start_panic_cutscene")
 	$LevelOrigin.connect("level_active", self, "on_level_active")
 	$LevelOrigin.connect("level_inactive", self, "on_level_inactive")
+	EMITTER.connect("player_spirit_form_end", self, "on_player_spirit_form_end")
 	world_camera = $LevelOrigin.world.get_node_or_null("TargetFollower/WorldCamera")
+
+func on_player_spirit_form_end(player):
+	if has_moved_collision || not $LevelOrigin.is_level_active || !player.is_in_group("player_father"): return
+	$CutsceneStaticBody2D.position.x -= 16 * 22
+	has_moved_collision = true
 
 func on_level_active():
 	$LevelOrigin.world.stop_main_loop()
@@ -39,6 +48,8 @@ func on_level_active():
 	$RainAudioStreamPlayer.play()
 	var player = $LevelOrigin.world.player
 	player.position.x -= 850
+	if player.spirit_player != null:
+		player.spirit_player.position.x -= 850
 	player.signature_action_enabled = false
 	player.get_node("MoveCollection").disable_movement("WallJumpMovement")
 	var hat = player.get_node_or_null("Visuals/Sprites/torso/hat")
@@ -52,7 +63,8 @@ func on_level_active():
 		background.modulate = Color(0.09, 0.06, 0.91)
 	spawn_father()
 	$Dialog/DialogAnimationPlayer.play("hey_orik")
-
+	$LevelBlockStaticBody2D/CollisionShape2D.call_deferred('set_disabled', false)
+	
 func on_level_inactive():
 	has_triggered_scene = false
 	var player = $LevelOrigin.world.player
