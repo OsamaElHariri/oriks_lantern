@@ -14,7 +14,7 @@ var limit_bottom
 var screen_size
 
 func _ready():
-	screen_size = OS.get_screen_size()
+	screen_size = Vector2(ProjectSettings.get_setting("display/window/size/width"), ProjectSettings.get_setting("display/window/size/height"))
 
 func _process(_delta):
 	if target:

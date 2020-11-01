@@ -73,7 +73,7 @@ spawn_top_decor = false
 [node name="SpawnLocations" type="Node2D" parent="LevelOrigin"]
 
 [node name="SpawnLocation" parent="LevelOrigin/SpawnLocations" instance=ExtResource( 7 )]
-position = Vector2( -624, 288 )
+position = Vector2( -593.42, 288 )
 scale = Vector2( 1, 5.08 )
 
 [node name="Spikes" type="Node2D" parent="LevelOrigin"]

@@ -123,7 +123,7 @@ func anticipation_shake():
 	has_played_main_smash = true
 
 func set_camera_follower():
-	$LevelOrigin.world.get_node("TargetFollower").offset = Vector2(OS.get_screen_size().x * 0.16, 0)
+	$LevelOrigin.world.get_node("TargetFollower").offset = Vector2(ProjectSettings.get_setting("display/window/size/width") * 0.16, 0)
 
 func robot_trigger():
 	$LevelOrigin.world.play_robot_loop()
@@ -159,6 +159,7 @@ func _physics_process(_delta):
 		$Dialog/DialogAnimationPlayer.play("look_at_this")
 	
 	if world_camera:
-		$Robot/CrusherRobot.global_position.x = -get_viewport_transform().get_origin().x + OS.get_screen_size().x
-		$Decor/screen_center_fade_overlay.global_position = -get_viewport_transform().get_origin() + OS.get_screen_size() / 2
+		var screen_size = Vector2(ProjectSettings.get_setting("display/window/size/width"),ProjectSettings.get_setting("display/window/size/height"))
+		$Robot/CrusherRobot.global_position.x = -get_viewport_transform().get_origin().x + screen_size.x
+		$Decor/screen_center_fade_overlay.global_position = -get_viewport_transform().get_origin() + screen_size / 2
 

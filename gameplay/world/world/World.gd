@@ -14,7 +14,8 @@ var wildlife_loop_volume_direction = 1
 func _ready():
 	randomize()
 	$MusicLoops/WildlifeAudioStreamPlayer.play()
-	$TargetFollower/WorldCamera/ParallaxBackground.offset = OS.window_size / 2
+	var screen_size = Vector2(ProjectSettings.get_setting("display/window/size/width"), ProjectSettings.get_setting("display/window/size/height"))
+	$TargetFollower/WorldCamera/ParallaxBackground.offset = screen_size / 2
 	player = $Player
 	player.world = self
 	post_process = $CanvasLayer/PostProcess

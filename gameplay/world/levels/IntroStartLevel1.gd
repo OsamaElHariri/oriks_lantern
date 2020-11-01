@@ -28,7 +28,7 @@ func _input(event):
 			$LevelOrigin.world.player.get_node("Visuals").scale.x = -abs($LevelOrigin.world.player.scale.x)
 
 func on_area_entered(_player):
-	$LevelOrigin.world.get_node("TargetFollower").offset.x = -OS.get_screen_size().x * 0.16
+	$LevelOrigin.world.get_node("TargetFollower").offset.x = -ProjectSettings.get_setting("display/window/size/width") * 0.16
 
 func on_area_exited(_player):
 	$LevelOrigin.world.get_node("TargetFollower").offset.x = 0

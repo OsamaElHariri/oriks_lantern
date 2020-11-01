@@ -136,5 +136,6 @@ func _physics_process(_delta):
 func move_foreground_decor(node):
 	for child in node.get_children():
 		if "speed" in child:
-			var screen_pos = get_viewport_transform().get_origin() - OS.get_screen_size() / 2
+			var screen_size = Vector2(ProjectSettings.get_setting("display/window/size/width"), ProjectSettings.get_setting("display/window/size/height"))
+			var screen_pos = get_viewport_transform().get_origin() - screen_size / 2
 			child.position = (global_position + screen_pos) * child.speed
