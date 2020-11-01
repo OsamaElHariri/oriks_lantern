@@ -110,13 +110,6 @@ margin_right = 1840.0
 margin_bottom = 720.0
 rect_rotation = -89.9999
 
-[node name="Spikes11" parent="LevelOrigin/Spikes" instance=ExtResource( 1 )]
-margin_left = 208.0
-margin_top = 944.0
-margin_right = 528.0
-margin_bottom = 1008.0
-rect_rotation = -89.9999
-
 [node name="Spikes12" parent="LevelOrigin/Spikes" instance=ExtResource( 1 )]
 margin_left = 400.0
 margin_top = 784.0
