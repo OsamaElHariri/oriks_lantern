@@ -82,7 +82,7 @@ func escape_scene():
 		action_just_pressed = false
 		action_just_pressed_counter = INF
 	
-	if between(4.9, 5):
+	if between(4.85, 5):
 		jump_just_pressed = true
 		jump_pressed = true
 		jump_just_pressed_counter = 0

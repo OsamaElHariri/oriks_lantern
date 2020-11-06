@@ -17,6 +17,7 @@ _global_script_class_icons={
 
 config/name="Orik's Lantern"
 run/main_scene="res://gameplay/world/world/World.tscn"
+boot_splash/image="res://assets/media/SplashScreen.png"
 config/icon="res://icon.png"
 
 [autoload]
